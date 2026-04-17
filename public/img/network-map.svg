@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" fill="none">
+  <rect width="960" height="760" rx="32" fill="#111317"/>
+  <g opacity=".2" stroke="#fff">
+    <path d="M0 80H960M0 200H960M0 320H960M0 440H960M0 560H960M0 680H960"/>
+    <path d="M80 0V760M220 0V760M360 0V760M500 0V760M640 0V760M780 0V760M920 0V760"/>
+  </g>
+  <path d="M180 252C254 216 316 208 402 224C502 242 576 282 684 330C756 362 812 390 852 436" stroke="#0C5FAE" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 12"/>
+  <path d="M146 504C248 460 340 432 470 430C596 428 692 454 814 510" stroke="#B90014" stroke-width="5" stroke-linecap="round"/>
+  <path d="M250 142C332 170 400 194 468 234C532 272 594 324 656 398" stroke="#fff" stroke-opacity=".24" stroke-width="2"/>
+  <circle cx="180" cy="252" r="12" fill="#0C5FAE"/>
+  <circle cx="402" cy="224" r="12" fill="#0C5FAE"/>
+  <circle cx="684" cy="330" r="12" fill="#0C5FAE"/>
+  <circle cx="852" cy="436" r="12" fill="#0C5FAE"/>
+  <circle cx="146" cy="504" r="14" fill="#B90014"/>
+  <circle cx="470" cy="430" r="14" fill="#B90014"/>
+  <circle cx="814" cy="510" r="14" fill="#B90014"/>
+  <circle cx="180" cy="252" r="34" stroke="#0C5FAE" stroke-opacity=".25" stroke-width="2"/>
+  <circle cx="470" cy="430" r="38" stroke="#B90014" stroke-opacity=".25" stroke-width="2"/>
+  <rect x="596" y="84" width="230" height="116" rx="16" fill="#161A1F"/>
+  <text x="632" y="122" fill="#fff" font-family="Inter, sans-serif" font-size="16" letter-spacing="4" text-transform="uppercase">Mobility</text>
+  <text x="632" y="156" fill="#fff" font-family="'Plus Jakarta Sans', sans-serif" font-size="30" font-weight="800">Cross-Border</text>
+  <text x="632" y="186" fill="rgba(255,255,255,.72)" font-family="Inter, sans-serif" font-size="15">Demand routes aligned to sector readiness</text>
+</svg>

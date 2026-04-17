@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Tracodi favicon">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b90014"/>
+      <stop offset="100%" stop-color="#d43c40"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="6" fill="#111317"/>
+  <path d="M16 18h32v6H16zm0 11h26v6H16zm0 11h32v6H16z" fill="url(#g)"/>
+</svg>
