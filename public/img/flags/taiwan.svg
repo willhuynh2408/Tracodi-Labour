@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="Taiwan flag">
+  <rect width="640" height="420" fill="#fe0000"/>
+  <rect width="320" height="210" fill="#000095"/>
+  <g transform="translate(160 105)">
+    <g fill="#ffffff">
+      <polygon points="0,-62 12,-22 50,-44 26,-8 66,0 26,8 50,44 12,22 0,62 -12,22 -50,44 -26,8 -66,0 -26,-8 -50,-44 -12,-22"/>
+    </g>
+    <circle r="24" fill="#000095"/>
+    <circle r="18" fill="#ffffff"/>
+  </g>
+</svg>

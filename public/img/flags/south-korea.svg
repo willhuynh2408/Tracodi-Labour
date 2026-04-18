@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="South Korea flag">
+  <rect width="640" height="420" fill="#ffffff"/>
+  <g transform="translate(320 210)">
+    <path d="M0-98A98 98 0 0 1 0 98A49 49 0 0 0 0 0A49 49 0 0 1 0-98Z" fill="#cd2e3a"/>
+    <path d="M0 98A98 98 0 0 1 0-98A49 49 0 0 0 0 0A49 49 0 0 1 0 98Z" fill="#0047a0"/>
+  </g>
+</svg>

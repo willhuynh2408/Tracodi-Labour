@@ -7,7 +7,6 @@ import {
   academyTracks,
   assuranceCards,
   contactDetails,
-  demandSnapshot,
   heroGallery,
   heroStats,
   markets,
@@ -17,6 +16,12 @@ import {
 
 export default function HomePage() {
   const [heroFeature, ...heroSecondary] = heroGallery;
+  const marketFlagSources = [
+    "/img/flags/japan.svg",
+    "/img/flags/korea.png",
+    "/img/flags/taiwan.png",
+    "/img/flags/malaysia.png"
+  ];
 
   return (
     <>
@@ -31,17 +36,18 @@ export default function HomePage() {
           <div className="hero__backdrop" aria-hidden="true" />
           <div className="shell hero__grid">
             <div className="hero__copy">
-              <p className="eyebrow">Xuất khẩu lao động có giấy phép cho các ngành công nghiệp</p>
-              <h1>Từ nhân tài địa phương đến công trường toàn cầu.</h1>
+              <p className="eyebrow">Doanh nghiệp xuất khẩu lao động được cấp phép cho nhiều lĩnh vực trọng điểm</p>
+              <h1>Từ nguồn nhân lực Việt Nam đến thị trường lao động toàn cầu.</h1>
               <p className="hero__lead">
-                Tracodi thiết kế các hệ thống triển khai lao động chuẩn mực cho cả nhà tuyển dụng và người lao động, kết hợp tuyển dụng, đào tạo, điều phối visa và hỗ trợ sau khi đến thành một mô hình vận hành kỷ luật.
+                Tracodi xây dựng quy trình cung ứng lao động bài bản cho đối tác tuyển dụng và người lao động, kết hợp tuyển chọn, đào tạo, hoàn thiện hồ sơ, điều phối visa và hỗ trợ sau xuất cảnh trong một mô hình vận hành chặt chẽ.
               </p>
               <div className="hero__actions">
                 <a className="button button--primary" href="#contact">
-                  Trò chuyện với đội tư vấn
+                  Trao đổi với đội ngũ tư vấn
                 </a>
+
                 <a className="button button--ghost" href="#process">
-                  Xem quy trình triển khai
+                  Xem quy trình tuyển chọn
                 </a>
               </div>
 
@@ -65,9 +71,10 @@ export default function HomePage() {
                 />
                 <div className="hero-showcase__feature-body">
                   <p className="eyebrow eyebrow--soft">{heroFeature?.label ?? "Employment pathways"}</p>
-                  <h2>Tầm nhìn tương lai</h2>
+                  <h2>Tầm nhìn phát triển</h2>
+
                   <p>
-                    Theo đuổi sự phong phú về cả vật chất lẫn tinh thần cho thực tập sinh, đồng thời đóng góp vào sự phát triển bền vững của cộng đồng.
+                    Hướng tới sự phát triển toàn diện về vật chất và tinh thần cho người lao động, đồng thời đóng góp tích cực vào sự phát triển bền vững của cộng đồng.
                   </p>
                 </div>
               </article>
@@ -87,10 +94,11 @@ export default function HomePage() {
               <div className="hero-showcase__summary">
                 <div className="hero-showcase__summary-head">
                   <div>
-                    <p className="eyebrow eyebrow--soft">Trọng tâm tuyển dụng hiện tại</p>
-                    <h3>Các luồng tuyển dụng xây dựng, chăm sóc, sản xuất và logistics.</h3>
+                    <p className="eyebrow eyebrow--soft">Trọng tâm tuyển dụng hiện nay</p>
+
+                    <h3>Các nhóm ngành trọng điểm gồm xây dựng, điều dưỡng, sản xuất và logistics.</h3>
                   </div>
-                 
+
                 </div>
                 <div className="pill-grid hero-pill-grid">
                   {activeSectors.map((sector) => (
@@ -119,16 +127,18 @@ export default function HomePage() {
                 <div className="card-grid">
                   <article className="surface-card surface-card--large">
                     <p className="eyebrow eyebrow--muted">Ưu tiên tuân thủ</p>
-                    <h3>Kiểm soát tài liệu sẵn sàng cho kiểm toán.</h3>
+                    <h3>Hệ thống hồ sơ chặt chẽ, sẵn sàng kiểm tra đối chiếu.</h3>
                     <p>
-                      Hợp đồng, y tế, chứng chỉ và hồ sơ visa được sắp xếp thông qua một trình tự được tài liệu hóa để giảm thiểu sự chậm trễ.
+                      Hợp đồng, hồ sơ sức khỏe, chứng chỉ và giấy tờ visa được chuẩn bị theo quy trình rõ ràng nhằm hạn chế sai sót và rút ngắn thời gian xử lý.
                     </p>
                   </article>
                   <article className="surface-card surface-card--large">
-                    <p className="eyebrow eyebrow--muted">Lấy con người làm trung tâm</p>
-                    <h3>Chuẩn bị cho người lao động để cải thiện tỷ lệ gắn bó.</h3>
+                    <p className="eyebrow eyebrow--muted">Trọng tâm là con người</p>
+
+                    <h3>Chuẩn bị kỹ cho người lao động để nâng cao khả năng thích nghi.</h3>
+
                     <p>
-                      Sẵn sàng về ngôn ngữ, định hướng văn hóa và hỗ trợ khi đến được coi là các giá trị cốt lõi chứ không phải những yếu tố phụ.
+                      Năng lực ngoại ngữ, định hướng văn hóa và hỗ trợ sau xuất cảnh được xem là những yếu tố cốt lõi trong toàn bộ chương trình.
                     </p>
                   </article>
                   <article className="surface-card surface-card--metrics">
@@ -149,10 +159,12 @@ export default function HomePage() {
                     height="760"
                   />
                   <div className="image-callout__body">
-                    <p className="eyebrow eyebrow--soft">Trải nghiệm được chăm chút</p>
-                    <h3>Giao diện phản ánh hoạt động kinh doanh: chuyên nghiệp, trật tự và chính xác.</h3>
+                    <p className="eyebrow eyebrow--soft">Trải nghiệm được đầu tư</p>
+
+                    <h3>Giao diện thể hiện đúng tinh thần dịch vụ: chuyên nghiệp, mạch lạc và chuẩn xác.</h3>
+
                     <p>
-                      Mọi giai đoạn, từ lúc tìm hiểu đến khi triển khai, đều được thiết kế để giảm thiểu rủi ro và làm rõ các bước tiếp theo.
+                      Mỗi giai đoạn, từ lúc tìm hiểu đến khi xuất cảnh, đều được xây dựng để giảm rủi ro và giúp khách hàng nắm rõ từng bước tiếp theo.
                     </p>
                   </div>
                 </article>
@@ -161,69 +173,45 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section section--tinted" id="markets">
-          <div className="shell">
-            <div className="section-heading section-heading--split">
-              <div>
-                <p className="eyebrow">Thị trường đích</p>
-                <h2>Chương trình xuất khẩu phù hợp với các ngành có nhu cầu thực tế.</h2>
-              </div>
+      <section className="section section--tinted" id="markets">
+        <div className="shell">
+          <div className="markets-overview">
+            <div className="markets-copy">
+              <p className="eyebrow">Thị trường tiếp nhận</p>
+              <h2>Chương trình xuất khẩu lao động phù hợp với nhu cầu tuyển dụng thực tế.</h2>
               <p>
-                Lựa chọn thị trường dựa trên lộ trình hồ sơ, chất lượng nhà tuyển dụng và sự hỗ trợ người lao động cần thiết sau khi đến. Kết quả là sự phù hợp chặt chẽ hơn giữa hồ sơ ứng viên và bối cảnh điểm đến.
+                Việc lựa chọn thị trường được cân nhắc trên lộ trình hồ sơ, tiêu chuẩn đối tác tuyển dụng và mức độ hỗ trợ cần thiết dành cho người lao động sau khi làm việc ở nước ngoài. Nhờ đó, hồ sơ ứng viên được kết nối phù hợp hơn với yêu cầu của từng thị trường.
               </p>
             </div>
-
             <div className="market-grid">
-              {markets.map((market) => (
+              {markets.map((market, index) => (
                 <article className="surface-card market-card" key={market.region}>
+                  <img
+                    className="market-card__flag"
+                    src={marketFlagSources[index % marketFlagSources.length]}
+                    alt=""
+                    aria-hidden="true"
+                  />
                   <p className="eyebrow eyebrow--muted">{market.region}</p>
                   <h3>{market.title}</h3>
                   <p>{market.description}</p>
                 </article>
               ))}
             </div>
-
-            <div className="market-lower">
-              <article className="network-panel">
-                <div className="network-panel__body">
-                  <p className="eyebrow eyebrow--soft">Mạng lưới di chuyển</p>
-                  <h3>Lộ trình rõ ràng từ tìm kiếm ứng viên đến tiếp nhận ở nước ngoài.</h3>
-                  <p>
-                    Thay vì hiển thị một bản đồ qua loa trang trí, chúng tôi phác họa logic thị trường: nơi có nhu cầu, các lĩnh vực đang hoạt động và mức độ hỗ trợ thay đổi theo mỗi khu vực.
-                  </p>
-                </div>
-                <img src="/img/network-map.svg" alt="" width="900" height="760" aria-hidden="true" />
-              </article>
-
-              <article className="surface-card demand-card">
-                <p className="eyebrow eyebrow--muted">Tóm tắt nhu cầu hiện tại</p>
-                <div className="demand-list">
-                  {demandSnapshot.map((item) => (
-                    <div className="demand-item" key={item.label}>
-                      <div className="demand-item__top">
-                        <span>{item.label}</span>
-                        <strong>{item.roles}</strong>
-                      </div>
-                      <div className={`progress${item.accent === "secondary" ? " progress--secondary" : ""}`}>
-                        <span style={{ width: `${item.progress}%` }} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </article>
-            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         <section className="section" id="process">
           <div className="shell">
             <div className="section-heading section-heading--split">
               <div>
-                <p className="eyebrow">Luồng tuyển dụng</p>
-                <h2>Mỗi bước đi giúp việc tin tưởng bước tiếp theo dễ dàng hơn.</h2>
+                <p className="eyebrow">Quy trình tuyển chọn</p>
+
+                <h2>Mỗi bước rõ ràng để củng cố niềm tin cho bước tiếp theo.</h2>
               </div>
               <p>
-                Hành trình diễn ra minh bạch cho cả hai bên. Nhà tuyển dụng thấy trạng thái nguồn và sự sẵn sàng của tài liệu. Người lao động thấy chính xác cách thức đánh giá, đào tạo, chuẩn bị tại đại sứ quán và triển khai diễn ra thế nào.
+                Toàn bộ hành trình được triển khai minh bạch cho cả đối tác tuyển dụng và người lao động. Doanh nghiệp nắm được tiến độ nguồn ứng viên và tình trạng hồ sơ, trong khi người lao động hiểu rõ cách thức kiểm tra, đào tạo, hoàn thiện thủ tục và xuất cảnh.
               </p>
             </div>
 
@@ -246,13 +234,15 @@ export default function HomePage() {
           <div className="shell academy-grid">
             <div>
               <p className="eyebrow eyebrow--soft">Trung tâm đào tạo</p>
-              <h2>Các chương trình đào tạo mang tính kỷ luật chứ không rập khuôn.</h2>
+
+              <h2>Chương trình đào tạo bài bản, kỷ luật và sát thực tế.</h2>
+
               <p className="section-lead section-lead--dark">
-                Trải nghiệm học viện được thiết kế giống như các phần còn lại của hệ thống: có chiều sâu, rõ ràng và xây dựng sự tự tin. Ứng viên vượt qua các lộ trình tập trung với các cột mốc rõ ràng và sự chuẩn bị thực tế.
+                Mô hình đào tạo được thiết kế đồng bộ với toàn bộ hệ thống vận hành: rõ ràng, thực chất và tạo nền tảng tự tin cho ứng viên. Người lao động được học theo lộ trình tập trung với các cột mốc cụ thể và nội dung chuẩn bị sát với môi trường làm việc thực tế.
               </p>
 
               <div className="module-panel">
-                <p className="eyebrow eyebrow--soft">Học phần tiêu biểu</p>
+                <p className="eyebrow eyebrow--soft">Nội dung đào tạo tiêu biểu</p>
                 <div className="module-grid">
                   {academyModules.map((module) => (
                     <span key={module}>{module}</span>
@@ -276,8 +266,9 @@ export default function HomePage() {
           <div className="shell proof-grid">
             <div className="tone-panel">
               <div className="section-heading">
-                <p className="eyebrow">Bằng chứng và sự đảm bảo</p>
-                <h2>Dịch vụ mang lại cảm giác cao cấp khi niềm tin có thể nhận thấy rõ ràng.</h2>
+                <p className="eyebrow">Năng lực và cam kết</p>
+
+                <h2>Giá trị dịch vụ được khẳng định bằng tính minh bạch và độ tin cậy.</h2>
               </div>
               <div className="proof-cards">
                 {assuranceCards.map((card) => (
@@ -291,7 +282,7 @@ export default function HomePage() {
 
             <aside className="testimonial-card">
               <p className="testimonial-quote">
-                &ldquo;Tracodi đã mang đến cho chúng tôi một danh sách ngắn có cấu trúc và một vòng đời triển khai chuyên nghiệp. Trải nghiệm hệ thống phản ánh đúng tính chất dịch vụ: nghiêm túc, rõ ràng và hiệu quả.&rdquo;
+                &ldquo;Tracodi mang đến quy trình tuyển chọn rõ ràng, danh sách ứng viên phù hợp và cách triển khai chuyên nghiệp. Toàn bộ trải nghiệm thể hiện đúng bản chất dịch vụ: nghiêm túc, minh bạch và hiệu quả.&rdquo;
               </p>
               <div className="testimonial-meta">
                 <strong>Lê Huỳnh Thương Minh</strong>
@@ -306,9 +297,7 @@ export default function HomePage() {
             <div className="cta-band__copy">
               <p className="eyebrow eyebrow--soft">Bắt đầu cuộc trò chuyện</p>
               <h2>Xây dựng cổng thông tin xuất khẩu lao động đáng tin cậy như chính chất lượng dịch vụ của chúng tôi.</h2>
-              <p>
-                Hệ thống được thiết kế để dễ dàng mở rộng nội dung, tích hợp CMS, phân tích dữ liệu và quy trình gửi thông tin thông qua API trong tương lai.
-              </p>
+              
             </div>
 
             <div className="contact-layout">
@@ -318,7 +307,15 @@ export default function HomePage() {
                 {contactDetails.map((item) => (
                   <div key={item.label}>
                     <span className="contact-card__label">{item.label}</span>
-                    {item.href ? <a href={item.href}>{item.value}</a> : <p>{item.value}</p>}
+                    {item.href ? (
+                      <a className="contact-card__value" href={item.href} target="_blank" rel="noopener noreferrer">
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className={`contact-card__value${item.label === "Trụ sở chính" ? " contact-card__address" : ""}`}>
+                        {item.value}
+                      </p>
+                    )}
                   </div>
                 ))}
               </aside>
@@ -331,5 +328,3 @@ export default function HomePage() {
     </>
   );
 }
-
-

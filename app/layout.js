@@ -15,7 +15,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "Tracodi Labour | Xuất khẩu lao động chính xác",
+  title: "Tracodi Labour | Công ty Cổ phần Xuất khẩu Lao động Tracodi",
   description:
     "Tracodi Labour cung cấp dịch vụ xuất khẩu lao động tuân thủ cho các nhà tuyển dụng trong lĩnh vực xây dựng, chăm sóc, sản xuất và logistics với quy trình tuyển dụng, đào tạo và hỗ trợ triển khai chuẩn mực.",
   keywords: [
@@ -27,17 +27,17 @@ export const metadata = {
     "nhân sự sản xuất"
   ],
   icons: {
-    icon: "/favicon.svg"
+    icon: "/logo.png",
   },
   openGraph: {
-    title: "Tracodi Labour | Xuất khẩu lao động chính xác",
+    title: "Tracodi Labour | Công ty Cổ phần Xuất khẩu Lao động Tracodi",
     description:
       "Chương trình di chuyển lao động có cấu trúc dành cho nhà tuyển dụng và người lao động trong các lĩnh vực công nghiệp, chăm sóc, sản xuất và logistics.",
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tracodi Labour | Xuất khẩu lao động chính xác",
+    title: "Tracodi Labour | Công ty Cổ phần Xuất khẩu Lao động Tracodi",
     description:
       "Dịch vụ xuất khẩu lao động có cấu trúc với kiến trúc ứng dụng Next.js dễ bảo trì."
   }
