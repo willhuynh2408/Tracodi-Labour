@@ -346,7 +346,7 @@ export default function HomePage() {
               </figure>
               <div className="testimonial-meta">
                 <strong>Lê Huỳnh Thương Minh</strong>
-                <span>Tổng Giám đốc, Công ty CP Tập đoàn Xây Dựng Tracodi</span>
+                <span>Tổng Giám đốc, Công ty CP Xuất khẩu Lao động Tracodi</span>
               </div>
             </aside>
           </div>
