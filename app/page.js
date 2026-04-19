@@ -3,6 +3,7 @@ import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import {
   activeSectors,
+  academyGallery,
   academyModules,
   academyTracks,
   assuranceCards,
@@ -14,8 +15,34 @@ import {
   proofMetrics
 } from "@/lib/site-data";
 
+const academyModuleIcons = ["language", "school", "handshake", "workspace_premium"];
+
+function AcademyIcon({ name }) {
+  const icons = {
+    language: (
+      <path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm6.85 8h-3.03a15.8 15.8 0 0 0-1.28-4.61A7.54 7.54 0 0 1 18.85 10.5ZM12 4.14c.78.95 1.73 3.08 2.13 6.36H9.87C10.27 7.22 11.22 5.09 12 4.14ZM9.46 5.89A15.8 15.8 0 0 0 8.18 10.5H5.15a7.54 7.54 0 0 1 4.31-4.61ZM5.15 13.5h3.03a15.8 15.8 0 0 0 1.28 4.61 7.54 7.54 0 0 1-4.31-4.61ZM12 19.86c-.78-.95-1.73-3.08-2.13-6.36h4.26c-.4 3.28-1.35 5.41-2.13 6.36Zm2.54-1.75a15.8 15.8 0 0 0 1.28-4.61h3.03a7.54 7.54 0 0 1-4.31 4.61Z" />
+    ),
+    school: (
+      <path d="m12 3.2 9 4.65-9 4.65-9-4.65 9-4.65Zm5.9 6.79v3.15c0 1.86-2.62 3.36-5.9 3.36s-5.9-1.5-5.9-3.36V9.99L12 13.1l5.9-3.11Zm2.1 1.06v5.55h-1.8v-4.62l1.8-.93Z" />
+    ),
+    handshake: (
+      <path d="M7.18 5.5 4.4 8.27a1.9 1.9 0 0 0 0 2.69l2.29 2.29 2.83-2.82a2.82 2.82 0 0 1 3.98 0l.85.84a1.1 1.1 0 0 0 1.56 0l2.49-2.49a1.87 1.87 0 0 0 0-2.65L16.26 4.99a2.76 2.76 0 0 0-3.9 0l-.68.68-.66-.67a2.73 2.73 0 0 0-3.84 0Zm7.45 7.43-1.96-1.96a1.23 1.23 0 0 0-1.73 0l-3.82 3.8a1.9 1.9 0 0 0 2.69 2.69l.77-.77.43.43a1.81 1.81 0 0 0 2.56 0l1.06-1.06.42.42a1.81 1.81 0 0 0 2.56 0 1.81 1.81 0 0 0 0-2.56l-2.98-2.99Z" />
+    ),
+    workspace_premium: (
+      <path d="m12 2.8 2.58 5.23 5.77.84-4.17 4.06.98 5.73L12 15.96l-5.16 2.7.98-5.73-4.17-4.06 5.77-.84L12 2.8Zm-3.1 17.6h6.2v1.6H8.9v-1.6Z" />
+    )
+  };
+
+  return (
+    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+      {icons[name] ?? icons.language}
+    </svg>
+  );
+}
+
 export default function HomePage() {
   const [heroFeature, ...heroSecondary] = heroGallery;
+  const academyBubbles = academyGallery.slice(0, 3);
   const marketFlagSources = [
     "/img/flags/japan.svg",
     "/img/flags/korea.png",
@@ -230,9 +257,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section section--dark" id="academy">
-          <div className="shell academy-grid">
-            <div>
+        <section className="section section--dark academy-section" id="academy">
+          <div className="shell academy-shell">
+            <div className="academy-intro">
               <p className="eyebrow eyebrow--soft">Trung tâm đào tạo</p>
 
               <h2>Chương trình đào tạo bài bản, kỷ luật và sát thực tế.</h2>
@@ -240,29 +267,54 @@ export default function HomePage() {
               <p className="section-lead section-lead--dark">
                 Mô hình đào tạo được thiết kế đồng bộ với toàn bộ hệ thống vận hành: rõ ràng, thực chất và tạo nền tảng tự tin cho ứng viên. Người lao động được học theo lộ trình tập trung với các cột mốc cụ thể và nội dung chuẩn bị sát với môi trường làm việc thực tế.
               </p>
+            </div>
 
-              <div className="module-panel">
-                <p className="eyebrow eyebrow--soft">Nội dung đào tạo tiêu biểu</p>
-                <div className="module-grid">
-                  {academyModules.map((module) => (
-                    <span key={module}>{module}</span>
+            <aside className="academy-side">
+              <div className="academy-bubbles">
+                {academyBubbles.map((item, index) => (
+                  <figure className={`academy-bubble academy-bubble--${index + 1}`} key={item.image}>
+                    <img
+                      className="academy-bubble__image"
+                      src={item.image}
+                      alt={item.alt}
+                      loading="lazy"
+                    />
+                  </figure>
+                ))}
+              </div>
+            </aside>
+
+            <div className="academy-modules">
+              <div className="academy-modules__heading">
+                <h3 className="academy-modules__title">Nội dung đào tạo tiêu biểu</h3>
+              </div>
+
+              <div className="academy-module-showcase">
+                <div className="academy-module-grid">
+                  {academyModules.map((module, index) => (
+                    <article
+                      className={`academy-module-card${index === 0 ? " academy-module-card--featured" : ""}`}
+                      key={module}
+                    >
+                      <span className="academy-module-card__icon">
+                        <AcademyIcon name={academyModuleIcons[index % academyModuleIcons.length]} />
+                      </span>
+
+                      <div className="academy-module-card__content">
+                        <h3>{module}</h3>
+                        <p>{academyTracks[index]?.description}</p>
+                      </div>
+
+                      <span className="academy-module-card__glow" aria-hidden="true" />
+                    </article>
                   ))}
                 </div>
               </div>
             </div>
-
-            <div className="track-grid">
-              {academyTracks.map((track) => (
-                <article className="track-card" key={track.title}>
-                  <h3>{track.title}</h3>
-                  <p>{track.description}</p>
-                </article>
-              ))}
-            </div>
           </div>
         </section>
 
-        <section className="section">
+        <section className="section" id="proof">
           <div className="shell proof-grid">
             <div className="tone-panel">
               <div className="section-heading">
@@ -284,6 +336,14 @@ export default function HomePage() {
               <p className="testimonial-quote">
                 &ldquo;Tracodi mang đến quy trình tuyển chọn rõ ràng, danh sách ứng viên phù hợp và cách triển khai chuyên nghiệp. Toàn bộ trải nghiệm thể hiện đúng bản chất dịch vụ: nghiêm túc, minh bạch và hiệu quả.&rdquo;
               </p>
+              <figure className="testimonial-portrait">
+                <img
+                  src="/img/ceo.png"
+                  alt="Chân dung Tổng Giám đốc Lê Huỳnh Thương Minh"
+                  width="320"
+                  height="320"
+                />
+              </figure>
               <div className="testimonial-meta">
                 <strong>Lê Huỳnh Thương Minh</strong>
                 <span>Tổng Giám đốc, Công ty CP Tập đoàn Xây Dựng Tracodi</span>
