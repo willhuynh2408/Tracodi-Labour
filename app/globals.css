@@ -223,7 +223,7 @@ section[id] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: clamp(4rem, 10vw, 5.5rem);
+  width: clamp(4rem, 9vw, 5.5rem);
   max-height: 3.5rem;
   flex-shrink: 0;
   margin-right: 0.5rem;
@@ -235,7 +235,7 @@ section[id] {
   height: 90%;
   max-width: 90%;
   justify-self: center;
-  
+  margin-inline: auto;
 }
 
 .brand-copy {
