@@ -141,7 +141,7 @@ export default function HomePage() {
           <div className="shell">
             <div className="section-heading section-heading--split">
               <div>
-                <p className="eyebrow">Lý do chọn Tracodi</p>
+                <p className="eyebrow">Lý do chọn Tracodi Labour</p>
                 <h2>Nền tảng xuất khẩu lao động toàn diện.</h2>
               </div>
               <p>
