@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const emptyForm = {
   name: "",
-  company: "",
+  telephone: "",
   email: "",
   sector: "",
   message: ""
@@ -36,7 +36,7 @@ export default function ContactForm() {
     const subject = `Yêu cầu tư vấn Tracodi từ ${form.name}`;
     const body = [
       `Tên: ${form.name}`,
-      `Công ty: ${form.company || "Không cung cấp"}`,
+      `Số điện thoại: ${form.telephone}`,
       `Email: ${form.email}`,
       `Lĩnh vực tuyển dụng: ${form.sector}`,
       "",
@@ -56,8 +56,8 @@ export default function ContactForm() {
           <input type="text" name="name" autoComplete="name" required value={form.name} onChange={onChange} />
         </label>
         <label>
-          <span>Công ty</span>
-          <input type="text" name="company" autoComplete="organization" value={form.company} onChange={onChange} />
+          <span>Số điện thoại</span>
+          <input type="tel" name="telephone" autoComplete="organization" value={form.telephone} onChange={onChange} />
         </label>
       </div>
 

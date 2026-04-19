@@ -1,4 +1,5 @@
-﻿import ContactForm from "@/components/contact-form";
+import ContactForm from "@/components/contact-form";
+import ScrollReveal from "@/components/scroll-reveal";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import {
@@ -62,7 +63,7 @@ export default function HomePage() {
         <section className="hero section" id="top">
           <div className="hero__backdrop" aria-hidden="true" />
           <div className="shell hero__grid">
-            <div className="hero__copy">
+            <ScrollReveal animation="fade-up" className="hero__copy">
               <p className="eyebrow">Doanh nghiệp xuất khẩu lao động được cấp phép cho nhiều lĩnh vực trọng điểm</p>
               <h1>Từ nguồn nhân lực Việt Nam đến thị trường lao động toàn cầu.</h1>
               <p className="hero__lead">
@@ -78,17 +79,17 @@ export default function HomePage() {
                 </a>
               </div>
 
-              <div className="stats-grid">
+              <ScrollReveal animation="fade-up" delay={300} stagger className="stats-grid">
                 {heroStats.map((stat) => (
                   <article className={`stat-block stat-block--${stat.accent}`} key={stat.label}>
                     <strong>{stat.value}</strong>
                     <span>{stat.label}</span>
                   </article>
                 ))}
-              </div>
-            </div>
+              </ScrollReveal>
+            </ScrollReveal>
 
-            <aside className="hero-showcase" aria-label="Employment and labor placement gallery">
+            <ScrollReveal animation="slide-left" delay={200} as="aside" className="hero-showcase" aria-label="Employment and labor placement gallery">
               <article className="hero-showcase__feature">
                 <img
                   src={heroFeature?.image ?? "/img/hero-structure.svg"}
@@ -133,13 +134,13 @@ export default function HomePage() {
                   ))}
                 </div>
               </div>
-            </aside>
+            </ScrollReveal>
           </div>
         </section>
 
         <section className="section" id="why">
           <div className="shell">
-            <div className="section-heading section-heading--split">
+            <ScrollReveal animation="fade-up" className="section-heading section-heading--split">
               <div>
                 <p className="eyebrow">Lý do chọn Tracodi Labour</p>
                 <h2>Nền tảng xuất khẩu lao động toàn diện.</h2>
@@ -147,11 +148,11 @@ export default function HomePage() {
               <p>
                 Chúng tôi định vị xuất khẩu lao động như một hệ điều hành. Mỗi lần triển khai được xử lý thông qua các quy trình chuẩn hóa: tìm kiếm, sàng lọc, tài liệu, chuẩn bị hồ sơ, lên lịch và chăm sóc tại điểm đến. Sự kỷ luật đó giảm thiểu khó khăn cho nhà tuyển dụng và tạo trải nghiệm rõ ràng hơn cho người lao động.
               </p>
-            </div>
+            </ScrollReveal>
 
             <div className="tone-panel">
               <div className="why-grid">
-                <div className="card-grid">
+                <ScrollReveal animation="scale-in" stagger className="card-grid">
                   <article className="surface-card surface-card--large">
                     <p className="eyebrow eyebrow--muted">Ưu tiên tuân thủ</p>
                     <h3>Hệ thống hồ sơ chặt chẽ, sẵn sàng kiểm tra đối chiếu.</h3>
@@ -176,9 +177,9 @@ export default function HomePage() {
                       </div>
                     ))}
                   </article>
-                </div>
+                </ScrollReveal>
 
-                <article className="image-callout">
+                <ScrollReveal animation="slide-left" delay={150} as="article" className="image-callout">
                   <img
                     src="/img/network-map.svg"
                     alt="Bản đồ minh họa cho mạng lưới di chuyển lao động toàn cầu"
@@ -194,7 +195,7 @@ export default function HomePage() {
                       Mỗi giai đoạn, từ lúc tìm hiểu đến khi xuất cảnh, đều được xây dựng để giảm rủi ro và giúp khách hàng nắm rõ từng bước tiếp theo.
                     </p>
                   </div>
-                </article>
+                </ScrollReveal>
               </div>
             </div>
           </div>
@@ -203,14 +204,14 @@ export default function HomePage() {
       <section className="section section--tinted" id="markets">
         <div className="shell">
           <div className="markets-overview">
-            <div className="markets-copy">
+            <ScrollReveal animation="fade-up" className="markets-copy">
               <p className="eyebrow">Thị trường tiếp nhận</p>
               <h2>Chương trình xuất khẩu lao động phù hợp với nhu cầu tuyển dụng thực tế.</h2>
               <p>
                 Việc lựa chọn thị trường được cân nhắc trên lộ trình hồ sơ, tiêu chuẩn đối tác tuyển dụng và mức độ hỗ trợ cần thiết dành cho người lao động sau khi làm việc ở nước ngoài. Nhờ đó, hồ sơ ứng viên được kết nối phù hợp hơn với yêu cầu của từng thị trường.
               </p>
-            </div>
-            <div className="market-grid">
+            </ScrollReveal>
+            <ScrollReveal animation="slide-right" stagger className="market-grid">
               {markets.map((market, index) => (
                 <article className="surface-card market-card" key={market.region}>
                   <img
@@ -224,14 +225,14 @@ export default function HomePage() {
                   <p>{market.description}</p>
                 </article>
               ))}
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
         <section className="section" id="process">
           <div className="shell">
-            <div className="section-heading section-heading--split">
+            <ScrollReveal animation="fade-up" className="section-heading section-heading--split">
               <div>
                 <p className="eyebrow">Quy trình tuyển chọn</p>
 
@@ -240,9 +241,9 @@ export default function HomePage() {
               <p>
                 Toàn bộ hành trình được triển khai minh bạch cho cả đối tác tuyển dụng và người lao động. Doanh nghiệp nắm được tiến độ nguồn ứng viên và tình trạng hồ sơ, trong khi người lao động hiểu rõ cách thức kiểm tra, đào tạo, hoàn thiện thủ tục và xuất cảnh.
               </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="process-grid">
+            <ScrollReveal animation="fade-up" stagger className="process-grid">
               {processSteps.map((step) => (
                 <article
                   className={`flow-card${step.accent === "secondary" ? " flow-card--secondary" : ""}`}
@@ -253,13 +254,13 @@ export default function HomePage() {
                   <p>{step.description}</p>
                 </article>
               ))}
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 
         <section className="section section--dark academy-section" id="academy">
           <div className="shell academy-shell">
-            <div className="academy-intro">
+            <ScrollReveal animation="fade-up" className="academy-intro">
               <p className="eyebrow eyebrow--soft">Trung tâm đào tạo</p>
 
               <h2>Chương trình đào tạo bài bản, kỷ luật và sát thực tế.</h2>
@@ -267,9 +268,9 @@ export default function HomePage() {
               <p className="section-lead section-lead--dark">
                 Mô hình đào tạo được thiết kế đồng bộ với toàn bộ hệ thống vận hành: rõ ràng, thực chất và tạo nền tảng tự tin cho ứng viên. Người lao động được học theo lộ trình tập trung với các cột mốc cụ thể và nội dung chuẩn bị sát với môi trường làm việc thực tế.
               </p>
-            </div>
+            </ScrollReveal>
 
-            <aside className="academy-side">
+            <ScrollReveal animation="scale-in" delay={200} as="aside" className="academy-side">
               <div className="academy-bubbles">
                 {academyBubbles.map((item, index) => (
                   <figure className={`academy-bubble academy-bubble--${index + 1}`} key={item.image}>
@@ -282,15 +283,15 @@ export default function HomePage() {
                   </figure>
                 ))}
               </div>
-            </aside>
+            </ScrollReveal>
 
-            <div className="academy-modules">
+            <ScrollReveal animation="fade-up" delay={100} className="academy-modules">
               <div className="academy-modules__heading">
                 <h3 className="academy-modules__title">Nội dung đào tạo tiêu biểu</h3>
               </div>
 
               <div className="academy-module-showcase">
-                <div className="academy-module-grid">
+                <ScrollReveal animation="fade-up" stagger className="academy-module-grid">
                   {academyModules.map((module, index) => (
                     <article
                       className={`academy-module-card${index === 0 ? " academy-module-card--featured" : ""}`}
@@ -308,37 +309,37 @@ export default function HomePage() {
                       <span className="academy-module-card__glow" aria-hidden="true" />
                     </article>
                   ))}
-                </div>
+                </ScrollReveal>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 
         <section className="section" id="proof">
-          <div className="shell proof-grid">
+          <ScrollReveal animation="fade-up" className="shell proof-grid">
             <div className="tone-panel">
-              <div className="section-heading">
+              <ScrollReveal animation="fade-up" className="section-heading">
                 <p className="eyebrow">Năng lực và cam kết</p>
 
                 <h2>Giá trị dịch vụ được khẳng định bằng tính minh bạch và độ tin cậy.</h2>
-              </div>
-              <div className="proof-cards">
+              </ScrollReveal>
+              <ScrollReveal animation="scale-in" stagger className="proof-cards">
                 {assuranceCards.map((card) => (
                   <article className="surface-card" key={card.title}>
                     <p className="eyebrow eyebrow--muted">{card.title}</p>
                     <p>{card.description}</p>
                   </article>
                 ))}
-              </div>
+              </ScrollReveal>
             </div>
 
-            <aside className="testimonial-card">
+            <ScrollReveal animation="slide-left" delay={200} as="aside" className="testimonial-card">
               <p className="testimonial-quote">
                 &ldquo;Tracodi mang đến quy trình tuyển chọn rõ ràng, danh sách ứng viên phù hợp và cách triển khai chuyên nghiệp. Toàn bộ trải nghiệm thể hiện đúng bản chất dịch vụ: nghiêm túc, minh bạch và hiệu quả.&rdquo;
               </p>
               <figure className="testimonial-portrait">
                 <img
-                  src="/img/ceo.png"
+                  src="/img/CEO.png"
                   alt="Chân dung Tổng Giám đốc Lê Huỳnh Thương Minh"
                   width="320"
                   height="320"
@@ -348,19 +349,19 @@ export default function HomePage() {
                 <strong>Lê Huỳnh Thương Minh</strong>
                 <span>Tổng Giám đốc, Công ty CP Xuất khẩu Lao động Tracodi</span>
               </div>
-            </aside>
-          </div>
+            </ScrollReveal>
+          </ScrollReveal>
         </section>
 
         <section className="section section--compact" id="contact">
-          <div className="shell cta-band">
+          <ScrollReveal animation="fade-up" className="shell cta-band">
             <div className="cta-band__copy">
               <p className="eyebrow eyebrow--soft">Bắt đầu cuộc trò chuyện</p>
               <h2>Xây dựng cổng thông tin xuất khẩu lao động đáng tin cậy như chính chất lượng dịch vụ của chúng tôi.</h2>
               
             </div>
 
-            <div className="contact-layout">
+            <ScrollReveal animation="fade-up" delay={150} className="contact-layout">
               <ContactForm />
 
               <aside className="contact-card">
@@ -379,8 +380,8 @@ export default function HomePage() {
                   </div>
                 ))}
               </aside>
-            </div>
-          </div>
+            </ScrollReveal>
+          </ScrollReveal>
         </section>
       </main>
 

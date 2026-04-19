@@ -529,97 +529,68 @@ section[id] {
   box-shadow: var(--shadow-ambient);
 }
 
-.stat-block {
-  animation: item-fade-up 0.45s ease both;
+/* ─── Scroll-reveal system ────────────────────────────────── */
+.scroll-reveal {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
 }
 
-.surface-card {
-  animation: item-scale-in 0.42s ease both;
+.scroll-reveal--fade-up {
+  transform: translateY(40px);
 }
 
-.market-card {
-  animation: item-slide-right 0.5s ease both;
+.scroll-reveal--fade-down {
+  transform: translateY(-40px);
 }
 
-.flow-card {
-  animation: item-slide-left 0.48s ease both;
+.scroll-reveal--fade-in {
+  transform: none;
 }
 
-.track-card {
-  animation: item-fade-in 0.38s ease both;
+.scroll-reveal--scale-in {
+  transform: scale(0.92);
 }
 
-.stats-grid .stat-block:nth-child(2),
-.market-grid .market-card:nth-child(2n),
-.process-grid .flow-card:nth-child(2n),
-.track-grid .track-card:nth-child(2n),
-.proof-cards .surface-card:nth-child(2n) {
-  animation-delay: 0.08s;
+.scroll-reveal--slide-left {
+  transform: translateX(50px);
 }
 
-.stats-grid .stat-block:nth-child(3),
-.market-grid .market-card:nth-child(3),
-.process-grid .flow-card:nth-child(3),
-.track-grid .track-card:nth-child(3),
-.proof-cards .surface-card:nth-child(3) {
-  animation-delay: 0.14s;
+.scroll-reveal--slide-right {
+  transform: translateX(-50px);
 }
 
-@keyframes item-fade-up {
+/* Revealed state */
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggered children — each direct child gets increasing delay */
+.scroll-reveal--stagger.is-revealed > * {
+  opacity: 0;
+  animation: reveal-child 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.scroll-reveal--stagger.is-revealed > *:nth-child(1) { animation-delay: calc(var(--reveal-delay, 0ms) + 0ms); }
+.scroll-reveal--stagger.is-revealed > *:nth-child(2) { animation-delay: calc(var(--reveal-delay, 0ms) + 80ms); }
+.scroll-reveal--stagger.is-revealed > *:nth-child(3) { animation-delay: calc(var(--reveal-delay, 0ms) + 160ms); }
+.scroll-reveal--stagger.is-revealed > *:nth-child(4) { animation-delay: calc(var(--reveal-delay, 0ms) + 240ms); }
+.scroll-reveal--stagger.is-revealed > *:nth-child(5) { animation-delay: calc(var(--reveal-delay, 0ms) + 320ms); }
+.scroll-reveal--stagger.is-revealed > *:nth-child(6) { animation-delay: calc(var(--reveal-delay, 0ms) + 400ms); }
+.scroll-reveal--stagger.is-revealed > *:nth-child(7) { animation-delay: calc(var(--reveal-delay, 0ms) + 480ms); }
+.scroll-reveal--stagger.is-revealed > *:nth-child(8) { animation-delay: calc(var(--reveal-delay, 0ms) + 560ms); }
+
+@keyframes reveal-child {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes item-fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes item-scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes item-slide-left {
-  from {
-    opacity: 0;
-    transform: translateX(18px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes item-slide-right {
-  from {
-    opacity: 0;
-    transform: translateX(-18px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 
@@ -1536,6 +1507,18 @@ section[id] {
   min-height: 1.5rem;
   color: rgba(255, 255, 255, 0.82);
   font-size: 0.95rem;
+}
+
+.form-status--error {
+  color: #991b1b;
+  background: #fee2e2;
+  border-color: #fecaca;
+}
+
+.form-status--success {
+  color: #166534;
+  background: #dcfce7;
+  border-color: #bbf7d0;
 }
 
 .contact-card {
