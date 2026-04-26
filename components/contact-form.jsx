@@ -10,6 +10,8 @@ const emptyForm = {
   message: ""
 };
 
+const companyEmail = "tracodilabour@tracodi.com.vn";
+
 export default function ContactForm() {
   const [form, setForm] = useState(emptyForm);
   const [status, setStatus] = useState("");
@@ -33,7 +35,7 @@ export default function ContactForm() {
       return;
     }
 
-    const subject = `Yêu cầu tư vấn Tracodi từ ${form.name}`;
+    const subject = `${form.name.toUpperCase()} YÊU CẦU TƯ VẤN ${form.sector.toUpperCase()}`;
     const body = [
       `Tên: ${form.name}`,
       `Số điện thoại: ${form.telephone}`,
@@ -44,8 +46,15 @@ export default function ContactForm() {
       form.message
     ].join("\n");
 
-    setStatus("Đang mở hộp thư của bạn để gửi yêu cầu.");
-    window.location.href = `mailto:hello@Tracodi.Labour?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const gmailUrl = new URL("https://mail.google.com/mail/");
+    gmailUrl.searchParams.set("view", "cm");
+    gmailUrl.searchParams.set("fs", "1");
+    gmailUrl.searchParams.set("to", companyEmail);
+    gmailUrl.searchParams.set("su", subject);
+    gmailUrl.searchParams.set("body", body);
+
+    setStatus("Đang mở Gmail để gửi yêu cầu tư vấn.");
+    window.open(gmailUrl.toString(), "_blank", "noopener,noreferrer");
   };
 
   return (
