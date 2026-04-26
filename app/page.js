@@ -11,6 +11,7 @@ import {
   contactDetails,
   heroGallery,
   heroStats,
+  journeyMilestones,
   markets,
   processSteps,
   proofMetrics
@@ -146,7 +147,12 @@ export default function HomePage() {
                 <h2>Nền tảng xuất khẩu lao động toàn diện.</h2>
               </div>
               <p>
-                Chúng tôi định vị xuất khẩu lao động như một hệ điều hành. Mỗi lần triển khai được xử lý thông qua các quy trình chuẩn hóa: tìm kiếm, sàng lọc, tài liệu, chuẩn bị hồ sơ, lên lịch và chăm sóc tại điểm đến. Sự kỷ luật đó giảm thiểu khó khăn cho nhà tuyển dụng và tạo trải nghiệm rõ ràng hơn cho người lao động.
+                Chúng tôi vận hành quy trình cung ứng nhân lực khép kín, minh bạch
+                từ tuyển chọn, đào tạo đến quản lý và hỗ trợ trong suốt quá trình làm
+                việc tại nước ngoài. Với định hướng đề cao tính tuân thủ, ổn định và
+                trách nhiệm, Tracodi Labour cam kết mang đến giải pháp nhân lực
+                đáng tin cậy, đồng thời xây dựng mối quan hệ hợp tác lâu dài với các
+                đối tác quốc tế.
               </p>
             </ScrollReveal>
 
@@ -155,10 +161,12 @@ export default function HomePage() {
                 <ScrollReveal animation="scale-in" stagger className="card-grid">
                   <article className="surface-card surface-card--large">
                     <p className="eyebrow eyebrow--muted">Ưu tiên tuân thủ</p>
-                    <h3>Hệ thống hồ sơ chặt chẽ, sẵn sàng kiểm tra đối chiếu.</h3>
+                    <h3>Quy trình khép kín với kiểm soát chất lượng.</h3>
                     <p>
-                      Hợp đồng, hồ sơ sức khỏe, chứng chỉ và giấy tờ visa được chuẩn bị theo quy trình rõ ràng nhằm hạn chế sai sót và rút ngắn thời gian xử lý.
-                    </p>
+                      Vận hành quy trình đồng bộ từ tuyển chọn, đào tạo đến
+                      phái cử và hỗ trợ sau xuất cảnh, đảm bảo tính nhất quán,
+                      minh bạch và kiểm soát chất lượng trong toàn bộ quá
+                      trình                    </p>
                   </article>
                   <article className="surface-card surface-card--large">
                     <p className="eyebrow eyebrow--muted">Trọng tâm là con người</p>
@@ -166,7 +174,7 @@ export default function HomePage() {
                     <h3>Chuẩn bị kỹ cho người lao động để nâng cao khả năng thích nghi.</h3>
 
                     <p>
-                      Năng lực ngoại ngữ, định hướng văn hóa và hỗ trợ sau xuất cảnh được xem là những yếu tố cốt lõi trong toàn bộ chương trình.
+                      Năng lực ngoại ngữ, kỹ năng nghề, tác phong chuyên nghiệp được xem là những yếu tố cốt lõi trong toàn bộ chương trình.
                     </p>
                   </article>
                   <article className="surface-card surface-card--metrics">
@@ -201,34 +209,62 @@ export default function HomePage() {
           </div>
         </section>
 
-      <section className="section section--tinted" id="markets">
-        <div className="shell">
-          <div className="markets-overview">
-            <ScrollReveal animation="fade-up" className="markets-copy">
-              <p className="eyebrow">Thị trường tiếp nhận</p>
-              <h2>Chương trình xuất khẩu lao động phù hợp với nhu cầu tuyển dụng thực tế.</h2>
+        <section className="section journey-section" id="journey">
+          <div className="shell journey-layout">
+            <ScrollReveal animation="fade-up" className="journey-intro">
+              <p className="eyebrow">Chặng đường phát triển</p>
+              <h2>Dấu mốc hình thành và mở rộng năng lực của Tracodi Labour.</h2>
               <p>
-                Việc lựa chọn thị trường được cân nhắc trên lộ trình hồ sơ, tiêu chuẩn đối tác tuyển dụng và mức độ hỗ trợ cần thiết dành cho người lao động sau khi làm việc ở nước ngoài. Nhờ đó, hồ sơ ứng viên được kết nối phù hợp hơn với yêu cầu của từng thị trường.
+                Hành trình phát triển của công ty được xây dựng qua từng giai đoạn,
+                từ nền tảng doanh nghiệp ban đầu đến mô hình cung ứng lao động ngày
+                càng chuyên nghiệp, minh bạch và bền vững hơn.
               </p>
             </ScrollReveal>
-            <ScrollReveal animation="slide-right" stagger className="market-grid">
-              {markets.map((market, index) => (
-                <article className="surface-card market-card" key={market.region}>
-                  <img
-                    className="market-card__flag"
-                    src={marketFlagSources[index % marketFlagSources.length]}
-                    alt=""
-                    aria-hidden="true"
-                  />
-                  <p className="eyebrow eyebrow--muted">{market.region}</p>
-                  <h3>{market.title}</h3>
-                  <p>{market.description}</p>
+
+            <ScrollReveal animation="slide-left" stagger className="journey-timeline">
+              {journeyMilestones.map((milestone) => (
+                <article className="journey-card" key={milestone.year}>
+                  <span className="journey-card__year">{milestone.year}</span>
+                  <div className="journey-card__body">
+                    <h3>{milestone.title}</h3>
+                    <p>{milestone.description}</p>
+                  </div>
                 </article>
               ))}
             </ScrollReveal>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section className="section section--tinted" id="markets">
+          <div className="shell">
+            <div className="markets-overview">
+              <ScrollReveal animation="fade-up" className="markets-copy">
+                <div>
+                  <p className="eyebrow">Thị trường tiếp nhận</p>
+                  <h2>Chương trình xuất khẩu lao động phù hợp với nhu cầu tuyển dụng thực tế.</h2>
+                </div>
+                <p>
+                  Việc lựa chọn thị trường được cân nhắc trên lộ trình hồ sơ, tiêu chuẩn đối tác tuyển dụng và mức độ hỗ trợ cần thiết dành cho người lao động sau khi làm việc ở nước ngoài. Nhờ đó, hồ sơ ứng viên được kết nối phù hợp hơn với yêu cầu của từng thị trường.
+                </p>
+              </ScrollReveal>
+              <ScrollReveal animation="slide-right" stagger className="market-grid">
+                {markets.map((market, index) => (
+                  <article className="surface-card market-card" key={market.region}>
+                    <img
+                      className="market-card__flag"
+                      src={marketFlagSources[index % marketFlagSources.length]}
+                      alt=""
+                      aria-hidden="true"
+                    />
+                    <p className="eyebrow eyebrow--muted">{market.region}</p>
+                    <h3>{market.title}</h3>
+                    <p>{market.description}</p>
+                  </article>
+                ))}
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
 
         <section className="section" id="process">
           <div className="shell">
@@ -238,9 +274,12 @@ export default function HomePage() {
 
                 <h2>Mỗi bước rõ ràng để củng cố niềm tin cho bước tiếp theo.</h2>
               </div>
-              <p>
-                Toàn bộ hành trình được triển khai minh bạch cho cả đối tác tuyển dụng và người lao động. Doanh nghiệp nắm được tiến độ nguồn ứng viên và tình trạng hồ sơ, trong khi người lao động hiểu rõ cách thức kiểm tra, đào tạo, hoàn thiện thủ tục và xuất cảnh.
-              </p>
+
+              <div>
+                <p>
+                  Toàn bộ hành trình được triển khai minh bạch cho cả đối tác tuyển dụng và người lao động. Doanh nghiệp nắm được tiến độ nguồn ứng viên và tình trạng hồ sơ, trong khi người lao động hiểu rõ cách thức kiểm tra, đào tạo, hoàn thiện thủ tục và xuất cảnh.
+                </p>
+              </div>
             </ScrollReveal>
 
             <ScrollReveal animation="fade-up" stagger className="process-grid">
@@ -335,7 +374,7 @@ export default function HomePage() {
 
             <ScrollReveal animation="slide-left" delay={200} as="aside" className="testimonial-card">
               <p className="testimonial-quote">
-                &ldquo;Tracodi mang đến quy trình tuyển chọn rõ ràng, danh sách ứng viên phù hợp và cách triển khai chuyên nghiệp. Toàn bộ trải nghiệm thể hiện đúng bản chất dịch vụ: nghiêm túc, minh bạch và hiệu quả.&rdquo;
+                &ldquo;Tracodi Labour cam kết nâng cao chất lượng dịch vụ, duy trì sự ổn định và minh bạch trong hoạt động, hướng tới trở thành đối tác cung ứng nhân lực đáng tin cậy trên thị trường toàn cầu.&rdquo;
               </p>
               <figure className="testimonial-portrait">
                 <img
@@ -358,7 +397,7 @@ export default function HomePage() {
             <div className="cta-band__copy">
               <p className="eyebrow eyebrow--soft">Bắt đầu cuộc trò chuyện</p>
               <h2>Xây dựng cổng thông tin xuất khẩu lao động đáng tin cậy như chính chất lượng dịch vụ của chúng tôi.</h2>
-              
+
             </div>
 
             <ScrollReveal animation="fade-up" delay={150} className="contact-layout">

@@ -838,7 +838,7 @@ section[id] {
 
 .markets-copy h2 {
   margin: 0;
-  max-width: 14ch;
+  max-width: none;
   font-size: clamp(2.4rem, 5vw, 4rem);
   font-family: var(--font-headline), sans-serif;
   line-height: 1.2;
@@ -919,11 +919,133 @@ section[id] {
 }
 
 .market-grid,
+.journey-timeline,
 .process-grid,
 .track-grid,
 .proof-cards {
   display: grid;
   gap: 1rem;
+}
+
+.journey-section {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.62) 0%, rgba(245, 243, 243, 0.86) 100%),
+    var(--surface);
+}
+
+.journey-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(24rem, 1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.journey-intro {
+  position: sticky;
+  top: 8rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.journey-intro h2 {
+  max-width: 13ch;
+  margin: 0;
+  font-family: var(--font-headline), sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.12;
+  letter-spacing: -0.05em;
+}
+
+.journey-intro p:last-child {
+  max-width: 37rem;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.journey-timeline {
+  position: relative;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding-left: 2.25rem;
+}
+
+.journey-timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  opacity: 0.32;
+}
+
+.journey-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 5.8rem minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.journey-card::before {
+  content: "";
+  position: absolute;
+  left: -2.22rem;
+  top: 1.45rem;
+  z-index: 1;
+  width: 1rem;
+  height: 1rem;
+  border: 3px solid var(--surface-lowest);
+  border-radius: 999px;
+  background: var(--primary);
+  box-shadow: 0 0 0 5px rgba(185, 0, 20, 0.12);
+}
+
+.journey-card:nth-child(even)::before {
+  background: var(--secondary);
+  box-shadow: 0 0 0 5px rgba(12, 95, 174, 0.12);
+}
+
+.journey-card__year {
+  display: block;
+  padding-top: 0.85rem;
+  font-family: var(--font-headline), sans-serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-align: right;
+  color: var(--primary);
+}
+
+.journey-card:nth-child(even) .journey-card__year {
+  color: var(--secondary);
+}
+
+.journey-card__body {
+  padding: 1.45rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface-lowest);
+  box-shadow: var(--shadow-ambient);
+}
+
+.journey-card__body h3 {
+  margin: 0;
+  font-family: var(--font-headline), sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  line-height: 1.22;
+  letter-spacing: -0.04em;
+}
+
+.journey-card__body p {
+  margin: 0.85rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+  line-height: 1.75;
 }
 
 .market-grid {
@@ -985,6 +1107,7 @@ section[id] {
   color: rgba(255, 255, 255, 0.86);
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -1335,6 +1458,7 @@ section[id] {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
+  line-clamp: 4;
   overflow: hidden;
 }
 
@@ -1625,6 +1749,18 @@ textarea:focus-visible {
   .process-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .journey-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-intro {
+    position: static;
+  }
+
+  .journey-intro h2 {
+    max-width: 15ch;
+  }
 }
 
 @media (max-width: 62rem) {
@@ -1713,6 +1849,29 @@ textarea:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .journey-timeline {
+    padding-left: 1.75rem;
+  }
+
+  .journey-timeline::before {
+    left: 0.42rem;
+  }
+
+  .journey-card {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .journey-card::before {
+    left: -1.83rem;
+    top: 1rem;
+  }
+
+  .journey-card__year {
+    padding-top: 0;
+    text-align: left;
+  }
+
   .hero-showcase__feature {
     min-height: 27rem;
   }
@@ -1749,6 +1908,7 @@ textarea:focus-visible {
   .academy-module-card__content p {
     font-size: 0.88rem;
     -webkit-line-clamp: 5;
+    line-clamp: 5;
   }
 
   .academy-bubbles {
