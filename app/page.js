@@ -1,4 +1,4 @@
-import ContactForm from "@/components/contact-form";
+﻿import ContactForm from "@/components/contact-form";
 import ScrollReveal from "@/components/scroll-reveal";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
@@ -158,26 +158,42 @@ export default function HomePage() {
 
             <div className="tone-panel">
               <div className="why-grid">
-                <ScrollReveal animation="scale-in" stagger className="card-grid">
-                  <article className="surface-card surface-card--large">
-                    <p className="eyebrow eyebrow--muted">Ưu tiên tuân thủ</p>
-                    <h3>Quy trình khép kín với kiểm soát chất lượng.</h3>
-                    <p>
-                      Vận hành quy trình đồng bộ từ tuyển chọn, đào tạo đến
-                      phái cử và hỗ trợ sau xuất cảnh, đảm bảo tính nhất quán,
-                      minh bạch và kiểm soát chất lượng trong toàn bộ quá
-                      trình                    </p>
-                  </article>
-                  <article className="surface-card surface-card--large">
-                    <p className="eyebrow eyebrow--muted">Trọng tâm là con người</p>
+                <ScrollReveal animation="scale-in" as="article" className="overview-gallery" aria-label="Hình ảnh tổng quan Tracodi Labour">
+                  {[
+                    { src: "/img/Picture1.jpg", alt: "Hoạt động đào tạo và chuẩn bị nguồn lao động tại Tracodi Labour" },
+                    { src: "/img/Picture2.jpg", alt: "Người lao động trong chương trình đào tạo và định hướng nghề nghiệp"},
+                    { src: "/img/Picture3.jpg", alt: "Không gian kết nối và vận hành chương trình xuất khẩu lao động"}
+                  ].map((item, index) => (
+                    <figure className={`overview-gallery__slide overview-gallery__slide--${index + 1}`} key={item.src}>
+                      <img src={item.src} alt={item.alt} width="900" height="680" loading="lazy" />
+                    </figure>
+                  ))}
+                  <div className="overview-gallery__dots" aria-hidden="true">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                </ScrollReveal>
 
-                    <h3>Chuẩn bị kỹ cho người lao động để nâng cao khả năng thích nghi.</h3>
+                <ScrollReveal animation="slide-left" delay={150} as="div" className="overview-side">
+                  <div className="overview-card-slider" aria-label="Trọng tâm vận hành">
+                    <article className="surface-card surface-card--large overview-card overview-card--first">
+                      <p className="eyebrow eyebrow--muted">Ưu tiên tuân thủ</p>
+                      <h3>Quy trình khép kín với kiểm soát chất lượng.</h3>
+                      <p>
+                        Vận hành quy trình đồng bộ từ tuyển chọn, đào tạo đến phái cử và hỗ trợ sau xuất cảnh, đảm bảo tính nhất quán, minh bạch và kiểm soát chất lượng trong toàn bộ quá trình.
+                      </p>
+                    </article>
+                    <article className="surface-card surface-card--large overview-card overview-card--second">
+                      <p className="eyebrow eyebrow--muted">Trọng tâm là con người</p>
+                      <h3>Chuẩn bị kỹ cho người lao động để nâng cao khả năng thích nghi.</h3>
+                      <p>
+                        Năng lực ngoại ngữ, kỹ năng nghề, tác phong chuyên nghiệp được xem là những yếu tố cốt lõi trong toàn bộ chương trình.
+                      </p>
+                    </article>
+                  </div>
 
-                    <p>
-                      Năng lực ngoại ngữ, kỹ năng nghề, tác phong chuyên nghiệp được xem là những yếu tố cốt lõi trong toàn bộ chương trình.
-                    </p>
-                  </article>
-                  <article className="surface-card surface-card--metrics">
+                  <article className="surface-card surface-card--metrics overview-metrics" aria-label="Chỉ số đào tạo">
                     {proofMetrics.map((metric) => (
                       <div className={`metric metric--${metric.accent}`} key={metric.label}>
                         <strong>{metric.value}</strong>
@@ -185,24 +201,6 @@ export default function HomePage() {
                       </div>
                     ))}
                   </article>
-                </ScrollReveal>
-
-                <ScrollReveal animation="slide-left" delay={150} as="article" className="image-callout">
-                  <img
-                    src="/img/network-map.svg"
-                    alt="Bản đồ minh họa cho mạng lưới di chuyển lao động toàn cầu"
-                    width="820"
-                    height="760"
-                  />
-                  <div className="image-callout__body">
-                    <p className="eyebrow eyebrow--soft">Trải nghiệm được đầu tư</p>
-
-                    <h3>Giao diện thể hiện đúng tinh thần dịch vụ: chuyên nghiệp, mạch lạc và chuẩn xác.</h3>
-
-                    <p>
-                      Mỗi giai đoạn, từ lúc tìm hiểu đến khi xuất cảnh, đều được xây dựng để giảm rủi ro và giúp khách hàng nắm rõ từng bước tiếp theo.
-                    </p>
-                  </div>
                 </ScrollReveal>
               </div>
             </div>
