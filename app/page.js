@@ -1,4 +1,5 @@
 ﻿import ContactForm from "@/components/contact-form";
+import RecruitmentSection from "@/components/recruitment-section";
 import ScrollReveal from "@/components/scroll-reveal";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
@@ -12,12 +13,34 @@ import {
   heroGallery,
   heroStats,
   journeyMilestones,
-  markets,
-  processSteps,
   proofMetrics
 } from "@/lib/site-data";
 
 const academyModuleIcons = ["language", "school", "handshake", "workspace_premium"];
+
+const featuredMarkets = [
+  {
+    region: "Nhật Bản",
+    image:
+      "https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description:
+      "Thu nhập ổn định, môi trường chuyên nghiệp. Cơ hội nâng cao tay nghề và tích lũy tài chính."
+  },
+  {
+    region: "Đài Loan",
+    image:
+      "https://images.unsplash.com/photo-1609147110688-83b5fd1288e8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description:
+      "Chi phí thấp, xuất cảnh nhanh. Nhiều đơn hàng ổn định và quy trình đơn giản."
+  },
+  {
+    region: "Châu Âu",
+    image:
+      "https://images.unsplash.com/photo-1557996069-f557f3834903?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description:
+      "Vừa học vừa làm, cơ hội phát triển lâu dài. Nâng cao thu nhập và định cư tại châu Âu."
+  }
+];
 
 function AcademyIcon({ name }) {
   const icons = {
@@ -45,12 +68,6 @@ function AcademyIcon({ name }) {
 export default function HomePage() {
   const [heroFeature, ...heroSecondary] = heroGallery;
   const academyBubbles = academyGallery.slice(0, 3);
-  const marketFlagSources = [
-    "/img/flags/japan.svg",
-    "/img/flags/korea.png",
-    "/img/flags/taiwan.png",
-    "/img/flags/malaysia.png"
-  ];
 
   return (
     <>
@@ -233,78 +250,86 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section section--tinted" id="markets">
+        <section className="section markets-section" id="markets">
           <div className="shell">
             <div className="markets-overview">
               <ScrollReveal animation="fade-up" className="markets-copy">
                 <div>
-                  <p className="eyebrow">Thị trường tiếp nhận</p>
-                  <h2>Chương trình xuất khẩu lao động phù hợp với nhu cầu tuyển dụng thực tế.</h2>
+                  <p className="eyebrow">Thị trường</p>
+                  <h2>Chọn thị trường phù hợp với bạn</h2>
                 </div>
-                <p>
-                  Việc lựa chọn thị trường được cân nhắc trên lộ trình hồ sơ, tiêu chuẩn đối tác tuyển dụng và mức độ hỗ trợ cần thiết dành cho người lao động sau khi làm việc ở nước ngoài. Nhờ đó, hồ sơ ứng viên được kết nối phù hợp hơn với yêu cầu của từng thị trường.
-                </p>
               </ScrollReveal>
               <ScrollReveal animation="slide-right" stagger className="market-grid">
-                {markets.map((market, index) => (
-                  <article className="surface-card market-card" key={market.region}>
+                {featuredMarkets.map((market) => (
+                  <article className="market-card" key={market.region}>
                     <img
-                      className="market-card__flag"
-                      src={marketFlagSources[index % marketFlagSources.length]}
-                      alt=""
-                      aria-hidden="true"
+                      className="market-card__image"
+                      src={market.image}
+                      alt={`Thị trường ${market.region}`}
                     />
-                    <p className="eyebrow eyebrow--muted">{market.region}</p>
-                    <h3>{market.title}</h3>
-                    <p>{market.description}</p>
+                    <div className="market-card__body">
+                      <h3>{market.region}</h3>
+                      <p>{market.description}</p>
+                    </div>
                   </article>
                 ))}
+              </ScrollReveal>
+              <ScrollReveal animation="fade-up" className="markets-cta">
+                <h3>Bạn đang muốn phát triển sự nghiệp quốc tế nhưng chưa biết bắt đầu từ đâu?</h3>
+                <p>
+                  Chi phí bao nhiêu? Chọn thị trường phù hợp? Đội ngũ Tracodi Labour sẽ hỗ trợ tư vấn và định hướng lộ trình phù hợp cho bạn.
+                </p>
+                <a className="button markets-cta__button" href="#contact">
+                  Nhận tư vấn ngay
+                </a>
               </ScrollReveal>
             </div>
           </div>
         </section>
 
-        <section className="section" id="process">
-          <div className="shell">
-            <ScrollReveal animation="fade-up" className="section-heading section-heading--split">
-              <div>
-                <p className="eyebrow">Quy trình tuyển chọn</p>
-
-                <h2>Mỗi bước rõ ràng để củng cố niềm tin cho bước tiếp theo.</h2>
-              </div>
-
-              <div>
-                <p>
-                  Toàn bộ hành trình được triển khai minh bạch cho cả đối tác tuyển dụng và người lao động. Doanh nghiệp nắm được tiến độ nguồn ứng viên và tình trạng hồ sơ, trong khi người lao động hiểu rõ cách thức kiểm tra, đào tạo, hoàn thiện thủ tục và xuất cảnh.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal animation="fade-up" stagger className="process-grid">
-              {processSteps.map((step) => (
-                <article
-                  className={`flow-card${step.accent === "secondary" ? " flow-card--secondary" : ""}`}
-                  key={step.number}
-                >
-                  <strong>{step.number}</strong>
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
-                </article>
-              ))}
-            </ScrollReveal>
-          </div>
-        </section>
+        <RecruitmentSection />
 
         <section className="section section--dark academy-section" id="academy">
           <div className="shell academy-shell">
             <ScrollReveal animation="fade-up" className="academy-intro">
-              <p className="eyebrow eyebrow--soft">Trung tâm đào tạo</p>
+              <p className="eyebrow eyebrow--soft">Lộ trình &amp; đào tạo</p>
 
-              <h2>Chương trình đào tạo bài bản, kỷ luật và sát thực tế.</h2>
+              <h2>Đào tạo bài bản - vững bước toàn cầu</h2>
 
-              <p className="section-lead section-lead--dark">
-                Mô hình đào tạo được thiết kế đồng bộ với toàn bộ hệ thống vận hành: rõ ràng, thực chất và tạo nền tảng tự tin cho ứng viên. Người lao động được học theo lộ trình tập trung với các cột mốc cụ thể và nội dung chuẩn bị sát với môi trường làm việc thực tế.
-              </p>
+              <ul className="academy-checklist" aria-label="Nội dung đào tạo">
+                <li>
+                  <span className="academy-checklist__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M9.2 16.4 4.8 12l1.7-1.7 2.7 2.7 8.3-8.3L19.2 6 9.2 16.4Z" />
+                    </svg>
+                  </span>
+                  Đào tạo tiếng Nhật, tiếng Đức, tiếng Trung theo nhu cầu thị trường
+                </li>
+                <li>
+                  <span className="academy-checklist__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M9.2 16.4 4.8 12l1.7-1.7 2.7 2.7 8.3-8.3L19.2 6 9.2 16.4Z" />
+                    </svg>
+                  </span>
+                  Tập trung giao tiếp thực tế và thuật ngữ chuyên ngành
+                </li>
+                <li>
+                  <span className="academy-checklist__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M9.2 16.4 4.8 12l1.7-1.7 2.7 2.7 8.3-8.3L19.2 6 9.2 16.4Z" />
+                    </svg>
+                  </span>
+                  Lộ trình đào tạo theo chuẩn đầu ra
+                </li>
+                <li>
+                  <span className="academy-checklist__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M9.2 16.4 4.8 12l1.7-1.7 2.7 2.7 8.3-8.3L19.2 6 9.2 16.4Z" />
+                    </svg>
+                  </span>
+                  Đánh giá định kỳ nhằm đảm bảo chất lượng học viên
+                </li>
+              </ul>
             </ScrollReveal>
 
             <ScrollReveal animation="scale-in" delay={200} as="aside" className="academy-side">
@@ -324,7 +349,7 @@ export default function HomePage() {
 
             <ScrollReveal animation="fade-up" delay={100} className="academy-modules">
               <div className="academy-modules__heading">
-                <h3 className="academy-modules__title">Nội dung đào tạo tiêu biểu</h3>
+                <h3 className="academy-modules__title">Quy trình tư vấn nghề nghiệp quốc tế</h3>
               </div>
 
               <div className="academy-module-showcase">

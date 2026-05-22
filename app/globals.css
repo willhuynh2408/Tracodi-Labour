@@ -824,32 +824,67 @@ section[id] {
   gap: 2rem;
 }
 
+.markets-section {
+  position: relative;
+  overflow: clip;
+  --market-card-overlap: clamp(2.2rem, 3vw, 2.7rem);
+  --market-red-start: clamp(25.5rem, 30vw, 29rem);
+  padding: clamp(3.75rem, 6vw, 5.5rem) 0;
+  background: var(--surface-lowest);
+}
+
+.markets-section::before {
+  content: "";
+  position: absolute;
+  inset: var(--market-red-start) 0 0;
+  background: linear-gradient(90deg, #d1212c 0%, #861018 100%);
+}
+
+.markets-section .shell {
+  position: relative;
+  z-index: 1;
+}
+
 .markets-overview {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: clamp(1.15rem, 2.3vw, 1.55rem);
 }
 
 .markets-copy {
   display: grid;
   align-content: start;
-  gap: 1.5rem;
+  gap: 0.4rem;
+  max-width: 58rem;
+}
+
+.markets-copy .eyebrow {
+  margin-bottom: 0.5rem;
+  color: #60636a;
+  letter-spacing: 0.08em;
 }
 
 .markets-copy h2 {
+  position: relative;
   margin: 0;
+  padding-bottom: 1.05rem;
   max-width: none;
-  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-size: clamp(1.85rem, 3.4vw, 2.65rem);
   font-family: var(--font-headline), sans-serif;
-  line-height: 1.2;
-  letter-spacing: -0.05em;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
-.markets-copy p:last-child {
-  margin: 0;
-  color: var(--ink-soft);
-  font-size: 1rem;
-  line-height: 1.9;
+.markets-copy h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 4.6rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: var(--primary-container);
 }
 
 .tone-panel {
@@ -1218,67 +1253,99 @@ section[id] {
 }
 
 .market-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: clamp(0.85rem, 1.7vw, 1.2rem);
+  align-items: stretch;
+  width: min(100%, 66rem);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  transform: translateY(var(--market-card-overlap));
 }
 
 .market-card {
-  position: relative;
-  isolation: isolate;
   overflow: hidden;
-  aspect-ratio: 3 / 2;
-  padding: clamp(1rem, 2vw, 1.35rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background: #141a22;
+  display: grid;
+  grid-template-rows: minmax(9.6rem, 1fr) auto;
+  border-radius: 0.75rem;
+  background: var(--surface-lowest);
+  box-shadow: 0 16px 32px rgba(28, 31, 36, 0.14);
 }
 
-.market-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(110deg, rgba(20, 26, 34, 0.86) 0%, rgba(20, 26, 34, 0.66) 45%, rgba(20, 26, 34, 0.46) 100%);
-  z-index: 0;
-}
-
-.market-card > *:not(.market-card__flag) {
-  position: relative;
-  z-index: 1;
-}
-
-.market-card__flag {
-  position: absolute;
-  inset: 0;
+.market-card__image {
   width: 100%;
   height: 100%;
+  min-height: clamp(9.6rem, 13.5vw, 12.75rem);
   object-fit: cover;
   object-position: center;
-  opacity: 0.8;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
+  transition: transform 0.35s ease;
 }
 
-.market-card:hover .market-card__flag {
-  opacity: 1;
-  
+.market-card:hover .market-card__image {
+  transform: scale(1.045);
 }
 
-
-.market-card .eyebrow--muted {
-  color: rgba(255, 255, 255, 0.74);
+.market-card__body {
+  min-height: 6.25rem;
+  padding: 0.8rem 0.95rem 0.9rem;
 }
 
 .market-card h3 {
+  margin: 0;
+  color: var(--ink-strong);
+  font-family: var(--font-headline), sans-serif;
+  font-size: clamp(0.98rem, 1.45vw, 1.12rem);
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.market-card p {
+  margin: 0.55rem 0 0;
+  color: #34383f;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.markets-cta {
+  display: grid;
+  justify-items: center;
+  gap: 0.65rem;
+  padding: calc(clamp(1.9rem, 3vw, 2.45rem) + var(--market-card-overlap)) 0 0;
+  text-align: center;
   color: var(--ink-inverse);
 }
 
-.market-card p:not(.eyebrow) {
-  color: rgba(255, 255, 255, 0.86);
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.markets-cta h3 {
+  margin: 0;
+  max-width: 52rem;
+  font-family: var(--font-headline), sans-serif;
+  font-size: clamp(1.35rem, 2.45vw, 2rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+.markets-cta p {
+  margin: 0;
+  max-width: 50rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.markets-cta__button {
+  min-width: min(100%, 15rem);
+  min-height: 2.85rem;
+  margin-top: 0.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.46);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink-inverse);
+  text-transform: uppercase;
+}
+
+.markets-cta__button:hover {
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .market-card,
@@ -1297,6 +1364,155 @@ section[id] {
 .process-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
+}
+
+.recruitment-section {
+  background: var(--surface-lowest);
+}
+
+.recruitment-heading {
+  margin-bottom: clamp(1.6rem, 3vw, 2.3rem);
+}
+
+.recruitment-heading .eyebrow {
+  margin-bottom: 0.45rem;
+  color: #60636a;
+  letter-spacing: 0.08em;
+}
+
+.recruitment-heading h2 {
+  position: relative;
+  margin: 0;
+  padding-bottom: 1.05rem;
+  max-width: 52rem;
+  font-family: var(--font-headline), sans-serif;
+  font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.recruitment-heading h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 4.6rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: var(--primary-container);
+}
+
+.recruitment-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.35rem;
+  margin-bottom: clamp(1.6rem, 3vw, 2rem);
+}
+
+.recruitment-tab {
+  min-width: 9.5rem;
+  min-height: 3rem;
+  padding: 0.65rem 1.2rem;
+  border: 3px solid #78a9df;
+  border-radius: 0.5rem;
+  background: var(--surface-lowest);
+  color: #6093ca;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.1;
+  box-shadow: 0 4px 10px rgba(96, 147, 202, 0.08);
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.recruitment-tab:hover {
+  transform: translateY(-2px);
+}
+
+.recruitment-tab--active {
+  background: #5f96d0;
+  color: var(--ink-inverse);
+}
+
+.recruitment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.45rem);
+}
+
+.recruitment-card {
+  overflow: hidden;
+  min-width: 0;
+  border-radius: 0.9rem;
+  background: #dcebfa;
+  box-shadow: 0 10px 24px rgba(51, 92, 132, 0.18);
+}
+
+.recruitment-card__image {
+  width: calc(100% - 1rem);
+  height: clamp(7rem, 10vw, 8.25rem);
+  margin: 0.5rem auto 0;
+  border-radius: 0.65rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.recruitment-card__body {
+  padding: 0.85rem 1rem 1.05rem;
+}
+
+.recruitment-card h3 {
+  display: grid;
+  gap: 0.08rem;
+  margin: 0 0 0.85rem;
+  color: #e04148;
+  font-family: var(--font-headline), sans-serif;
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.1;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.recruitment-card__details {
+  display: grid;
+  gap: 0.34rem;
+  margin: 0;
+}
+
+.recruitment-card__details div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem;
+  align-items: start;
+}
+
+.recruitment-card__details dt,
+.recruitment-card__details dd {
+  margin: 0;
+  color: #29313a;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.recruitment-card__details dt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 4.9rem;
+  font-weight: 800;
+}
+
+.recruitment-card__details dd {
+  min-width: 0;
+  font-weight: 700;
+}
+
+.recruitment-card__details svg {
+  width: 0.92rem;
+  height: 0.92rem;
+  flex: 0 0 auto;
+  fill: #e04148;
 }
 
 .flow-card {
@@ -1412,6 +1628,44 @@ section[id] {
 
 .academy-intro .section-lead {
   max-width: 60ch;
+}
+
+.academy-checklist {
+  display: grid;
+  gap: 0.7rem;
+  max-width: 60ch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.academy-checklist li {
+  display: grid;
+  grid-template-columns: 1.1rem 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  line-height: 1.7;
+}
+
+.academy-checklist__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.38em;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: inset 0 0 0 1px rgba(7, 49, 116, 0.12);
+  color: var(--color-primary);
+  flex: 0 0 auto;
+}
+
+.academy-checklist__icon svg {
+  width: 0.78rem;
+  height: 0.78rem;
+  display: block;
+  fill: currentColor;
 }
 
 .academy-side {
@@ -1919,6 +2173,17 @@ textarea:focus-visible {
   }
 }
 
+@media (min-width: 90rem) {
+  .markets-section {
+    --market-card-overlap: 2.55rem;
+    --market-red-start: 29rem;
+  }
+
+  .market-grid {
+    width: min(100%, 68rem);
+  }
+}
+
 @media (max-width: 75rem) {
   .hero__grid,
   .why-grid,
@@ -1957,6 +2222,24 @@ textarea:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .markets-section {
+    --market-card-overlap: 2.3rem;
+    --market-red-start: clamp(24rem, 34vw, 26.75rem);
+  }
+
+  .market-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: min(100%, 58rem);
+  }
+
+  .market-card__image {
+    min-height: 10rem;
+  }
+
+  .recruitment-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .journey-layout {
     grid-template-columns: 1fr;
   }
@@ -1985,6 +2268,24 @@ textarea:focus-visible {
   .proof-cards,
   .field-grid {
     grid-template-columns: 1fr;
+  }
+
+  .recruitment-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .markets-section {
+    --market-card-overlap: 2.125rem;
+    --market-red-start: clamp(25rem, 45vw, 28rem);
+  }
+
+  .market-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(100%, 43rem);
+  }
+
+  .market-card__image {
+    min-height: 11.5rem;
   }
 
   .pill-grid,
@@ -2061,11 +2362,38 @@ textarea:focus-visible {
   }
 
   .stats-grid,
-  .market-grid,
+  .recruitment-grid,
   .process-grid,
   .pill-grid,
   .hero-showcase__rail {
     grid-template-columns: 1fr;
+  }
+
+  .markets-section {
+    --market-card-overlap: 1.25rem;
+    --market-red-start: clamp(22rem, 78vw, 25rem);
+    padding: 3.25rem 0 3.75rem;
+  }
+
+  .market-grid {
+    grid-template-columns: 1fr;
+    width: min(100%, 24rem);
+  }
+
+  .market-card__image {
+    min-height: 11.25rem;
+  }
+
+  .recruitment-tabs {
+    gap: 0.75rem;
+  }
+
+  .recruitment-tab {
+    flex: 1 1 100%;
+  }
+
+  .recruitment-card__image {
+    height: 11.5rem;
   }
 
   .journey-timeline {
