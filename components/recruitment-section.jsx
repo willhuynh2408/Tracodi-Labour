@@ -11,7 +11,7 @@ const recruitmentGroups = [
         title: "Tuyển 40 nữ",
         field: "Chế biến thực phẩm",
         image:
-          "https://images.unsplash.com/photo-1652211955967-99c892925469?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "/img_Tracodi/chế biến thực phẩm.png",
         quantity: "18",
         salary: "179.000 Yên + Làm thêm",
         location: "Hokkaido",
@@ -41,7 +41,7 @@ const recruitmentGroups = [
         title: "Tuyển 01 nam",
         field: "Linh kiện ô tô",
         image:
-          "https://plus.unsplash.com/premium_photo-1677009541474-1fc2642943c1?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "/img_Tracodi/linh kiện ô tô.png",
         quantity: "18",
         salary: "29.5000 ĐT + Làm thêm",
         location: "Đảo Viên",

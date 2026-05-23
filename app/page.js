@@ -22,21 +22,21 @@ const featuredMarkets = [
   {
     region: "Nhật Bản",
     image:
-      "https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "/img_Tracodi/nhật bản.png",
     description:
       "Thu nhập ổn định, môi trường chuyên nghiệp. Cơ hội nâng cao tay nghề và tích lũy tài chính."
   },
   {
     region: "Đài Loan",
     image:
-      "https://images.unsplash.com/photo-1609147110688-83b5fd1288e8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "/img_Tracodi/đài loan.png",
     description:
       "Chi phí thấp, xuất cảnh nhanh. Nhiều đơn hàng ổn định và quy trình đơn giản."
   },
   {
     region: "Châu Âu",
     image:
-      "https://images.unsplash.com/photo-1557996069-f557f3834903?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "/img_Tracodi/châu âu.png",
     description:
       "Vừa học vừa làm, cơ hội phát triển lâu dài. Nâng cao thu nhập và định cư tại châu Âu."
   }
