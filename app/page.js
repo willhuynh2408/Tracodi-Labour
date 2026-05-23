@@ -4,14 +4,11 @@ import ScrollReveal from "@/components/scroll-reveal";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import {
-  activeSectors,
   academyGallery,
   academyModules,
   academyTracks,
   assuranceCards,
   contactDetails,
-  heroGallery,
-  heroStats,
   journeyMilestones,
   proofMetrics
 } from "@/lib/site-data";
@@ -66,7 +63,6 @@ function AcademyIcon({ name }) {
 }
 
 export default function HomePage() {
-  const [heroFeature, ...heroSecondary] = heroGallery;
   const academyBubbles = academyGallery.slice(0, 3);
 
   return (
@@ -79,78 +75,27 @@ export default function HomePage() {
 
       <main id="main-content">
         <section className="hero section" id="top">
-          <div className="hero__backdrop" aria-hidden="true" />
+          <div className="hero__backdrop" aria-hidden="true">
+            <img src="/img_Tracodi/Baner_main.png" alt="" />
+          </div>
           <div className="shell hero__grid">
             <ScrollReveal animation="fade-up" className="hero__copy">
-              <p className="eyebrow">Doanh nghiệp xuất khẩu lao động được cấp phép cho nhiều lĩnh vực trọng điểm</p>
-              <h1>Từ nguồn nhân lực Việt Nam đến thị trường lao động toàn cầu.</h1>
+              <p className="eyebrow">Đào tạo quốc tế</p>
+              <h1>Kết nối nghề nghiệp toàn cầu</h1>
+              <span className="hero__rule" aria-hidden="true" />
               <p className="hero__lead">
-                Tracodi xây dựng quy trình cung ứng lao động bài bản cho đối tác tuyển dụng và người lao động, kết hợp tuyển chọn, đào tạo, hoàn thiện hồ sơ, điều phối visa và hỗ trợ sau xuất cảnh trong một mô hình vận hành chặt chẽ.
+                Định hướng nghề nghiệp - Đào tạo quốc tế
+                <br />
+                Đồng hành cùng tương lai bền vững của bạn
               </p>
               <div className="hero__actions">
+                <a className="button button--light" href="#contact">
+                  Nhận tư vấn miễn phí
+                </a>
+
                 <a className="button button--primary" href="#contact">
-                  Trao đổi với đội ngũ tư vấn
+                  Gọi ngay để được hỗ trợ
                 </a>
-
-                <a className="button button--ghost" href="#process">
-                  Xem quy trình tuyển chọn
-                </a>
-              </div>
-
-              <ScrollReveal animation="fade-up" delay={300} stagger className="stats-grid">
-                {heroStats.map((stat) => (
-                  <article className={`stat-block stat-block--${stat.accent}`} key={stat.label}>
-                    <strong>{stat.value}</strong>
-                    <span>{stat.label}</span>
-                  </article>
-                ))}
-              </ScrollReveal>
-            </ScrollReveal>
-
-            <ScrollReveal animation="slide-left" delay={200} as="aside" className="hero-showcase" aria-label="Employment and labor placement gallery">
-              <article className="hero-showcase__feature">
-                <img
-                  src={heroFeature?.image ?? "/img/hero-structure.svg"}
-                  alt={heroFeature?.alt ?? "Labour and employment showcase"}
-                  width="1200"
-                  height="900"
-                />
-                <div className="hero-showcase__feature-body">
-                  <p className="eyebrow eyebrow--soft">{heroFeature?.label ?? "Employment pathways"}</p>
-                  <h2>Tầm nhìn phát triển</h2>
-
-                  <p>
-                    Hướng tới sự phát triển toàn diện về vật chất và tinh thần cho người lao động, đồng thời đóng góp tích cực vào sự phát triển bền vững của cộng đồng.
-                  </p>
-                </div>
-              </article>
-
-              <div className="hero-showcase__rail">
-                {heroSecondary.map((item) => (
-                  <article className="hero-showcase__card" key={item.title}>
-                    <img src={item.image} alt={item.alt} width="900" height="640" />
-                    <div className="hero-showcase__card-body">
-                      <p className="eyebrow eyebrow--soft">{item.label}</p>
-                      <h3>{item.title}</h3>
-                    </div>
-                  </article>
-                ))}
-              </div>
-
-              <div className="hero-showcase__summary">
-                <div className="hero-showcase__summary-head">
-                  <div>
-                    <p className="eyebrow eyebrow--soft">Trọng tâm tuyển dụng hiện nay</p>
-
-                    <h3>Các nhóm ngành trọng điểm gồm xây dựng, điều dưỡng, sản xuất và logistics.</h3>
-                  </div>
-
-                </div>
-                <div className="pill-grid hero-pill-grid">
-                  {activeSectors.map((sector) => (
-                    <span key={sector}>{sector}</span>
-                  ))}
-                </div>
               </div>
             </ScrollReveal>
           </div>
@@ -163,13 +108,15 @@ export default function HomePage() {
                 <p className="eyebrow">Lý do chọn Tracodi Labour</p>
                 <h2>Nền tảng xuất khẩu lao động toàn diện.</h2>
               </div>
+
               <p>
-                Chúng tôi vận hành quy trình cung ứng nhân lực khép kín, minh bạch
-                từ tuyển chọn, đào tạo đến quản lý và hỗ trợ trong suốt quá trình làm
-                việc tại nước ngoài. Với định hướng đề cao tính tuân thủ, ổn định và
-                trách nhiệm, Tracodi Labour cam kết mang đến giải pháp nhân lực
-                đáng tin cậy, đồng thời xây dựng mối quan hệ hợp tác lâu dài với các
-                đối tác quốc tế.
+                TRACODI LABOUR là tổ chức giáo dục định hướng và tư vấn nghề nghiệp quốc tế, 
+                hỗ trợ người lao động Việt Nam học tập và làm việc ở nước ngoài. Phát triển từ hệ thống 
+                <a href="#" class="about-link"> TRACODI Group</a> với kinh nghiệm từ năm 1993, 
+                Tracodi Labour đã hỗ trợ hơn 21.000 lao động đến các thị trường như Nhật Bản và Đài Loan 
+                thông qua quy trình minh bạch, lộ trình rõ ràng. 
+                Từ năm 2026, Tracodi Labour tiếp tục mở rộng sang các thị trường Châu Á và Châu Âu, 
+                đồng thời nâng cao tiêu chuẩn đào tạo theo định hướng quốc tế.
               </p>
             </ScrollReveal>
 
@@ -178,8 +125,8 @@ export default function HomePage() {
                 <ScrollReveal animation="scale-in" as="article" className="overview-gallery" aria-label="Hình ảnh tổng quan Tracodi Labour">
                   {[
                     { src: "/img/Picture1.jpg", alt: "Hoạt động đào tạo và chuẩn bị nguồn lao động tại Tracodi Labour" },
-                    { src: "/img/Picture2.jpg", alt: "Người lao động trong chương trình đào tạo và định hướng nghề nghiệp"},
-                    { src: "/img/Picture3.jpg", alt: "Không gian kết nối và vận hành chương trình xuất khẩu lao động"}
+                    { src: "/img/Picture2.jpg", alt: "Người lao động trong chương trình đào tạo và định hướng nghề nghiệp" },
+                    { src: "/img/Picture3.jpg", alt: "Không gian kết nối và vận hành chương trình xuất khẩu lao động" }
                   ].map((item, index) => (
                     <figure className={`overview-gallery__slide overview-gallery__slide--${index + 1}`} key={item.src}>
                       <img src={item.src} alt={item.alt} width="900" height="680" loading="lazy" />
@@ -418,8 +365,8 @@ export default function HomePage() {
         <section className="section section--compact" id="contact">
           <ScrollReveal animation="fade-up" className="shell cta-band">
             <div className="cta-band__copy">
-              <p className="eyebrow eyebrow--soft">Bắt đầu cuộc trò chuyện</p>
-              <h2>Xây dựng cổng thông tin xuất khẩu lao động đáng tin cậy như chính chất lượng dịch vụ của chúng tôi.</h2>
+              <p className="eyebrow eyebrow--soft">Đăng kí tư vấn</p>
+              <h2>Đăng kí tư vấn miễn phí</h2>
 
             </div>
 

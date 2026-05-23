@@ -195,7 +195,7 @@ The navigation should be:
 - easy to scan
 
 #### Includes
-- logo / wordmark
+- logo Tracodi Labour / wordmark
 - menu links
 - primary CTA button
 - mobile menu toggle

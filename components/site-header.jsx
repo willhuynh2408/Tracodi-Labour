@@ -2,7 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-import { navLinks } from "@/lib/site-data";
+const navLinks = [
+  { href: "#why", label: "Tổng quan" },
+  { href: "#journey", label: "Chặng đường" },
+  { href: "#markets", label: "Thị trường" },
+  { href: "#process", label: "Tuyển dụng" },
+  { href: "#academy", label: "Đào tạo" },
+  { href: "#proof", label: "Năng lực" }
+];
 
 export default function SiteHeader() {
   const [expanded, setExpanded] = useState(false);
@@ -37,50 +44,46 @@ export default function SiteHeader() {
   }, []);
 
   useEffect(() => {
-  const sectionLinks = navLinks.filter((link) => link.href.startsWith("#"));
+    const sectionLinks = navLinks.filter((link) => link.href.startsWith("#"));
 
-  const updateActiveByScroll = () => {
-    const headerOffset = 120;
-    let current = "";
+    const updateActiveByScroll = () => {
+      const headerOffset = 120;
+      let current = "";
 
-    for (const link of sectionLinks) {
-      const section = document.querySelector(link.href);
-      if (!section) continue;
+      for (const link of sectionLinks) {
+        const section = document.querySelector(link.href);
+        if (!section) continue;
 
-      const rect = section.getBoundingClientRect();
+        const rect = section.getBoundingClientRect();
 
-      if (rect.top <= headerOffset && rect.bottom >= headerOffset) {
-        current = link.href;
+        if (rect.top <= headerOffset && rect.bottom >= headerOffset) {
+          current = link.href;
+        }
       }
-    }
 
-    if (!current && window.scrollY < 100) {
-      current = "#top";
-    }
+      if (!current && window.scrollY < 100) {
+        current = "#top";
+      }
 
-    setActiveLink(current);
-  };
+      setActiveLink(current);
+    };
 
-  updateActiveByScroll();
-  window.addEventListener("scroll", updateActiveByScroll, { passive: true });
-  window.addEventListener("resize", updateActiveByScroll);
+    updateActiveByScroll();
+    window.addEventListener("scroll", updateActiveByScroll, { passive: true });
+    window.addEventListener("resize", updateActiveByScroll);
 
-  return () => {
-    window.removeEventListener("scroll", updateActiveByScroll);
-    window.removeEventListener("resize", updateActiveByScroll);
-  };
-}, []);
+    return () => {
+      window.removeEventListener("scroll", updateActiveByScroll);
+      window.removeEventListener("resize", updateActiveByScroll);
+    };
+  }, []);
 
   return (
     <header className={`site-header${compact ? " is-compact" : ""}`} data-header>
       <div className="shell site-header__shell">
         <a className="brand" href="#top" aria-label="Trang chủ Tracodi">
           <span className="brand-mark" aria-hidden="true">
-            <img src="/Logo.png" alt="" width="152" height="134" />
-          </span>
-          <span className="brand-copy">
-            <span className="brand-name">Tracodi</span>
-            <span className="brand-tag">Tracodi Labour</span>
+            <img src="/img_Tracodi/logo Tracodi Labour.png" alt="" width="152" height="134" />
           </span>
         </a>
 
@@ -111,8 +114,40 @@ export default function SiteHeader() {
             ))}
           </div>
 
-          <a className="button button--primary nav-cta" href="#contact">
-            Yêu cầu tư vấn
+          <div className="language-menu nav-language">
+            <button className="language-menu__button" type="button" aria-label="Chọn ngôn ngữ">
+              <span className="language-menu-flag" aria-hidden="true">
+                <img src="/img_Tracodi/Icon VN.png" alt="" />
+              </span>
+              <span>Tiếng Việt</span>
+              <span aria-hidden="true">⌄</span>
+            </button>
+            <div className="language-menu__panel">
+              <a href="#top">
+                <span className="language-menu-flag" aria-hidden="true">
+                  <img src="/img_Tracodi/Icon .png" alt="" />
+                </span>
+                <span>English</span>
+              </a>
+              <a href="#top">
+                <span className="language-menu-flag" aria-hidden="true">
+                  <img src="/img_Tracodi/Icon JP.png" alt="" />
+                </span>
+                <span>日本語</span>
+              </a>
+            </div>
+          </div>
+
+          <a className="nav-hotline" href="tel:+842838330316">
+            <span className="nav-hotline__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.3-.3.74-.39 1.13-.26 1.24.41 2.57.63 3.96.63.61 0 1.1.49 1.1 1.1v3.85c0 .61-.49 1.1-1.1 1.1C10.51 21.6 2.4 13.49 2.4 3.5c0-.61.49-1.1 1.1-1.1h3.86c.61 0 1.1.49 1.1 1.1 0 1.39.22 2.72.63 3.96.12.39.04.82-.27 1.13l-2.2 2.2Z" />
+              </svg>
+            </span>
+            <span>
+              <small>Hotline hỗ trợ</small>
+              <strong>02838330316</strong>
+            </span>
           </a>
         </nav>
       </div>
@@ -124,8 +159,8 @@ export default function SiteHeader() {
               key={link.href}
               href={link.href}
               className={activeLink === link.href ? "is-active" : ""}
-                onClick={() => {
-                  setExpanded(false);
+              onClick={() => {
+                setExpanded(false);
               }}
             >
               {link.label}

@@ -76,19 +76,18 @@ export default function ContactForm() {
           <input type="email" name="email" autoComplete="email" required value={form.email} onChange={onChange} />
         </label>
         <label>
-          <span>Lĩnh vực tuyển dụng</span>
+          <span>Thị trường</span>
           <select name="sector" required value={form.sector} onChange={onChange}>
-            <option value="">Chọn lĩnh vực</option>
-            <option value="Xây dựng">Xây dựng</option>
-            <option value="Chăm sóc sức khỏe">Chăm sóc sức khỏe</option>
-            <option value="Sản xuất">Sản xuất</option>
-            <option value="Logistics">Logistics</option>
+            <option value="">Chọn thị trường</option>
+            <option value="Châu Á">Châu Á</option>
+            <option value="Châu Âu">Châu Âu</option>
+            <option value="Hàng không">Hàng không</option>
           </select>
         </label>
       </div>
 
       <label>
-        <span>Tóm tắt yêu cầu</span>
+        <span>Nội dung cần hỗ trợ</span>
         <textarea
           name="message"
           rows="5"
