@@ -908,6 +908,23 @@ section[id] {
   align-items: stretch;
 }
 
+.why-video {
+  margin-top: clamp(1.25rem, 3vw, 2rem);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: #111317;
+  box-shadow: var(--shadow-ambient);
+}
+
+.why-video__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: min(72vh, 42rem);
+  object-fit: cover;
+  background: #111317;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1609,15 +1626,15 @@ section[id] {
 .academy-section {
   position: relative;
   overflow: hidden;
+  background: #4D93D9;
+  color: var(--ink-inverse);
 }
 
 .academy-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at 15% 12%, rgba(255, 255, 255, 0.1), transparent 34%),
-    radial-gradient(circle at 88% 84%, rgba(12, 95, 174, 0.2), transparent 38%);
+  background: none;
   pointer-events: none;
 }
 
@@ -1636,6 +1653,15 @@ section[id] {
   max-width: 46rem;
 }
 
+.academy-intro .eyebrow {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.academy-intro h2 {
+  color: #ffffff;
+  text-shadow: 0 3px 16px rgba(15, 58, 105, 0.22);
+}
+
 .academy-intro .section-lead {
   max-width: 60ch;
 }
@@ -1647,7 +1673,7 @@ section[id] {
   margin: 0;
   padding: 0;
   list-style: none;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .academy-checklist li {
@@ -1665,9 +1691,11 @@ section[id] {
   height: 1.05rem;
   margin-top: 0.38em;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: inset 0 0 0 1px rgba(7, 49, 116, 0.12);
-  color: var(--color-primary);
+  background: #ffffff;
+  box-shadow:
+    inset 0 0 0 1px rgba(18, 77, 133, 0.12),
+    0 5px 14px rgba(12, 65, 117, 0.16);
+  color: #d1262f;
   flex: 0 0 auto;
 }
 
@@ -1697,7 +1725,9 @@ section[id] {
   margin: 0;
   overflow: hidden;
   border-radius: 50%;
-  box-shadow: 0 22px 42px rgba(2, 7, 17, 0.34);
+  box-shadow:
+    0 24px 46px rgba(12, 65, 117, 0.26),
+    0 0 0 7px rgba(255, 255, 255, 0.18);
   animation: academy-float 8s ease-in-out infinite;
 }
 
@@ -1773,7 +1803,8 @@ section[id] {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 2px 12px rgba(15, 58, 105, 0.18);
 }
 
 .academy-module-showcase {
@@ -1797,9 +1828,9 @@ section[id] {
   min-height: 14rem;
   padding: 3.5rem 1.1rem 1.35rem;
   border-radius: 28px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: none;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(13, 73, 128, 0.16);
+  box-shadow: 0 18px 36px rgba(12, 65, 117, 0.16);
   transition:
     transform 0.28s ease,
     border-color 0.28s ease,
@@ -1809,27 +1840,17 @@ section[id] {
 }
 
 .academy-module-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 5.4rem;
-  height: 2.7rem;
-  transform: translate(-50%, 0);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-bottom: 0;
-  border-radius: 999px 999px 0 0;
-  background: transparent;
+  display: none;
 }
 
 .academy-module-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(243, 200, 105, 0.45);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
+  border-color: rgba(209, 38, 47, 0.34);
+  box-shadow: 0 24px 44px rgba(12, 65, 117, 0.24);
 }
 
 .academy-module-card--featured {
-  border-color: rgba(243, 200, 105, 0.28);
+  border-color: rgba(209, 38, 47, 0.28);
 }
 
 .academy-module-card__icon {
@@ -1843,11 +1864,11 @@ section[id] {
   width: 4.35rem;
   height: 4.35rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  color: var(--ink-inverse);
+  background: linear-gradient(135deg, #ffffff 0%, #e7f3ff 100%);
+  color: #1d6fb8;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 10px 22px rgba(12, 95, 174, 0.22);
+    inset 0 0 0 1px rgba(13, 73, 128, 0.12),
+    0 12px 26px rgba(12, 65, 117, 0.2);
 }
 
 .academy-module-card__icon svg {
@@ -1880,14 +1901,14 @@ section[id] {
   font-size: 1.02rem;
   line-height: 1.45;
   font-weight: 700;
-  color: #fffdf7;
+  color: #123a63;
 }
 
 .academy-module-card__content p {
   margin: 0.35rem 0 0;
   font-size: 0.9rem;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.78);
+  color: #3c607f;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;

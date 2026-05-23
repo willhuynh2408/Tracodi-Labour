@@ -9,7 +9,7 @@ export default function manifest() {
     theme_color: "#b90014",
     icons: [
       {
-        src: "/Logo.png",
+        src: "/Logo_Tracodilabour_V3.png",
         sizes: "any",
         type: "image/png"
       }

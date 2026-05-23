@@ -83,7 +83,7 @@ export default function SiteHeader() {
       <div className="shell site-header__shell">
         <a className="brand" href="#top" aria-label="Trang chủ Tracodi">
           <span className="brand-mark" aria-hidden="true">
-            <img src="/img_Tracodi/logo Tracodi Labour.png" alt="" width="152" height="134" />
+            <img src="/Logo_Tracodilabour_V3.png" alt="" width="152" height="134" />
           </span>
         </a>
 

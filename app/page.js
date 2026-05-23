@@ -105,14 +105,14 @@ export default function HomePage() {
           <div className="shell">
             <ScrollReveal animation="fade-up" className="section-heading section-heading--split">
               <div>
-                <p className="eyebrow">Lý do chọn Tracodi Labour</p>
+                <p className="eyebrow">Tổng quan</p>
                 <h2>Nền tảng xuất khẩu lao động toàn diện.</h2>
               </div>
 
               <p>
                 TRACODI LABOUR là tổ chức giáo dục định hướng và tư vấn nghề nghiệp quốc tế, 
                 hỗ trợ người lao động Việt Nam học tập và làm việc ở nước ngoài. Phát triển từ hệ thống 
-                <a href="#" class="about-link"> TRACODI Group</a> với kinh nghiệm từ năm 1993, 
+                <a href="#" className="about-link"> TRACODI Group</a> với kinh nghiệm từ năm 1993, 
                 Tracodi Labour đã hỗ trợ hơn 21.000 lao động đến các thị trường như Nhật Bản và Đài Loan 
                 thông qua quy trình minh bạch, lộ trình rõ ràng. 
                 Từ năm 2026, Tracodi Labour tiếp tục mở rộng sang các thị trường Châu Á và Châu Âu, 
@@ -167,6 +167,18 @@ export default function HomePage() {
                   </article>
                 </ScrollReveal>
               </div>
+
+              <ScrollReveal animation="fade-up" delay={150} className="why-video">
+                <video
+                  className="why-video__media"
+                  src="/Tracodilabour.mp4"
+                  controls
+                  preload="metadata"
+                  playsInline
+                >
+                  Trình duyệt của bạn không hỗ trợ phát video.
+                </video>
+              </ScrollReveal>
             </div>
           </div>
         </section>

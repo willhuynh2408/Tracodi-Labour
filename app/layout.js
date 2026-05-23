@@ -27,7 +27,7 @@ export const metadata = {
     "nhân sự sản xuất"
   ],
   icons: {
-    icon: "/Logo.png",
+    icon: "/Logo_Tracodilabour_V3.png",
   },
   openGraph: {
     title: "Tracodi Labour | Công ty Cổ phần Xuất khẩu Lao động Tracodi",
