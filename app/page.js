@@ -36,7 +36,8 @@ const featuredMarkets = [
       "/img_Tracodi/châu âu.png",
     description:
       "Vừa học vừa làm, cơ hội phát triển lâu dài. Nâng cao thu nhập và định cư tại châu Âu."
-  }
+  },
+
 ];
 
 function AcademyIcon({ name }) {
