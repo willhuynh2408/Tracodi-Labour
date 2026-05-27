@@ -1,71 +1,32 @@
-﻿import ContactForm from "@/components/contact-form";
+import ContactForm from "@/components/contact-form";
 import RecruitmentSection from "@/components/recruitment-section";
 import ScrollReveal from "@/components/scroll-reveal";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
-import {
-  academyGallery,
-  academyModules,
-  academyTracks,
-  assuranceCards,
-  contactDetails,
-  journeyMilestones,
-  proofMetrics
-} from "@/lib/site-data";
-
-const academyModuleIcons = ["language", "school", "handshake", "workspace_premium"];
+import { academyModules, academyTracks, overviewMetrics } from "@/lib/site-data";
 
 const featuredMarkets = [
   {
     region: "Nhật Bản",
-    image:
-      "/img_Tracodi/nhật bản.png",
+    image: "/img_Tracodi/nhật bản.png",
     description:
       "Thu nhập ổn định, môi trường chuyên nghiệp. Cơ hội nâng cao tay nghề và tích lũy tài chính."
   },
   {
     region: "Đài Loan",
-    image:
-      "/img_Tracodi/đài loan.png",
+    image: "/img_Tracodi/đài loan.png",
     description:
       "Chi phí thấp, xuất cảnh nhanh. Nhiều đơn hàng ổn định và quy trình đơn giản."
   },
   {
     region: "Châu Âu",
-    image:
-      "/img_Tracodi/châu âu.png",
+    image: "/img_Tracodi/châu âu.png",
     description:
       "Vừa học vừa làm, cơ hội phát triển lâu dài. Nâng cao thu nhập và định cư tại châu Âu."
-  },
-
+  }
 ];
 
-function AcademyIcon({ name }) {
-  const icons = {
-    language: (
-      <path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm6.85 8h-3.03a15.8 15.8 0 0 0-1.28-4.61A7.54 7.54 0 0 1 18.85 10.5ZM12 4.14c.78.95 1.73 3.08 2.13 6.36H9.87C10.27 7.22 11.22 5.09 12 4.14ZM9.46 5.89A15.8 15.8 0 0 0 8.18 10.5H5.15a7.54 7.54 0 0 1 4.31-4.61ZM5.15 13.5h3.03a15.8 15.8 0 0 0 1.28 4.61 7.54 7.54 0 0 1-4.31-4.61ZM12 19.86c-.78-.95-1.73-3.08-2.13-6.36h4.26c-.4 3.28-1.35 5.41-2.13 6.36Zm2.54-1.75a15.8 15.8 0 0 0 1.28-4.61h3.03a7.54 7.54 0 0 1-4.31 4.61Z" />
-    ),
-    school: (
-      <path d="m12 3.2 9 4.65-9 4.65-9-4.65 9-4.65Zm5.9 6.79v3.15c0 1.86-2.62 3.36-5.9 3.36s-5.9-1.5-5.9-3.36V9.99L12 13.1l5.9-3.11Zm2.1 1.06v5.55h-1.8v-4.62l1.8-.93Z" />
-    ),
-    handshake: (
-      <path d="M7.18 5.5 4.4 8.27a1.9 1.9 0 0 0 0 2.69l2.29 2.29 2.83-2.82a2.82 2.82 0 0 1 3.98 0l.85.84a1.1 1.1 0 0 0 1.56 0l2.49-2.49a1.87 1.87 0 0 0 0-2.65L16.26 4.99a2.76 2.76 0 0 0-3.9 0l-.68.68-.66-.67a2.73 2.73 0 0 0-3.84 0Zm7.45 7.43-1.96-1.96a1.23 1.23 0 0 0-1.73 0l-3.82 3.8a1.9 1.9 0 0 0 2.69 2.69l.77-.77.43.43a1.81 1.81 0 0 0 2.56 0l1.06-1.06.42.42a1.81 1.81 0 0 0 2.56 0 1.81 1.81 0 0 0 0-2.56l-2.98-2.99Z" />
-    ),
-    workspace_premium: (
-      <path d="m12 2.8 2.58 5.23 5.77.84-4.17 4.06.98 5.73L12 15.96l-5.16 2.7.98-5.73-4.17-4.06 5.77-.84L12 2.8Zm-3.1 17.6h6.2v1.6H8.9v-1.6Z" />
-    )
-  };
-
-  return (
-    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-      {icons[name] ?? icons.language}
-    </svg>
-  );
-}
-
 export default function HomePage() {
-  const academyBubbles = academyGallery.slice(0, 3);
-
   return (
     <>
       <a className="skip-link" href="#main-content">
@@ -93,7 +54,6 @@ export default function HomePage() {
                 <a className="button button--light" href="#contact">
                   Nhận tư vấn miễn phí
                 </a>
-
                 <a className="button button--primary" href="#contact">
                   Gọi ngay để được hỗ trợ
                 </a>
@@ -102,110 +62,95 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section" id="why">
+        <section className="section overview-section" id="why">
           <div className="shell">
-            <ScrollReveal animation="fade-up" className="section-heading section-heading--split">
-              <div>
+            <div className="overview-layout">
+              <ScrollReveal animation="scale-in" as="figure" className="overview-image">
+                {[
+                  {
+                    src: "/img/Picture1.jpg",
+                    alt: "Hoạt động đào tạo và chuẩn bị nguồn lao động tại Tracodi Labour"
+                  },
+                  {
+                    src: "/img/Picture2.jpg",
+                    alt: "Người lao động trong chương trình đào tạo và định hướng nghề nghiệp"
+                  },
+                  {
+                    src: "/img/Picture3.jpg",
+                    alt: "Không gian kết nối và vận hành chương trình xuất khẩu lao động"
+                  }
+                ].map((item, index) => (
+                  <img
+                    className={`overview-image__slide overview-image__slide--${index + 1}`}
+                    src={item.src}
+                    alt={item.alt}
+                    width="598"
+                    height="666"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    key={item.src}
+                  />
+                ))}
+              </ScrollReveal>
+
+              <ScrollReveal animation="slide-left" delay={120} className="overview-copy">
                 <p className="eyebrow">Tổng quan</p>
-                <h2>Nền tảng xuất khẩu lao động toàn diện.</h2>
-              </div>
+                <h2>Về Tracodi Labour</h2>
+                <p>
+                  TRACODI LABOUR là tổ chức giáo dục định hướng và tư vấn nghề nghiệp quốc tế, hỗ trợ người lao động Việt Nam học tập và làm việc ở nước ngoài. Phát triển từ hệ thống TRACODI Group với kinh nghiệm từ năm 1993, Tracodi Labour đã hỗ trợ hơn 21.000 lao động đến các thị trường như Nhật Bản và Đài Loan thông qua quy trình minh bạch, lộ trình rõ ràng.
+                </p>
+                <p>
+                  Từ năm 2026, Tracodi Labour tiếp tục mở rộng sang các thị trường Châu Á và Châu Âu, đồng thời nâng cao tiêu chuẩn đào tạo theo định hướng quốc tế.
+                </p>
 
-              <p>
-                TRACODI LABOUR là tổ chức giáo dục định hướng và tư vấn nghề nghiệp quốc tế, 
-                hỗ trợ người lao động Việt Nam học tập và làm việc ở nước ngoài. Phát triển từ hệ thống 
-                <a href="#" className="about-link"> TRACODI Group</a> với kinh nghiệm từ năm 1993, 
-                Tracodi Labour đã hỗ trợ hơn 21.000 lao động đến các thị trường như Nhật Bản và Đài Loan 
-                thông qua quy trình minh bạch, lộ trình rõ ràng. 
-                Từ năm 2026, Tracodi Labour tiếp tục mở rộng sang các thị trường Châu Á và Châu Âu, 
-                đồng thời nâng cao tiêu chuẩn đào tạo theo định hướng quốc tế.
-              </p>
-            </ScrollReveal>
-
-            <div className="tone-panel">
-              <div className="why-grid">
-                <ScrollReveal animation="scale-in" as="article" className="overview-gallery" aria-label="Hình ảnh tổng quan Tracodi Labour">
-                  {[
-                    { src: "/img/Picture1.jpg", alt: "Hoạt động đào tạo và chuẩn bị nguồn lao động tại Tracodi Labour" },
-                    { src: "/img/Picture2.jpg", alt: "Người lao động trong chương trình đào tạo và định hướng nghề nghiệp" },
-                    { src: "/img/Picture3.jpg", alt: "Không gian kết nối và vận hành chương trình xuất khẩu lao động" }
-                  ].map((item, index) => (
-                    <figure className={`overview-gallery__slide overview-gallery__slide--${index + 1}`} key={item.src}>
-                      <img src={item.src} alt={item.alt} width="900" height="680" loading="lazy" />
-                    </figure>
-                  ))}
-                  <div className="overview-gallery__dots" aria-hidden="true">
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                </ScrollReveal>
-
-                <ScrollReveal animation="slide-left" delay={150} as="div" className="overview-side">
-                  <div className="overview-card-slider" aria-label="Trọng tâm vận hành">
-                    <article className="surface-card surface-card--large overview-card overview-card--first">
-                      <p className="eyebrow eyebrow--muted">Ưu tiên tuân thủ</p>
-                      <h3>Quy trình khép kín với kiểm soát chất lượng.</h3>
-                      <p>
-                        Vận hành quy trình đồng bộ từ tuyển chọn, đào tạo đến phái cử và hỗ trợ sau xuất cảnh, đảm bảo tính nhất quán, minh bạch và kiểm soát chất lượng trong toàn bộ quá trình.
-                      </p>
-                    </article>
-                    <article className="surface-card surface-card--large overview-card overview-card--second">
-                      <p className="eyebrow eyebrow--muted">Trọng tâm là con người</p>
-                      <h3>Chuẩn bị kỹ cho người lao động để nâng cao khả năng thích nghi.</h3>
-                      <p>
-                        Năng lực ngoại ngữ, kỹ năng nghề, tác phong chuyên nghiệp được xem là những yếu tố cốt lõi trong toàn bộ chương trình.
-                      </p>
-                    </article>
-                  </div>
-
-                  <article className="surface-card surface-card--metrics overview-metrics" aria-label="Chỉ số đào tạo">
-                    {proofMetrics.map((metric) => (
-                      <div className={`metric metric--${metric.accent}`} key={metric.label}>
+                <div className="overview-metric-grid" aria-label="Chỉ số Tracodi Labour">
+                  {overviewMetrics.map((metric) => (
+                    <div className="overview-metric-card" key={metric.label}>
+                      {metric.stars ? (
+                        <strong className="overview-stars" aria-label={`${metric.value} sao`}>
+                          <span>{metric.value}</span>
+                          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                            <defs>
+                              <linearGradient id="overview-star-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="#0c5fae" />
+                                <stop offset="100%" stopColor="#c8272f" />
+                              </linearGradient>
+                            </defs>
+                            <path
+                              fill="url(#overview-star-gradient)"
+                              d="m12 2.8 2.75 5.58 6.16.9-4.46 4.34 1.05 6.13L12 16.86l-5.5 2.89 1.05-6.13-4.46-4.34 6.16-.9L12 2.8Z"
+                            />
+                          </svg>
+                        </strong>
+                      ) : (
                         <strong>{metric.value}</strong>
-                        <span>{metric.label}</span>
-                      </div>
-                    ))}
-                  </article>
-                </ScrollReveal>
-              </div>
-
-              <ScrollReveal animation="fade-up" delay={150} className="why-video">
-                <video
-                  className="why-video__media"
-                  src="/Tracodilabour.mp4"
-                  controls
-                  preload="metadata"
-                  playsInline
-                >
-                  Trình duyệt của bạn không hỗ trợ phát video.
-                </video>
+                      )}
+                      <span>{metric.label}</span>
+                    </div>
+                  ))}
+                </div>
               </ScrollReveal>
             </div>
-          </div>
-        </section>
 
-        <section className="section journey-section" id="journey">
-          <div className="shell journey-layout">
-            <ScrollReveal animation="fade-up" className="journey-intro">
-              <p className="eyebrow">Chặng đường phát triển</p>
-              <h2>Dấu mốc hình thành và mở rộng năng lực của Tracodi Labour.</h2>
-              <p>
-                Hành trình phát triển của công ty được xây dựng qua từng giai đoạn,
-                từ nền tảng doanh nghiệp ban đầu đến mô hình cung ứng lao động ngày
-                càng chuyên nghiệp, minh bạch và bền vững hơn.
-              </p>
+            <ScrollReveal animation="fade-up" delay={150} className="why-video">
+              <video
+                className="why-video__media"
+                src="/Tracodilabour.mp4"
+                controls
+                preload="metadata"
+                playsInline
+              >
+                Trình duyệt của bạn không hỗ trợ phát video.
+              </video>
             </ScrollReveal>
 
-            <ScrollReveal animation="slide-left" stagger className="journey-timeline">
-              {journeyMilestones.map((milestone) => (
-                <article className="journey-card" key={milestone.year}>
-                  <span className="journey-card__year">{milestone.year}</span>
-                  <div className="journey-card__body">
-                    <h3>{milestone.title}</h3>
-                    <p>{milestone.description}</p>
-                  </div>
-                </article>
-              ))}
+            <ScrollReveal animation="fade-up" delay={180} className="overview-process-image">
+              <img
+                src="/img_Tracodi/process.png"
+                alt="Quy trình tư vấn nghề nghiệp quốc tế của Tracodi Labour"
+                width="1280"
+                height="647"
+                loading="lazy"
+              />
             </ScrollReveal>
           </div>
         </section>
@@ -251,61 +196,50 @@ export default function HomePage() {
 
         <section className="section section--dark academy-section" id="academy">
           <div className="shell academy-shell">
-            <ScrollReveal animation="fade-up" className="academy-intro">
-              <p className="eyebrow eyebrow--soft">Lộ trình &amp; đào tạo</p>
+            <div className="academy-top">
+              <ScrollReveal animation="fade-up" className="academy-intro">
+                <div className="academy-inline-heading">
+                  <p className="eyebrow eyebrow--soft">Đào tạo &amp; quy trình</p>
+                  <h2>Đào tạo bài bản - vững bước toàn cầu</h2>
+                </div>
 
-              <h2>Đào tạo bài bản - vững bước toàn cầu</h2>
+                <p className="academy-lead">
+                  Tracodi Labour luôn hỗ trợ người lao động từ tuyển chọn, đào tạo, phỏng vấn đến hoàn thiện hồ sơ và xuất cảnh với quy trình rõ ràng.
+                </p>
+                <span className="academy-rule" aria-hidden="true" />
 
-              <ul className="academy-checklist" aria-label="Nội dung đào tạo">
-                <li>
-                  <span className="academy-checklist__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false">
-                      <path d="M9.2 16.4 4.8 12l1.7-1.7 2.7 2.7 8.3-8.3L19.2 6 9.2 16.4Z" />
-                    </svg>
-                  </span>
-                  Đào tạo tiếng Nhật, tiếng Đức, tiếng Trung theo nhu cầu thị trường
-                </li>
-                <li>
-                  <span className="academy-checklist__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false">
-                      <path d="M9.2 16.4 4.8 12l1.7-1.7 2.7 2.7 8.3-8.3L19.2 6 9.2 16.4Z" />
-                    </svg>
-                  </span>
-                  Tập trung giao tiếp thực tế và thuật ngữ chuyên ngành
-                </li>
-                <li>
-                  <span className="academy-checklist__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false">
-                      <path d="M9.2 16.4 4.8 12l1.7-1.7 2.7 2.7 8.3-8.3L19.2 6 9.2 16.4Z" />
-                    </svg>
-                  </span>
-                  Lộ trình đào tạo theo chuẩn đầu ra
-                </li>
-                <li>
-                  <span className="academy-checklist__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false">
-                      <path d="M9.2 16.4 4.8 12l1.7-1.7 2.7 2.7 8.3-8.3L19.2 6 9.2 16.4Z" />
-                    </svg>
-                  </span>
-                  Đánh giá định kỳ nhằm đảm bảo chất lượng học viên
-                </li>
-              </ul>
-            </ScrollReveal>
+                <ul className="academy-checklist" aria-label="Nội dung đào tạo">
+                  <li>Đào tạo tiếng Nhật, tiếng Đức, tiếng Trung theo nhu cầu thị trường</li>
+                  <li>Tập trung giao tiếp thực tế và thuật ngữ chuyên ngành</li>
+                  <li>Lộ trình đào tạo theo chuẩn đầu ra ( Nhật: N4, Đức: B1)</li>
+                  <li>Đánh giá định kỳ nhằm đảm bảo chất lượng học viên</li>
+                </ul>
+              </ScrollReveal>
 
-            <ScrollReveal animation="scale-in" delay={200} as="aside" className="academy-side">
-              <div className="academy-bubbles">
-                {academyBubbles.map((item, index) => (
-                  <figure className={`academy-bubble academy-bubble--${index + 1}`} key={item.image}>
-                    <img
-                      className="academy-bubble__image"
-                      src={item.image}
-                      alt={item.alt}
-                      loading="lazy"
-                    />
-                  </figure>
-                ))}
-              </div>
-            </ScrollReveal>
+              <ScrollReveal animation="scale-in" delay={140} as="div" className="academy-visual" aria-label="Hình ảnh đào tạo và tư vấn">
+                <figure className="academy-visual__bubble academy-visual__bubble--main">
+                  <img
+                    src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=80"
+                    alt="Buổi đào tạo và định hướng người lao động"
+                    loading="lazy"
+                  />
+                </figure>
+                <figure className="academy-visual__bubble academy-visual__bubble--side">
+                  <img
+                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=720&q=80"
+                    alt="Tư vấn quy trình hồ sơ và phỏng vấn"
+                    loading="lazy"
+                  />
+                </figure>
+                <figure className="academy-visual__bubble academy-visual__bubble--bottom">
+                  <img
+                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=720&q=80"
+                    alt="Người lao động chuẩn bị xuất cảnh"
+                    loading="lazy"
+                  />
+                </figure>
+              </ScrollReveal>
+            </div>
 
             <ScrollReveal animation="fade-up" delay={100} className="academy-modules">
               <div className="academy-modules__heading">
@@ -315,20 +249,15 @@ export default function HomePage() {
               <div className="academy-module-showcase">
                 <ScrollReveal animation="fade-up" stagger className="academy-module-grid">
                   {academyModules.map((module, index) => (
-                    <article
-                      className={`academy-module-card${index === 0 ? " academy-module-card--featured" : ""}`}
-                      key={module}
-                    >
-                      <span className="academy-module-card__icon">
-                        <AcademyIcon name={academyModuleIcons[index % academyModuleIcons.length]} />
+                    <article className="academy-module-card" key={module}>
+                      <span className="academy-module-card__number" aria-hidden="true">
+                        {index + 1}
                       </span>
 
                       <div className="academy-module-card__content">
                         <h3>{module}</h3>
                         <p>{academyTracks[index]?.description}</p>
                       </div>
-
-                      <span className="academy-module-card__glow" aria-hidden="true" />
                     </article>
                   ))}
                 </ScrollReveal>
@@ -337,71 +266,15 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section" id="proof">
-          <ScrollReveal animation="fade-up" className="shell proof-grid">
-            <div className="tone-panel">
-              <ScrollReveal animation="fade-up" className="section-heading">
-                <p className="eyebrow">Năng lực và cam kết</p>
-
-                <h2>Giá trị dịch vụ được khẳng định bằng tính minh bạch và độ tin cậy.</h2>
-              </ScrollReveal>
-              <ScrollReveal animation="scale-in" stagger className="proof-cards">
-                {assuranceCards.map((card) => (
-                  <article className="surface-card" key={card.title}>
-                    <p className="eyebrow eyebrow--muted">{card.title}</p>
-                    <p>{card.description}</p>
-                  </article>
-                ))}
-              </ScrollReveal>
-            </div>
-
-            <ScrollReveal animation="slide-left" delay={200} as="aside" className="testimonial-card">
-              <p className="testimonial-quote">
-                &ldquo;Tracodi Labour cam kết nâng cao chất lượng dịch vụ, duy trì sự ổn định và minh bạch trong hoạt động, hướng tới trở thành đối tác cung ứng nhân lực đáng tin cậy trên thị trường toàn cầu.&rdquo;
-              </p>
-              <figure className="testimonial-portrait">
-                <img
-                  src="/img/CEO.png"
-                  alt="Chân dung Tổng Giám đốc Lê Huỳnh Thương Minh"
-                  width="320"
-                  height="320"
-                />
-              </figure>
-              <div className="testimonial-meta">
-                <strong>Lê Huỳnh Thương Minh</strong>
-                <span>Tổng Giám đốc, Công ty CP Xuất khẩu Lao động Tracodi</span>
-              </div>
-            </ScrollReveal>
-          </ScrollReveal>
-        </section>
-
         <section className="section section--compact" id="contact">
           <ScrollReveal animation="fade-up" className="shell cta-band">
             <div className="cta-band__copy">
-              <p className="eyebrow eyebrow--soft">Đăng kí tư vấn</p>
-              <h2>Đăng kí tư vấn miễn phí</h2>
-
+              <p className="eyebrow eyebrow--soft">Đăng ký tư vấn</p>
+              <h2>Đăng ký tư vấn miễn phí</h2>
             </div>
 
             <ScrollReveal animation="fade-up" delay={150} className="contact-layout">
               <ContactForm />
-
-              <aside className="contact-card">
-                {contactDetails.map((item) => (
-                  <div key={item.label}>
-                    <span className="contact-card__label">{item.label}</span>
-                    {item.href ? (
-                      <a className="contact-card__value" href={item.href} target="_blank" rel="noopener noreferrer">
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className={`contact-card__value${item.label === "Trụ sở chính" ? " contact-card__address" : ""}`}>
-                        {item.value}
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </aside>
             </ScrollReveal>
           </ScrollReveal>
         </section>

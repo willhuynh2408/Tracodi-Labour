@@ -3,178 +3,160 @@
 import { useState } from "react";
 import ScrollReveal from "@/components/scroll-reveal";
 
-const recruitmentGroups = [
+const asiaJobs = [
   {
-    label: "Thị trường Châu Á",
-    jobs: [
-      {
-        title: "Tuyển 40 nữ",
-        field: "Chế biến thực phẩm",
-        image: "/img_Tracodi/chế biến thực phẩm.png",
-        details: [
-          { label: "Số lượng:", value: "18", icon: "quantity" },
-          { label: "Lương:", value: "179.000 Yên + Làm thêm", icon: "salary" },
-          { label: "Địa chỉ:", value: "Hokkaido", icon: "location" },
-          { label: "Phỏng vấn:", value: "29/05/2026", icon: "interview" }
-        ]
-      },
-      {
-        title: "Tuyển 24 nam",
-        field: "Cơ khí chế tạo",
-        image:
-          "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        details: [
-          { label: "Số lượng:", value: "24", icon: "quantity" },
-          { label: "Lương:", value: "185.000 Yên + Làm thêm", icon: "salary" },
-          { label: "Địa chỉ:", value: "Aichi", icon: "location" },
-          { label: "Phỏng vấn:", value: "08/06/2026", icon: "interview" }
-        ]
-      },
-      {
-        title: "Tuyển 18 nữ",
-        field: "May mặc công nghiệp",
-        image:
-          "https://images.unsplash.com/photo-1618587194716-40490bdba417?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        details: [
-          { label: "Số lượng:", value: "18", icon: "quantity" },
-          { label: "Lương:", value: "172.000 Yên + Làm thêm", icon: "salary" },
-          { label: "Địa chỉ:", value: "Osaka", icon: "location" },
-          { label: "Phỏng vấn:", value: "15/06/2026", icon: "interview" }
-        ]
-      },
-      {
-        title: "Tuyển 01 nam",
-        field: "Linh kiện ô tô",
-        image: "/img_Tracodi/linh kiện ô tô.png",
-        details: [
-          { label: "Số lượng:", value: "18", icon: "quantity" },
-          { label: "Lương:", value: "29.500 ĐT + Làm thêm", icon: "salary" },
-          { label: "Địa chỉ:", value: "Đào Viên", icon: "location" },
-          { label: "Phỏng vấn:", value: "12/05/2026", icon: "interview" }
-        ]
-      }
+    title: "Tuyển 40 nữ",
+    field: "Chế biến thực phẩm",
+    image: "/img_Tracodi/chế biến thực phẩm.png",
+    details: [
+      { label: "Số lượng:", value: "18", icon: "quantity" },
+      { label: "Lương:", value: "179.000 Yên + Làm thêm", icon: "salary" },
+      { label: "Địa chỉ:", value: "Hokkaido", icon: "location" },
+      { label: "Phỏng vấn:", value: "29/05/2026", icon: "interview" }
     ]
   },
   {
-    label: "Thị trường Châu Âu",
-    jobs: [
-      {
-        title: "Tuyển 30 nam nữ",
-        field: "Điều dưỡng viên",
-        image:
-          "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=720&q=80",
-        details: [
-          { label: "Số lượng:", value: "30", icon: "quantity" },
-          { label: "Lương:", value: "2.300 EUR + Phụ cấp", icon: "salary" },
-          { label: "Địa chỉ:", value: "Đức", icon: "location" },
-          { label: "Phỏng vấn:", value: "18/06/2026", icon: "interview" }
-        ]
-      },
-      {
-        title: "Tuyển 20 nam",
-        field: "Nhà hàng khách sạn",
-        image:
-          "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=720&q=80",
-        details: [
-          { label: "Số lượng:", value: "20", icon: "quantity" },
-          { label: "Lương:", value: "2.000 EUR + Làm thêm", icon: "salary" },
-          { label: "Địa chỉ:", value: "Ba Lan", icon: "location" },
-          { label: "Phỏng vấn:", value: "25/06/2026", icon: "interview" }
-        ]
-      },
-      {
-        title: "Tuyển 16 nam",
-        field: "Xây dựng dân dụng",
-        image:
-          "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=720&q=80",
-        details: [
-          { label: "Số lượng:", value: "16", icon: "quantity" },
-          { label: "Lương:", value: "2.200 EUR + Phụ cấp", icon: "salary" },
-          { label: "Địa chỉ:", value: "Romania", icon: "location" },
-          { label: "Phỏng vấn:", value: "02/07/2026", icon: "interview" }
-        ]
-      },
-      {
-        title: "Tuyển 12 nữ",
-        field: "Chế biến thực phẩm",
-        image:
-          "https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=720&q=80",
-        details: [
-          { label: "Số lượng:", value: "12", icon: "quantity" },
-          { label: "Lương:", value: "1.950 EUR + Làm thêm", icon: "salary" },
-          { label: "Địa chỉ:", value: "Hungary", icon: "location" },
-          { label: "Phỏng vấn:", value: "10/07/2026", icon: "interview" }
-        ]
-      }
+    title: "Tuyển 24 nam",
+    field: "Cơ khí chế tạo",
+    image:
+      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    details: [
+      { label: "Số lượng:", value: "24", icon: "quantity" },
+      { label: "Lương:", value: "185.000 Yên + Làm thêm", icon: "salary" },
+      { label: "Địa chỉ:", value: "Aichi", icon: "location" },
+      { label: "Phỏng vấn:", value: "08/06/2026", icon: "interview" }
     ]
   },
   {
-    label: "Tuyển sinh Hàng Không",
-    jobs: [
-      {
-        title: "Nhóm tuyển sinh",
-        field: "Tiếp viên hàng không",
-        image:
-          "https://images.unsplash.com/photo-1540339832862-474599807836?auto=format&fit=crop&w=720&q=80",
-        details: [
-          { label: "Thu nhập:", value: "18 - 80 triệu/tháng", icon: "salary" },
-          { label: "Môi trường:", value: "Làm việc quốc tế", icon: "location" },
-          { label: "Cơ hội:", value: "Bay trong và ngoài nước", icon: "quantity" },
-          { label: "Đào tạo:", value: "Cơ bản đến nâng cao", icon: "interview" }
-        ]
-      },
-      {
-        title: "Nhóm tuyển sinh",
-        field: "Nhân viên sân bay",
-        image:
-          "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=720&q=80",
-        details: [
-          { label: "Thu nhập:", value: "8 - 80 triệu/tháng", icon: "salary" },
-          { label: "Vị trí:", value: "Mặt đất, an ninh, vé, CSKH, kỹ thuật...", icon: "quantity" },
-          { label: "Nơi làm:", value: "Các sân bay lớn", icon: "location" },
-          { label: "Lộ trình:", value: "Phát triển trong ngành hàng không", icon: "interview" }
-        ]
-      },
-      {
-        title: "Nhóm tuyển sinh",
-        field: "Phi công hàng không",
-        image:
-          "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=720&q=80",
-        details: [
-          { label: "Thu nhập:", value: "180 - 300 triệu/tháng", icon: "salary" },
-          { label: "Đào tạo:", value: "3 - 4 năm theo chuẩn quốc tế", icon: "interview" },
-          { label: "Làm việc:", value: "Hãng hàng không quốc tế", icon: "location" },
-          { label: "Cơ hội:", value: "Phát triển và định cư lâu dài", icon: "quantity" }
-        ]
-      },
-      {
-        title: "Điều kiện",
-        field: "Đối tượng tuyển sinh",
-        variant: "info",
-        image:
-          "https://images.unsplash.com/photo-1556388158-158ea5ccacbd?auto=format&fit=crop&w=720&q=80",
-        details: [
-          { label: "Độ tuổi", value: "Từ 18 - 30 tuổi", icon: "quantity" },
-          { label: "Học vấn", value: "Tốt nghiệp THPT trở lên", icon: "interview" },
-          { label: "Sức khỏe", value: "Ngoại hình & sức khỏe tốt", icon: "location" },
-          { label: "Lý lịch", value: "Không tiền án hình sự", icon: "salary" }
-        ]
-      },
-      {
-        title: "Chi phí",
-        field: "Học phí chương trình",
-        variant: "info",
-        image:
-          "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=720&q=80",
-        details: [
-          { label: "Theo ngành", value: "Từ 50 - 200 triệu", icon: "salary" },
-          { label: "Phi công", value: "5 - 7 tỷ liên kết đào tạo", icon: "interview" },
-          { label: "Ngắn hạn", value: "8 - 15 triệu", icon: "quantity" },
-          { label: "Bao gồm", value: "Thi TOEIC lần 1", icon: "location" }
-        ]
-      }
+    title: "Tuyển 18 nữ",
+    field: "May mặc công nghiệp",
+    image:
+      "https://images.unsplash.com/photo-1618587194716-40490bdba417?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    details: [
+      { label: "Số lượng:", value: "18", icon: "quantity" },
+      { label: "Lương:", value: "172.000 Yên + Làm thêm", icon: "salary" },
+      { label: "Địa chỉ:", value: "Osaka", icon: "location" },
+      { label: "Phỏng vấn:", value: "15/06/2026", icon: "interview" }
+    ]
+  },
+  {
+    title: "Tuyển 01 nam",
+    field: "Linh kiện ô tô",
+    image: "/img_Tracodi/linh kiện ô tô.png",
+    details: [
+      { label: "Số lượng:", value: "18", icon: "quantity" },
+      { label: "Lương:", value: "29.500 ĐT + Làm thêm", icon: "salary" },
+      { label: "Địa chỉ:", value: "Đào Viên", icon: "location" },
+      { label: "Phỏng vấn:", value: "12/05/2026", icon: "interview" }
     ]
   }
+];
+
+const europeJobs = [
+  {
+    title: "Tuyển 30 nam nữ",
+    field: "Điều dưỡng viên",
+    image:
+      "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=720&q=80",
+    details: [
+      { label: "Số lượng:", value: "30", icon: "quantity" },
+      { label: "Lương:", value: "2.300 EUR + Phụ cấp", icon: "salary" },
+      { label: "Địa chỉ:", value: "Đức", icon: "location" },
+      { label: "Phỏng vấn:", value: "18/06/2026", icon: "interview" }
+    ]
+  },
+  {
+    title: "Tuyển 20 nam",
+    field: "Nhà hàng khách sạn",
+    image:
+      "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=720&q=80",
+    details: [
+      { label: "Số lượng:", value: "20", icon: "quantity" },
+      { label: "Lương:", value: "2.000 EUR + Làm thêm", icon: "salary" },
+      { label: "Địa chỉ:", value: "Ba Lan", icon: "location" },
+      { label: "Phỏng vấn:", value: "25/06/2026", icon: "interview" }
+    ]
+  },
+  {
+    title: "Tuyển 16 nam",
+    field: "Xây dựng dân dụng",
+    image:
+      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=720&q=80",
+    details: [
+      { label: "Số lượng:", value: "16", icon: "quantity" },
+      { label: "Lương:", value: "2.200 EUR + Phụ cấp", icon: "salary" },
+      { label: "Địa chỉ:", value: "Romania", icon: "location" },
+      { label: "Phỏng vấn:", value: "02/07/2026", icon: "interview" }
+    ]
+  },
+  {
+    title: "Tuyển 12 nữ",
+    field: "Chế biến thực phẩm",
+    image:
+      "https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=720&q=80",
+    details: [
+      { label: "Số lượng:", value: "12", icon: "quantity" },
+      { label: "Lương:", value: "1.950 EUR + Làm thêm", icon: "salary" },
+      { label: "Địa chỉ:", value: "Hungary", icon: "location" },
+      { label: "Phỏng vấn:", value: "10/07/2026", icon: "interview" }
+    ]
+  }
+];
+
+const aviationCards = [
+  {
+    title: "Nhóm tiếp viên hàng không",
+    items: [
+      "Lương: 18 - 80 triệu/ tháng",
+      "Làm việc trong môi trường quốc tế",
+      "Cơ hội bay trong và ngoài nước",
+      "Đào tạo cơ bản đến nâng cao"
+    ]
+  },
+  {
+    title: "Nhóm nhân viên sân bay",
+    items: [
+      "Lương: 8 - 80 triệu/ tháng",
+      "Vị trí: Nhân viên mặt đất, an ninh, vé, chăm sóc khách hàng, kỹ thuật...",
+      "Làm việc tại các sân bay lớn",
+      "Cơ hội phát triển trong ngành hàng không"
+    ]
+  },
+  {
+    title: "Nhóm phi công hàng không",
+    items: [
+      "Lương: 180 - 300 triệu/ tháng",
+      "Đào tạo 3 - 4 năm theo chuẩn quốc tế",
+      "Làm việc tại hãng hàng không quốc tế",
+      "Cơ hội phát triển và định cư lâu dài"
+    ]
+  },
+  {
+    title: "Đối tượng tuyển sinh",
+    wide: true,
+    items: [
+      "Từ 18 - 30 tuổi",
+      "Tốt nghiệp THPT trở lên",
+      "Ngoại hình & sức khỏe tốt",
+      "Không tiền án hình sự"
+    ]
+  },
+  {
+    title: "Học phí",
+    wide: true,
+    items: [
+      "Từ 50 - 200 Triệu (tùy ngành)",
+      "Phi công: 5-7 tỷ (liên kết đào tạo)",
+      "Khóa ngắn hạn: 8 - 15 triệu",
+      "Đã bao gồm thi Toeic lần 1"
+    ]
+  }
+];
+
+const tabs = [
+  { label: "Thị trường Châu Á", type: "jobs", jobs: [...asiaJobs] },
+  { label: "Thị trường Châu Âu", type: "jobs", jobs: [...europeJobs] },
+  { label: "Tuyển sinh Hàng Không", type: "aviation", cards: aviationCards }
 ];
 
 function JobInfoIcon({ type }) {
@@ -200,9 +182,49 @@ function JobInfoIcon({ type }) {
   );
 }
 
+function JobCard({ job, index }) {
+  return (
+    <article className="recruitment-card">
+      <img className="recruitment-card__image" src={job.image} alt={`${job.title} ${job.field}`} loading={index < 4 ? "eager" : "lazy"} />
+
+      <div className="recruitment-card__body">
+        <h3>
+          <span>{job.title}</span>
+          <span>{job.field}</span>
+        </h3>
+
+        <dl className="recruitment-card__details">
+          {job.details.map((detail) => (
+            <div key={`${job.field}-${detail.label}`}>
+              <dt>
+                <JobInfoIcon type={detail.icon} />
+                {detail.label}
+              </dt>
+              <dd>{detail.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </article>
+  );
+}
+
+function AviationCard({ card }) {
+  return (
+    <article className={`aviation-card${card.wide ? " aviation-card--wide" : ""}`}>
+      <h3>{card.title}</h3>
+      <ul>
+        {card.items.map((item) => (
+          <li key={item}>- {item}</li>
+        ))}
+      </ul>
+    </article>
+  );
+}
+
 export default function RecruitmentSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeGroup = recruitmentGroups[activeIndex];
+  const activeTab = tabs[activeIndex];
 
   return (
     <section className="section recruitment-section" id="process">
@@ -213,7 +235,7 @@ export default function RecruitmentSection() {
         </ScrollReveal>
 
         <ScrollReveal animation="fade-up" stagger className="recruitment-tabs" role="tablist" aria-label="Nhóm tuyển dụng">
-          {recruitmentGroups.map((group, index) => (
+          {tabs.map((tab, index) => (
             <button
               className={`recruitment-tab${index === activeIndex ? " recruitment-tab--active" : ""}`}
               type="button"
@@ -221,77 +243,51 @@ export default function RecruitmentSection() {
               aria-selected={index === activeIndex}
               aria-controls="recruitment-panel"
               id={`recruitment-tab-${index}`}
-              key={group.label}
+              key={tab.label}
               onClick={() => setActiveIndex(index)}
             >
-              {group.label}
+              {tab.label}
             </button>
           ))}
         </ScrollReveal>
 
-        <ScrollReveal
-          animation="fade-up"
-          stagger
-          className="recruitment-grid"
-          role="tabpanel"
-          id="recruitment-panel"
-          aria-labelledby={`recruitment-tab-${activeIndex}`}
-          key={activeGroup.label}
-        >
-          {activeGroup.jobs.map((job, index) => (
-            <article
-              className={`recruitment-card${job.variant ? ` recruitment-card--${job.variant}` : ""}`}
-              key={`${activeGroup.label}-${job.title}-${job.field}-${index}`}
-            >
-              {job.variant === "info" ? (
-                <>
-                  <h3 className="recruitment-card__ribbon">
-                    {job.title} {job.field}
-                  </h3>
-                  <img className="recruitment-card__image" src={job.image} alt={job.field} loading="lazy" />
-                </>
-              ) : (
-                <img className="recruitment-card__image" src={job.image} alt={`${job.title} ${job.field}`} loading="lazy" />
-              )}
+        {activeTab.type === "jobs" ? (
+          <ScrollReveal
+            animation="fade-up"
+            stagger
+            className="recruitment-grid"
+            role="tabpanel"
+            id="recruitment-panel"
+            aria-labelledby={`recruitment-tab-${activeIndex}`}
+            key={activeTab.label}
+          >
+            {activeTab.jobs.map((job, index) => (
+              <JobCard job={job} index={index} key={`${activeTab.label}-${job.title}-${job.field}-${index}`} />
+            ))}
+          </ScrollReveal>
+        ) : (
+          <ScrollReveal
+            animation="fade-up"
+            stagger
+            className="aviation-grid"
+            role="tabpanel"
+            id="recruitment-panel"
+            aria-labelledby={`recruitment-tab-${activeIndex}`}
+            key={activeTab.label}
+          >
+            {activeTab.cards.map((card) => (
+              <AviationCard card={card} key={card.title} />
+            ))}
+          </ScrollReveal>
+        )}
 
-              <div className="recruitment-card__body">
-                {job.variant === "info" ? null : (
-                  <h3>
-                    <span>{job.title}</span>
-                    <span>{job.field}</span>
-                  </h3>
-                )}
-
-                {job.variant === "info" ? (
-                  <div className="recruitment-info-details">
-                    {job.details.map((detail) => (
-                      <div className="recruitment-info-detail" key={`${job.field}-${detail.label}`}>
-                        <span className="recruitment-info-detail__icon" aria-hidden="true">
-                          <JobInfoIcon type={detail.icon} />
-                        </span>
-                        <strong>{detail.label}</strong>
-                        <span>{detail.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <dl className="recruitment-card__details">
-                    {job.details.map((detail) => (
-                      <div key={`${job.field}-${detail.label}`}>
-                        <dt>
-                          <JobInfoIcon type={detail.icon} />
-                          {detail.label}
-                        </dt>
-                        <dd>{detail.value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                )}
-              </div>
-            </article>
-          ))}
+        <ScrollReveal animation="fade-up" delay={120} className="recruitment-cta">
+          <a className="button button--primary recruitment-cta__button" href="#contact">
+            Ứng tuyển ngay
+          </a>
         </ScrollReveal>
       </div>
     </section>
   );
 }
+

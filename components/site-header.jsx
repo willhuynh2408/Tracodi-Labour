@@ -1,15 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const navLinks = [
-  { href: "#why", label: "Tổng quan" },
-  { href: "#journey", label: "Chặng đường" },
-  { href: "#markets", label: "Thị trường" },
-  { href: "#process", label: "Tuyển dụng" },
-  { href: "#academy", label: "Đào tạo" },
-  { href: "#proof", label: "Năng lực" }
-];
+import { navLinks } from "@/lib/site-data";
 
 export default function SiteHeader() {
   const [expanded, setExpanded] = useState(false);
@@ -44,13 +36,11 @@ export default function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    const sectionLinks = navLinks.filter((link) => link.href.startsWith("#"));
-
     const updateActiveByScroll = () => {
       const headerOffset = 120;
       let current = "";
 
-      for (const link of sectionLinks) {
+      for (const link of navLinks) {
         const section = document.querySelector(link.href);
         if (!section) continue;
 
@@ -81,13 +71,13 @@ export default function SiteHeader() {
   return (
     <header className={`site-header${compact ? " is-compact" : ""}`} data-header>
       <div className="shell site-header__shell">
-        <a className="brand" href="#top" aria-label="Trang chủ Tracodi">
+        <a className="brand" href="#top" aria-label="Trang chủ Tracodi Labour">
           <span className="brand-mark" aria-hidden="true">
             <img src="/Logo_Tracodilabour_V3.png" alt="" width="152" height="134" />
           </span>
         </a>
 
-        <nav className="site-nav" aria-label="Primary">
+        <nav className="site-nav" aria-label="Điều hướng chính">
           <button
             className="nav-toggle"
             type="button"
@@ -138,7 +128,7 @@ export default function SiteHeader() {
             </div>
           </div>
 
-          <a className="nav-hotline" href="tel:+842838330316">
+          <a className="nav-hotline" href="tel:+84342408233">
             <span className="nav-hotline__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.3-.3.74-.39 1.13-.26 1.24.41 2.57.63 3.96.63.61 0 1.1.49 1.1 1.1v3.85c0 .61-.49 1.1-1.1 1.1C10.51 21.6 2.4 13.49 2.4 3.5c0-.61.49-1.1 1.1-1.1h3.86c.61 0 1.1.49 1.1 1.1 0 1.39.22 2.72.63 3.96.12.39.04.82-.27 1.13l-2.2 2.2Z" />
@@ -146,7 +136,7 @@ export default function SiteHeader() {
             </span>
             <span>
               <small>Hotline hỗ trợ</small>
-              <strong>02838330316</strong>
+              <strong>0342408233</strong>
             </span>
           </a>
         </nav>
@@ -167,7 +157,7 @@ export default function SiteHeader() {
             </a>
           ))}
           <a className="button button--primary" href="#contact" onClick={() => setExpanded(false)}>
-            Yêu cầu tư vấn
+            Đăng ký tư vấn
           </a>
         </div>
       )}

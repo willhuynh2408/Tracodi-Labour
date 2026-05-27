@@ -40,9 +40,9 @@ export default function ContactForm() {
       `Tên: ${form.name}`,
       `Số điện thoại: ${form.telephone}`,
       `Email: ${form.email}`,
-      `Lĩnh vực tuyển dụng: ${form.sector}`,
+      `Thị trường quan tâm: ${form.sector}`,
       "",
-      "Tóm tắt yêu cầu:",
+      "Nội dung cần hỗ trợ:",
       form.message
     ].join("\n");
 
@@ -66,7 +66,7 @@ export default function ContactForm() {
         </label>
         <label>
           <span>Số điện thoại</span>
-          <input type="tel" name="telephone" autoComplete="organization" value={form.telephone} onChange={onChange} />
+          <input type="tel" name="telephone" autoComplete="tel" value={form.telephone} onChange={onChange} />
         </label>
       </div>
 
@@ -92,14 +92,14 @@ export default function ContactForm() {
           name="message"
           rows="5"
           required
-          placeholder="Hãy cho chúng tôi biết về khu vực tuyển dụng của bạn, số lượng dự kiến và thời gian triển khai."
+          placeholder="Hãy cho chúng tôi biết thị trường bạn quan tâm, thời gian dự kiến và nhu cầu cần tư vấn."
           value={form.message}
           onChange={onChange}
         />
       </label>
 
       <div className="contact-form__actions">
-        <button className="button button--light" type="submit">
+        <button className="button button--primary" type="submit">
           Gửi yêu cầu
         </button>
         <p className="form-status" aria-live="polite">
@@ -109,3 +109,4 @@ export default function ContactForm() {
     </form>
   );
 }
+
