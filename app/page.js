@@ -95,11 +95,9 @@ export default function HomePage() {
               <ScrollReveal animation="slide-left" delay={120} className="overview-copy">
                 <p className="eyebrow">Tổng quan</p>
                 <h2>Về Tracodi Labour</h2>
+                <p className="overview-intro">Hơn 30 năm kết nối nguồn nhân lực Việt Nam với thị trường quốc tế.</p>
                 <p>
-                  TRACODI LABOUR là tổ chức giáo dục định hướng và tư vấn nghề nghiệp quốc tế, hỗ trợ người lao động Việt Nam học tập và làm việc ở nước ngoài. Phát triển từ hệ thống TRACODI Group với kinh nghiệm từ năm 1993, Tracodi Labour đã hỗ trợ hơn 21.000 lao động đến các thị trường như Nhật Bản và Đài Loan thông qua quy trình minh bạch, lộ trình rõ ràng.
-                </p>
-                <p>
-                  Từ năm 2026, Tracodi Labour tiếp tục mở rộng sang các thị trường Châu Á và Châu Âu, đồng thời nâng cao tiêu chuẩn đào tạo theo định hướng quốc tế.
+                  TRACODI LABOUR là tổ chức giáo dục định hướng và tư vấn nghề nghiệp quốc tế, không chỉ dừng lại ở lĩnh vực giới thiệu việc làm hay xuất khẩu lao động phổ thông. Được phát triển từ hệ thống TRACODI Group với nền tảng kinh nghiệm từ năm 1993 trong lĩnh vực cung ứng nguồn nhân lực quốc tế, Tracodi Labour đã hỗ trợ hơn 21.000 lao động Việt Nam học tập và làm việc tại Nhật Bản, Đài Loan thông qua quy trình minh bạch và lộ trình rõ ràng. Hiện nay, Tracodi Labour mở rộng hoạt động không chỉ tại các nước Châu Á như Nhật Bản, Hàn Quốc, Đài Loan mà còn hướng đến thị trường Châu Âu như Đức, Pháp, Đan Mạch và Latvia, đồng thời nâng cao tiêu chuẩn đào tạo theo định hướng quốc tế từ năm 2026.
                 </p>
 
                 <div className="overview-metric-grid" aria-label="Chỉ số Tracodi Labour">
@@ -281,6 +279,23 @@ export default function HomePage() {
       </main>
 
       <SiteFooter />
+
+      <aside className="floating-contact" aria-label="Liên hệ nhanh">
+        <a className="floating-contact__top" href="#top" aria-label="Quay về đầu trang">
+          <span aria-hidden="true" />
+        </a>
+        <a
+          className="floating-contact__bubble"
+          href="https://zalo.me/0342408233"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Liên hệ Zalo hotline 0342408233"
+        >
+          <span>Luôn sẵn sàng tư vấn 24/7</span>
+          <strong>LIÊN HỆ NGAY</strong>
+          <small>0342408233</small>
+        </a>
+      </aside>
     </>
   );
 }

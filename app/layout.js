@@ -1,18 +1,4 @@
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-
 import "@/app/globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap"
-});
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-headline",
-  display: "swap"
-});
 
 export const metadata = {
   title: "Tracodi Labour | Công ty Cổ phần Xuất khẩu Lao động Tracodi",
@@ -52,10 +38,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="vi">
-      <body className={`${inter.variable} ${plusJakartaSans.variable}`}>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
-

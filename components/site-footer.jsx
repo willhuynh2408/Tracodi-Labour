@@ -4,7 +4,7 @@ export default function SiteFooter() {
       <div className="site-footer__main">
         <div className="shell site-footer__shell">
           <section className="site-footer__info" aria-label="Thông tin công ty">
-            <h2>Công ty Cổ phần Xuất khẩu Lao động Tracodi ( Tracodi Labour)</h2>
+            <h2>Công ty Cổ phần Xuất khẩu Lao động Tracodi (Tracodi Labour)</h2>
             <p>
               <strong>Địa chỉ:</strong> 89 Cách Mạng Tháng 8, Phường Bến Thành, TP. Hồ Chí Minh
             </p>
