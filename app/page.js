@@ -103,9 +103,9 @@ export default function HomePage() {
                 <div className="overview-metric-grid" aria-label="Chỉ số Tracodi Labour">
                   {overviewMetrics.map((metric) => (
                     <div className="overview-metric-card" key={metric.label}>
-                      {metric.stars ? (
-                        <strong className="overview-stars" aria-label={`${metric.value} sao`}>
-                          <span>{metric.value}</span>
+                      <strong className="overview-stars" aria-label={metric.stars ? `${metric.value} sao` : metric.value}>
+                        <span>{metric.value}</span>
+                        {metric.stars ? (
                           <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                             <defs>
                               <linearGradient id="overview-star-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -118,10 +118,8 @@ export default function HomePage() {
                               d="m12 2.8 2.75 5.58 6.16.9-4.46 4.34 1.05 6.13L12 16.86l-5.5 2.89 1.05-6.13-4.46-4.34 6.16-.9L12 2.8Z"
                             />
                           </svg>
-                        </strong>
-                      ) : (
-                        <strong>{metric.value}</strong>
-                      )}
+                        ) : null}
+                      </strong>
                       <span>{metric.label}</span>
                     </div>
                   ))}
