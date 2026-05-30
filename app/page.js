@@ -284,14 +284,14 @@ export default function HomePage() {
         </a>
         <a
           className="floating-contact__bubble"
-          href="https://zalo.me/0342408233"
+          href="https://zalo.me/0963222837"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Liên hệ Zalo hotline 0342408233"
+          aria-label="Liên hệ Zalo hotline 0963222837"
         >
           <span>Luôn sẵn sàng tư vấn 24/7</span>
           <strong>LIÊN HỆ NGAY</strong>
-          <small>0342408233</small>
+          <small>0963222837</small>
         </a>
       </aside>
     </>

@@ -9,7 +9,7 @@ export default function SiteFooter() {
               <strong>Địa chỉ:</strong> 89 Cách Mạng Tháng 8, Phường Bến Thành, TP. Hồ Chí Minh
             </p>
             <p>
-              <strong>TEL:</strong> 028 3833 0316
+              <strong>TEL:</strong> 0963222837
             </p>
             <p>
               <strong>MAIL:</strong> tracodilabour@tracodi.com.vn
@@ -48,7 +48,14 @@ export default function SiteFooter() {
               <strong>5 sao</strong>
             </a>
             <a href="/license/2026-04-06 Giay CNDKDN lan 3.pdf" target="_blank" rel="noopener noreferrer">
-              <img src="/Archive%20(1)/Emblem_of_Vietnam.svg.png" alt="Đối tác" />
+              <span className="site-footer__cert-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" focusable="false">
+                  <path d="M24.8 22.8 18 29.6c-1.6 1.6-4.1 1.6-5.7 0l-3.5-3.5 9.7-9.7c2.2-2.2 5.2-3.4 8.3-3.4h5.7l5.3 5.3-5.5 5.5c-2.1 2.1-5.4 2.1-7.5 0Z" />
+                  <path d="M39.2 22.8 46 29.6c1.6 1.6 4.1 1.6 5.7 0l3.5-3.5-9.7-9.7c-2.2-2.2-5.2-3.4-8.3-3.4h-5.7l-5.3 5.3 5.5 5.5c2.1 2.1 5.4 2.1 7.5 0Z" />
+                  <path d="m18.4 30.2 8.2 8.2 2.4-2.4 7.1 7.1c1.4 1.4 3.6 1.4 5 0 .8-.8 1.1-1.8 1-2.8 1 .1 2-.2 2.8-1 1.1-1.1 1.3-2.8.6-4.1.9 0 1.9-.3 2.6-1 1.4-1.4 1.4-3.6 0-5l-8.8-8.8" />
+                  <path d="m25.2 37 5.8 5.8m2.1-9.5 7.8 7.8m-2.5-13.4 7.1 7.1" />
+                </svg>
+              </span>
               <strong>Đối tác</strong>
             </a>
             <a href="/license/2026-04-06 Giay CNDKDN lan 3.pdf" target="_blank" rel="noopener noreferrer">

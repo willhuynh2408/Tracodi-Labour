@@ -1,12 +1,50 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { navLinks } from "@/lib/site-data";
 
 export default function SiteHeader() {
   const [expanded, setExpanded] = useState(false);
   const [compact, setCompact] = useState(false);
   const [activeLink, setActiveLink] = useState("");
+  const scrollLockRef = useRef(null);
+
+  const getHeaderOffset = () => {
+    const header = document.querySelector("[data-header]");
+    if (!header) return 120;
+
+    return Math.ceil(header.getBoundingClientRect().bottom + 12);
+  };
+
+  const updateHash = (href) => {
+    if (window.location.hash === href) return;
+    window.history.pushState(null, "", href);
+  };
+
+  const handleNavClick = (event, href) => {
+    const section = document.querySelector(href);
+    if (!section) return;
+
+    event.preventDefault();
+    setExpanded(false);
+    setActiveLink(href);
+    updateHash(href);
+
+    if (scrollLockRef.current) {
+      window.clearTimeout(scrollLockRef.current);
+    }
+
+    const targetTop = section.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
+    window.scrollTo({
+      top: Math.max(0, targetTop),
+      behavior: "smooth"
+    });
+
+    scrollLockRef.current = window.setTimeout(() => {
+      scrollLockRef.current = null;
+      setActiveLink(href);
+    }, 800);
+  };
 
   useEffect(() => {
     const updateHeader = () => {
@@ -37,7 +75,9 @@ export default function SiteHeader() {
 
   useEffect(() => {
     const updateActiveByScroll = () => {
-      const headerOffset = 120;
+      if (scrollLockRef.current) return;
+
+      const headerOffset = getHeaderOffset();
       let current = "";
 
       for (const link of navLinks) {
@@ -65,6 +105,9 @@ export default function SiteHeader() {
     return () => {
       window.removeEventListener("scroll", updateActiveByScroll);
       window.removeEventListener("resize", updateActiveByScroll);
+      if (scrollLockRef.current) {
+        window.clearTimeout(scrollLockRef.current);
+      }
     };
   }, []);
 
@@ -97,6 +140,7 @@ export default function SiteHeader() {
                 <a
                   href={link.href}
                   className={activeLink === link.href ? "is-active" : ""}
+                  onClick={(event) => handleNavClick(event, link.href)}
                 >
                   {link.label}
                 </a>
@@ -110,7 +154,11 @@ export default function SiteHeader() {
                 <img src="/img_Tracodi/Icon VN.png" alt="" />
               </span>
               <span>Tiếng Việt</span>
-              <span aria-hidden="true">⌄</span>
+              <span className="language-menu__chevron" aria-hidden="true">
+                <svg viewBox="0 0 20 20" focusable="false">
+                  <path d="m5.5 7.5 4.5 4.5 4.5-4.5" />
+                </svg>
+              </span>
             </button>
             <div className="language-menu__panel">
               <a href="#top">
@@ -128,7 +176,7 @@ export default function SiteHeader() {
             </div>
           </div>
 
-          <a className="nav-hotline" href="tel:+84342408233">
+          <a className="nav-hotline" href="tel:+84963222837">
             <span className="nav-hotline__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.3-.3.74-.39 1.13-.26 1.24.41 2.57.63 3.96.63.61 0 1.1.49 1.1 1.1v3.85c0 .61-.49 1.1-1.1 1.1C10.51 21.6 2.4 13.49 2.4 3.5c0-.61.49-1.1 1.1-1.1h3.86c.61 0 1.1.49 1.1 1.1 0 1.39.22 2.72.63 3.96.12.39.04.82-.27 1.13l-2.2 2.2Z" />
@@ -136,7 +184,7 @@ export default function SiteHeader() {
             </span>
             <span>
               <small>Hotline hỗ trợ</small>
-              <strong>0342408233</strong>
+              <strong>0963222837</strong>
             </span>
           </a>
         </nav>
@@ -149,9 +197,7 @@ export default function SiteHeader() {
               key={link.href}
               href={link.href}
               className={activeLink === link.href ? "is-active" : ""}
-              onClick={() => {
-                setExpanded(false);
-              }}
+              onClick={(event) => handleNavClick(event, link.href)}
             >
               {link.label}
             </a>

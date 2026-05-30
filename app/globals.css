@@ -3459,12 +3459,22 @@ textarea:focus-visible {
   text-align: center;
 }
 
-.language-menu__button > span:last-child {
+.language-menu__chevron {
   display: inline-grid;
   place-items: center;
   width: 1rem;
   height: 1rem;
   line-height: 1;
+}
+
+.language-menu__chevron svg {
+  width: 0.82rem;
+  height: 0.82rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
 }
 
 .hero {
@@ -4507,6 +4517,26 @@ textarea:focus-visible {
 
 .site-footer__certs a:nth-child(2) img {
   max-width: 4.2rem;
+}
+
+.site-footer__cert-icon {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.site-footer__cert-icon svg {
+  width: 2.75rem;
+  height: 2.75rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3.2;
 }
 
 .site-footer__certs strong {
