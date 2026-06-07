@@ -10,19 +10,19 @@ const featuredMarkets = [
     region: "Nhật Bản",
     image: "/img_Tracodi/nhật bản.png",
     description:
-      "Thu nhập ổn định, môi trường chuyên nghiệp. Cơ hội nâng cao tay nghề và tích lũy tài chính."
+      "Thu nhập ổn định - Môi trường chuyên nghiệp. Cơ hội nâng cao tay nghề và tích luỹ tài chính tương lai"
   },
   {
     region: "Đài Loan",
     image: "/img_Tracodi/đài loan.png",
     description:
-      "Chi phí thấp, xuất cảnh nhanh. Nhiều đơn hàng ổn định và quy trình đơn giản."
+      "Chi phí thấp - Dễ đăng ký - Xuất cảnh nhanh. Phù hợp cho người mới bắt đầu với nhiều đơn hàng ổn định và quy trình đơn giản"
   },
   {
     region: "Châu Âu",
     image: "/img_Tracodi/châu âu.png",
     description:
-      "Vừa học vừa làm, cơ hội phát triển lâu dài. Nâng cao thu nhập và định cư tại châu Âu."
+      "Vừa học vừa làm - Có cơ hội phát triển lâu dài. Phù hợp cho người muốn học nghề, nâng cao thu nhập và định cư tại châu âu"
   }
 ];
 
@@ -42,13 +42,12 @@ export default function HomePage() {
           </div>
           <div className="shell hero__grid">
             <ScrollReveal animation="fade-up" className="hero__copy">
-              <p className="eyebrow">Đào tạo quốc tế</p>
+              <p className="hero__eyebrow">Đào tạo quốc tế</p>
               <h1>Kết nối nghề nghiệp toàn cầu</h1>
               <span className="hero__rule" aria-hidden="true" />
               <p className="hero__lead">
-                Định hướng nghề nghiệp - Đào tạo quốc tế
-                <br />
-                Đồng hành cùng tương lai bền vững của bạn
+                <span>Định hướng nghề nghiệp - Đào tạo quốc tế</span>
+                <span>Đồng hành cùng tương lai bền vững của bạn</span>
               </p>
               <div className="hero__actions">
                 <a className="button button--light" href="#contact">
@@ -97,7 +96,9 @@ export default function HomePage() {
                 <h2>Về Tracodi Labour</h2>
                 <p className="overview-intro">Hơn 30 năm kết nối nguồn nhân lực Việt Nam với thị trường quốc tế.</p>
                 <p>
-                  TRACODI LABOUR là tổ chức giáo dục định hướng và tư vấn nghề nghiệp quốc tế, không chỉ dừng lại ở lĩnh vực giới thiệu việc làm hay xuất khẩu lao động phổ thông. Được phát triển từ hệ thống TRACODI Group với nền tảng kinh nghiệm từ năm 1993 trong lĩnh vực cung ứng nguồn nhân lực quốc tế, Tracodi Labour đã hỗ trợ hơn 21.000 lao động Việt Nam học tập và làm việc tại Nhật Bản, Đài Loan thông qua quy trình minh bạch và lộ trình rõ ràng. Hiện nay, Tracodi Labour mở rộng hoạt động không chỉ tại các nước Châu Á như Nhật Bản, Hàn Quốc, Đài Loan mà còn hướng đến thị trường Châu Âu như Đức, Pháp, Đan Mạch và Latvia, đồng thời nâng cao tiêu chuẩn đào tạo theo định hướng quốc tế từ năm 2026.
+                  TRACODI LABOUR là tổ chức giáo dục định hướng và tư vấn nghề nghiệp quốc tế, không chỉ dừng lại ở lĩnh vực giới thiệu việc làm hay xuất khẩu lao động phổ thông. Được phát triển từ hệ thống TRACODI Group với nền tảng kinh nghiệm từ năm 1993 trong lĩnh vực cung ứng nguồn nhân lực quốc tế, Tracodi Labour đã hỗ trợ hơn 21.000 lao động Việt Nam học tập và làm việc tại Nhật Bản, Đài Loan thông qua quy trình minh bạch và lộ trình rõ ràng.
+                  <br />
+                  Hiện nay, Tracodi Labour mở rộng hoạt động không chỉ tại các nước Châu Á như Nhật Bản, Hàn Quốc, Đài Loan mà còn hướng đến thị trường Châu Âu như Đức, Pháp, Đan Mạch và Latvia, đồng thời nâng cao tiêu chuẩn đào tạo theo định hướng quốc tế từ năm 2026.
                 </p>
 
                 <div className="overview-metric-grid" aria-label="Chỉ số Tracodi Labour">
@@ -131,6 +132,7 @@ export default function HomePage() {
               <video
                 className="why-video__media"
                 src="/Tracodilabour.mp4"
+                poster="/thumbnail.png"
                 controls
                 preload="metadata"
                 playsInline
@@ -247,7 +249,7 @@ export default function HomePage() {
                   {academyModules.map((module, index) => (
                     <article className="academy-module-card" key={module}>
                       <span className="academy-module-card__number" aria-hidden="true">
-                        {index + 1}
+                        {String(index + 1).padStart(2, "0")}
                       </span>
 
                       <div className="academy-module-card__content">
@@ -265,8 +267,11 @@ export default function HomePage() {
         <section className="section section--compact" id="contact">
           <ScrollReveal animation="fade-up" className="shell cta-band">
             <div className="cta-band__copy">
-              <p className="eyebrow eyebrow--soft">Đăng ký tư vấn</p>
-              <h2>Đăng ký tư vấn miễn phí</h2>
+              <p className="eyebrow eyebrow--soft">Đăng ký</p>
+              <h2>
+                <span>ĐĂNG KÝ TƯ VẤN MIỄN PHÍ</span>
+                <span>NHẬN ĐƠN HÀNG PHÙ HỢP 24H</span>
+              </h2>
             </div>
 
             <ScrollReveal animation="fade-up" delay={150} className="contact-layout">

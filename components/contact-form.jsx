@@ -78,7 +78,6 @@ export default function ContactForm() {
         <label>
           <span>Thị trường</span>
           <select name="sector" required value={form.sector} onChange={onChange}>
-            <option value="">Chọn thị trường</option>
             <option value="Châu Á">Châu Á</option>
             <option value="Châu Âu">Châu Âu</option>
             <option value="Hàng không">Hàng không</option>
@@ -92,15 +91,14 @@ export default function ContactForm() {
           name="message"
           rows="5"
           required
-          placeholder="Hãy cho chúng tôi biết thị trường bạn quan tâm, thời gian dự kiến và nhu cầu cần tư vấn."
           value={form.message}
           onChange={onChange}
         />
       </label>
 
       <div className="contact-form__actions">
-        <button className="button button--primary" type="submit">
-          Gửi yêu cầu
+        <button className="button button--primary" type="submit" style={{ textTransform: "uppercase" }}>
+          Đăng ký ngay
         </button>
         <p className="form-status" aria-live="polite">
           {status}

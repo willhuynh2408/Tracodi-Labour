@@ -16,27 +16,69 @@ const asiaJobs = [
     ]
   },
   {
-    title: "Tuyển 24 nam",
-    field: "Cơ khí chế tạo",
-    image:
-      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Tuyển 40 nữ",
+    field: "Chế biến thực phẩm",
+    image: "/img_Tracodi/chế biến thực phẩm.png",
     details: [
-      { label: "Số lượng:", value: "24", icon: "quantity" },
-      { label: "Lương:", value: "185.000 Yên + Làm thêm", icon: "salary" },
-      { label: "Địa chỉ:", value: "Aichi", icon: "location" },
-      { label: "Phỏng vấn:", value: "08/06/2026", icon: "interview" }
+      { label: "Số lượng:", value: "18", icon: "quantity" },
+      { label: "Lương:", value: "179.000 Yên + Làm thêm", icon: "salary" },
+      { label: "Địa chỉ:", value: "Hokkaido", icon: "location" },
+      { label: "Phỏng vấn:", value: "29/05/2026", icon: "interview" }
     ]
   },
   {
-    title: "Tuyển 18 nữ",
-    field: "May mặc công nghiệp",
-    image:
-      "https://images.unsplash.com/photo-1618587194716-40490bdba417?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Tuyển 40 nữ",
+    field: "Chế biến thực phẩm",
+    image: "/img_Tracodi/chế biến thực phẩm.png",
     details: [
       { label: "Số lượng:", value: "18", icon: "quantity" },
-      { label: "Lương:", value: "172.000 Yên + Làm thêm", icon: "salary" },
-      { label: "Địa chỉ:", value: "Osaka", icon: "location" },
-      { label: "Phỏng vấn:", value: "15/06/2026", icon: "interview" }
+      { label: "Lương:", value: "179.000 Yên + Làm thêm", icon: "salary" },
+      { label: "Địa chỉ:", value: "Hokkaido", icon: "location" },
+      { label: "Phỏng vấn:", value: "29/05/2026", icon: "interview" }
+    ]
+  },
+  {
+    title: "Tuyển 40 nữ",
+    field: "Chế biến thực phẩm",
+    image: "/img_Tracodi/chế biến thực phẩm.png",
+    details: [
+      { label: "Số lượng:", value: "18", icon: "quantity" },
+      { label: "Lương:", value: "179.000 Yên + Làm thêm", icon: "salary" },
+      { label: "Địa chỉ:", value: "Hokkaido", icon: "location" },
+      { label: "Phỏng vấn:", value: "29/05/2026", icon: "interview" }
+    ]
+  },
+  {
+    title: "Tuyển 01 nam",
+    field: "Linh kiện ô tô",
+    image: "/img_Tracodi/linh kiện ô tô.png",
+    details: [
+      { label: "Số lượng:", value: "18", icon: "quantity" },
+      { label: "Lương:", value: "29.500 ĐT + Làm thêm", icon: "salary" },
+      { label: "Địa chỉ:", value: "Đào Viên", icon: "location" },
+      { label: "Phỏng vấn:", value: "12/05/2026", icon: "interview" }
+    ]
+  },
+  {
+    title: "Tuyển 01 nam",
+    field: "Linh kiện ô tô",
+    image: "/img_Tracodi/linh kiện ô tô.png",
+    details: [
+      { label: "Số lượng:", value: "18", icon: "quantity" },
+      { label: "Lương:", value: "29.500 ĐT + Làm thêm", icon: "salary" },
+      { label: "Địa chỉ:", value: "Đào Viên", icon: "location" },
+      { label: "Phỏng vấn:", value: "12/05/2026", icon: "interview" }
+    ]
+  },
+  {
+    title: "Tuyển 01 nam",
+    field: "Linh kiện ô tô",
+    image: "/img_Tracodi/linh kiện ô tô.png",
+    details: [
+      { label: "Số lượng:", value: "18", icon: "quantity" },
+      { label: "Lương:", value: "29.500 ĐT + Làm thêm", icon: "salary" },
+      { label: "Địa chỉ:", value: "Đào Viên", icon: "location" },
+      { label: "Phỏng vấn:", value: "12/05/2026", icon: "interview" }
     ]
   },
   {
@@ -261,7 +303,7 @@ export default function RecruitmentSection() {
             aria-labelledby={`recruitment-tab-${activeIndex}`}
             key={activeTab.label}
           >
-            {activeTab.jobs.map((job, index) => (
+            {activeTab.jobs.slice(0, 8).map((job, index) => (
               <JobCard job={job} index={index} key={`${activeTab.label}-${job.title}-${job.field}-${index}`} />
             ))}
           </ScrollReveal>
@@ -290,4 +332,3 @@ export default function RecruitmentSection() {
     </section>
   );
 }
-
