@@ -3609,7 +3609,7 @@ textarea:focus-visible {
   overflow: hidden;
   width: 598px;
   max-width: 100%;
-  height: 666px;
+  height: auto;
   min-height: 0;
   align-self: stretch;
   margin: 0;
@@ -4582,70 +4582,15 @@ textarea:focus-visible {
   gap: 0.55rem;
 }
 
-.site-footer__facebook-card {
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  min-height: 9.6rem;
-  align-content: end;
-  padding: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: #102b56;
-  color: #ffffff;
-}
-
-.site-footer__facebook-card > img {
-  position: absolute;
-  inset: 0;
+.site-footer__facebook-plugin {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.66;
-}
-
-.site-footer__facebook-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(7, 25, 60, 0.08), rgba(7, 25, 60, 0.92));
-}
-
-.site-footer__facebook-card div {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.25rem 0.75rem;
-  align-items: center;
-}
-
-.site-footer__facebook-logo {
-  grid-row: span 2;
-  display: grid;
-  place-items: center;
-  width: 3.2rem;
-  height: 3.2rem;
-  border-radius: 50%;
+  max-width: 338px;
+  height: 298.13px;
+  border-radius: 8px;
   background: #ffffff;
 }
 
-.site-footer__facebook-logo img {
-  width: 2.65rem;
-  height: 2.65rem;
-  object-fit: contain;
-}
-
-.site-footer__facebook-card strong,
-.site-footer__facebook-card small {
-  display: block;
-}
-
-.site-footer__facebook-card strong {
-  font-size: 0.95rem;
-  font-weight: 400;
-}
-
-.site-footer__facebook-card small,
 .site-footer__facebook p {
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.78rem;
@@ -5113,7 +5058,7 @@ textarea:focus-visible {
 .overview-intro {
   margin: 0;
   color: #000000;
-  font: normal 400 24px/28px Arial, sans-serif;
+  font-size: 24px !important;
   text-align: left;
 }
 
@@ -5121,6 +5066,10 @@ textarea:focus-visible {
   color: #000000;
   font: normal 400 16px/23px Arial, sans-serif;
   text-align: left;
+}
+
+.overview-link {
+  color: #0077ff;
 }
 
 .academy-visual {
@@ -5393,5 +5342,207 @@ body p:not(#paragraph-size-lock):not(.hero__lead) {
 
   .floating-contact__top {
     display: none;
+  }
+}
+
+/* Final mobile responsiveness fixes for home landing and markets */
+@media (max-width: 62rem) {
+  .hero {
+    height: auto;
+    min-height: min(720px, 100svh);
+    aspect-ratio: auto;
+    padding: 7rem 0 3.25rem;
+  }
+
+  .hero__grid {
+    min-height: calc(min(720px, 100svh) - 10.25rem);
+    align-items: center;
+  }
+
+  .hero__copy {
+    width: min(100%, 34rem);
+    max-width: 34rem;
+    padding-top: 2.75rem;
+  }
+
+  .hero h1 {
+    max-width: 12ch;
+    white-space: normal;
+    font-size: clamp(2.45rem, 9vw, 3.75rem);
+    line-height: 1.04;
+  }
+
+  .hero__lead {
+    max-width: 31rem;
+    white-space: normal;
+    font-size: clamp(1.15rem, 2.7vw, 1.5rem);
+    line-height: 1.45;
+  }
+
+  .hero__actions .button,
+  .markets-cta__button {
+    width: min(100%, 350px);
+    min-width: 0;
+  }
+
+  .markets-section {
+    --market-card-overlap: 1.5rem;
+    --market-red-start: clamp(24rem, 58vw, 29rem);
+    padding-block: 3.5rem 4rem;
+  }
+
+  .markets-overview {
+    gap: 2rem;
+  }
+
+  .market-grid {
+    width: min(100%, 44rem);
+    max-width: 100%;
+    gap: 1.25rem;
+  }
+
+  .market-card {
+    width: 100%;
+    height: auto;
+  }
+
+  .markets-cta h3 {
+    max-width: 42rem;
+    white-space: normal;
+    font-size: clamp(1.65rem, 4.2vw, 2.125rem);
+  }
+
+  .markets-cta p {
+    max-width: 42rem;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 44rem) {
+  .hero {
+    min-height: min(680px, 100svh);
+    padding: 6.75rem 0 2.75rem;
+  }
+
+  .hero__backdrop img {
+    object-position: 61% center;
+  }
+
+  .hero__backdrop::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(4, 26, 75, 0.9) 0%, rgba(4, 26, 75, 0.68) 62%, rgba(4, 26, 75, 0.28) 100%);
+  }
+
+  .hero__grid {
+    min-height: calc(min(680px, 100svh) - 9.5rem);
+  }
+
+  .hero__copy {
+    max-width: 100%;
+    padding-top: 1.75rem;
+  }
+
+  .hero__copy .hero__eyebrow {
+    margin-bottom: 10px;
+    font-size: 24px !important;
+    line-height: 24px;
+  }
+
+  .hero h1 {
+    max-width: 11ch;
+    font-size: clamp(2.15rem, 12vw, 3rem);
+  }
+
+  .hero__rule {
+    margin: 1.35rem 0;
+  }
+
+  .hero__lead {
+    max-width: 22rem;
+    font-size: clamp(1.02rem, 5.1vw, 1.25rem);
+    line-height: 1.42;
+  }
+
+  .hero__actions {
+    gap: 0.75rem;
+    margin-top: 1.35rem;
+  }
+
+  .hero__actions .button {
+    width: 100%;
+    height: 52px;
+    min-width: 0;
+    min-height: 52px;
+    padding-inline: 1rem;
+    font-size: 14px;
+  }
+
+  .markets-section {
+    --market-card-overlap: 0;
+    --market-red-start: 21rem;
+    padding-block: 3rem 3.5rem;
+  }
+
+  .market-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    transform: none;
+  }
+
+  .market-card {
+    grid-template-rows: auto auto;
+    border-radius: 10px;
+  }
+
+  .market-card__image {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 414 / 260;
+  }
+
+  .market-card__body {
+    padding: 1rem;
+  }
+
+  .market-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .market-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .markets-cta {
+    padding-top: 1.75rem;
+  }
+
+  .markets-cta h3 {
+    font-size: clamp(1.35rem, 7vw, 1.75rem);
+    line-height: 1.2;
+  }
+
+  .markets-cta__button {
+    width: 100%;
+    height: 52px;
+    min-width: 0;
+    min-height: 52px;
+  }
+}
+
+@media (max-width: 24rem) {
+  .hero h1 {
+    font-size: clamp(2rem, 11vw, 2.55rem);
+  }
+
+  .hero__lead {
+    font-size: 1rem;
+  }
+
+  .hero__actions .button,
+  .markets-cta__button {
+    font-size: 13px;
   }
 }

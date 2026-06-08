@@ -31,16 +31,17 @@ export default function SiteFooter() {
           </section>
 
           <section className="site-footer__facebook" aria-label="Facebook Tracodi Labour">
-            <a className="site-footer__facebook-card" href="https://www.facebook.com/tracodi.labour" target="_blank" rel="noopener noreferrer">
-              <img src="/TracodiFacebook.png" alt="Tracodi Labour Facebook" />
-              <div>
-                <span className="site-footer__facebook-logo">
-                  <img src="/Logo_Tracodilabour_V3.png" alt="" />
-                </span>
-                <strong>Tracodi Labour</strong>
-                <small>Kết nối công việc, nâng tầm tương lai</small>
-              </div>
-            </a>
+            <iframe
+              className="site-footer__facebook-plugin"
+              title="Tracodi Labour Facebook timeline"
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftracodi.labour&tabs=timeline&width=338&height=298&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+              width="338"
+              height="298"
+              style={{ border: "none", overflow: "hidden" }}
+              scrolling="no"
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            />
             <p>Follow Facebook để cập nhật workshop định hướng miễn phí hằng tháng.</p>
           </section>
 

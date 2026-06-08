@@ -96,7 +96,11 @@ export default function HomePage() {
                 <h2>Về Tracodi Labour</h2>
                 <p className="overview-intro">Hơn 30 năm kết nối nguồn nhân lực Việt Nam với thị trường quốc tế.</p>
                 <p>
-                  TRACODI LABOUR là tổ chức giáo dục định hướng và tư vấn nghề nghiệp quốc tế, không chỉ dừng lại ở lĩnh vực giới thiệu việc làm hay xuất khẩu lao động phổ thông. Được phát triển từ hệ thống TRACODI Group với nền tảng kinh nghiệm từ năm 1993 trong lĩnh vực cung ứng nguồn nhân lực quốc tế, Tracodi Labour đã hỗ trợ hơn 21.000 lao động Việt Nam học tập và làm việc tại Nhật Bản, Đài Loan thông qua quy trình minh bạch và lộ trình rõ ràng.
+                  TRACODI LABOUR là tổ chức giáo dục định hướng và tư vấn nghề nghiệp quốc tế, không chỉ dừng lại ở lĩnh vực giới thiệu việc làm hay xuất khẩu lao động phổ thông. Được phát triển từ hệ thống{" "}
+                  <a className="overview-link" href="https://tracodi.com.vn/" target="_blank" rel="noopener noreferrer">
+                    TRACODI Group
+                  </a>{" "}
+                  với nền tảng kinh nghiệm từ năm 1993 trong lĩnh vực cung ứng nguồn nhân lực quốc tế, Tracodi Labour đã hỗ trợ hơn 21.000 lao động Việt Nam học tập và làm việc tại Nhật Bản, Đài Loan thông qua quy trình minh bạch và lộ trình rõ ràng.
                   <br />
                   Hiện nay, Tracodi Labour mở rộng hoạt động không chỉ tại các nước Châu Á như Nhật Bản, Hàn Quốc, Đài Loan mà còn hướng đến thị trường Châu Âu như Đức, Pháp, Đan Mạch và Latvia, đồng thời nâng cao tiêu chuẩn đào tạo theo định hướng quốc tế từ năm 2026.
                 </p>
