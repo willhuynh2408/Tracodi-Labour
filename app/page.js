@@ -38,7 +38,7 @@ export default function HomePage() {
       <main id="main-content">
         <section className="hero section" id="top">
           <div className="hero__backdrop" aria-hidden="true">
-            <img src="/img_Tracodi/Baner_main.png" alt="" />
+            <img src="/img_Tracodi/Baner_main.jpg" alt="" />
           </div>
           <div className="shell hero__grid">
             <ScrollReveal animation="fade-up" className="hero__copy">
