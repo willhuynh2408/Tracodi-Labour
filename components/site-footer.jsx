@@ -9,7 +9,7 @@ export default function SiteFooter() {
               <strong>Địa chỉ:</strong> 89 Cách Mạng Tháng 8, Phường Bến Thành, TP. Hồ Chí Minh
             </p>
             <p>
-              <strong>TEL:</strong> 0963222837
+              <strong>TEL:</strong> 028 3833 0316&nbsp; - &nbsp;0963 222 837
             </p>
             <p>
               <strong>MAIL:</strong> tracodilabour@tracodi.com.vn

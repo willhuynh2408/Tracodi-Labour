@@ -2990,7 +2990,6 @@ textarea:focus-visible {
     0 18px 36px rgba(185, 0, 20, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.34);
   filter: saturate(1.08);
-  transform: translateY(-1px);
 }
 
 .nav-hotline:active {
@@ -3013,8 +3012,13 @@ textarea:focus-visible {
   fill: currentColor;
 }
 
+.nav-hotline > span:last-child {
+  display: grid;
+  gap: 0.1rem;
+}
+
 .nav-hotline small,
-.nav-hotline strong {
+.nav-hotline a {
   display: block;
   line-height: 1.1;
 }
@@ -3025,8 +3029,8 @@ textarea:focus-visible {
   opacity: 0.84;
 }
 
-.nav-hotline strong {
-  margin-top: 0.18rem;
+.nav-hotline a {
+  color: #ffffff;
   font-size: 0.82rem;
   letter-spacing: 0.02em;
 }
@@ -3480,8 +3484,8 @@ textarea:focus-visible {
   border-radius: 0 21px 21px 0;
 }
 
-.nav-hotline strong {
-  font: normal 700 20px/23px Arial, sans-serif;
+.nav-hotline a {
+  font: normal 700 18px/21px Arial, sans-serif;
 }
 
 .language-menu__button {

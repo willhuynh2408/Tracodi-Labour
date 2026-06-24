@@ -176,7 +176,7 @@ export default function SiteHeader() {
             </div>
           </div>
 
-          <a className="nav-hotline" href="tel:+84963222837">
+          <div className="nav-hotline" aria-label="Hotline hỗ trợ">
             <span className="nav-hotline__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.3-.3.74-.39 1.13-.26 1.24.41 2.57.63 3.96.63.61 0 1.1.49 1.1 1.1v3.85c0 .61-.49 1.1-1.1 1.1C10.51 21.6 2.4 13.49 2.4 3.5c0-.61.49-1.1 1.1-1.1h3.86c.61 0 1.1.49 1.1 1.1 0 1.39.22 2.72.63 3.96.12.39.04.82-.27 1.13l-2.2 2.2Z" />
@@ -184,9 +184,10 @@ export default function SiteHeader() {
             </span>
             <span>
               <small>Hotline hỗ trợ</small>
-              <strong>0963222837</strong>
+              <a href="tel:+842838330316">028 3833 0316</a>
+              <a href="tel:+84963222837">0963 222 837</a>
             </span>
-          </a>
+          </div>
         </nav>
       </div>
 
