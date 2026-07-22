@@ -1,13 +1,44 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { navLinks } from "@/lib/site-data";
+import { usePathname, useRouter } from "next/navigation";
+import { defaultNavigation, defaultSiteSettings } from "@/lib/cms/default-content";
 
-export default function SiteHeader() {
+export default function SiteHeader({ locale = "vi", navigation = defaultNavigation, siteSettings = defaultSiteSettings }) {
   const [expanded, setExpanded] = useState(false);
   const [compact, setCompact] = useState(false);
   const [activeLink, setActiveLink] = useState("");
   const scrollLockRef = useRef(null);
+  const pathname = usePathname();
+  const router = useRouter();
+  const navLinks = navigation.links?.length ? navigation.links : defaultNavigation.links;
+  const languages = navigation.languages?.length ? navigation.languages : defaultNavigation.languages;
+  const languageSequence = ["vi", "en", "ja"];
+  const fallbackLanguages = {
+    en: { label: "English", href: "/en", flagUrl: "/img_Tracodi/Icon .png" },
+    ja: { label: "日本語", href: "/ja", flagUrl: "/img_Tracodi/Icon JP.png" },
+    vi: { label: "Tiếng Việt", href: "/", flagUrl: "/img_Tracodi/Icon VN.png" }
+  };
+  const activeLanguage = fallbackLanguages[locale] || fallbackLanguages.vi;
+  const normalizedLanguageOptions = [
+    fallbackLanguages.vi,
+    ...languages
+  ].filter((language) => language?.href).map((language) => {
+    const fallback = Object.values(fallbackLanguages).find((item) => item.href === language.href);
+
+    return {
+      ...fallback,
+      ...language,
+      label: language.label || fallback?.label || "Language",
+      flagUrl: language.flagUrl || fallback?.flagUrl || "/img_Tracodi/Icon .png"
+    };
+  }).filter((language, index, all) => {
+    const href = language.href || "#top";
+    return href !== activeLanguage.href && all.findIndex((item) => (item.href || "#top") === href) === index;
+  });
+  const phones = siteSettings.phones?.length ? siteSettings.phones : defaultSiteSettings.phones;
+  const primaryPhone = phones[0]?.number || "028 3833 0316";
+  const secondaryPhone = phones[1]?.number || "0963 222 837";
 
   const getHeaderOffset = () => {
     const header = document.querySelector("[data-header]");
@@ -19,6 +50,32 @@ export default function SiteHeader() {
   const updateHash = (href) => {
     if (window.location.hash === href) return;
     window.history.pushState(null, "", href);
+  };
+
+  const localizedPath = (nextLocale) => {
+    const hash = typeof window === "undefined" ? "" : window.location.hash;
+    const normalizedPath = pathname?.replace(/^\/(en|ja)(?=\/|$)/, "") || "/";
+    const basePath = normalizedPath === "" ? "/" : normalizedPath;
+
+    if (nextLocale === "vi") return `${basePath}${hash}`;
+    return `/${nextLocale}${basePath === "/" ? "" : basePath}${hash}`;
+  };
+
+  const switchToNextLanguage = () => {
+    const currentIndex = languageSequence.indexOf(locale);
+    const nextLocale = languageSequence[(currentIndex + 1) % languageSequence.length] || "vi";
+
+    setExpanded(false);
+    router.push(localizedPath(nextLocale));
+  };
+
+  const switchToLanguage = (event, href) => {
+    event.preventDefault();
+
+    const nextLocale = href === "/en" ? "en" : href === "/ja" ? "ja" : "vi";
+
+    setExpanded(false);
+    router.push(localizedPath(nextLocale));
   };
 
   const handleNavClick = (event, href) => {
@@ -109,14 +166,14 @@ export default function SiteHeader() {
         window.clearTimeout(scrollLockRef.current);
       }
     };
-  }, []);
+  }, [navLinks]);
 
   return (
     <header className={`site-header${compact ? " is-compact" : ""}`} data-header>
       <div className="shell site-header__shell">
         <a className="brand" href="#top" aria-label="Trang chủ Tracodi Labour">
           <span className="brand-mark" aria-hidden="true">
-            <img src="/Logo_Tracodilabour_V3.png" alt="" width="152" height="134" />
+            <img src={siteSettings.logoUrl || "/Logo_Tracodilabour_V3.png"} alt="" width="152" height="134" />
           </span>
         </a>
 
@@ -149,30 +206,36 @@ export default function SiteHeader() {
           </div>
 
           <div className="language-menu nav-language">
-            <button className="language-menu__button" type="button" aria-label="Chọn ngôn ngữ">
+            <button
+              className="language-menu__button"
+              type="button"
+              aria-label="Chọn ngôn ngữ"
+              onClick={switchToNextLanguage}
+            >
               <span className="language-menu-flag" aria-hidden="true">
-                <img src="/img_Tracodi/Icon VN.png" alt="" />
+                <img src={activeLanguage.flagUrl} alt="" />
               </span>
-              <span>Tiếng Việt</span>
+              <span>{activeLanguage.label}</span>
               <span className="language-menu__chevron" aria-hidden="true">
                 <svg viewBox="0 0 20 20" focusable="false">
                   <path d="m5.5 7.5 4.5 4.5 4.5-4.5" />
                 </svg>
               </span>
             </button>
-            <div className="language-menu__panel">
-              <a href="#top">
-                <span className="language-menu-flag" aria-hidden="true">
-                  <img src="/img_Tracodi/Icon .png" alt="" />
-                </span>
-                <span>English</span>
-              </a>
-              <a href="#top">
-                <span className="language-menu-flag" aria-hidden="true">
-                  <img src="/img_Tracodi/Icon JP.png" alt="" />
-                </span>
-                <span>日本語</span>
-              </a>
+            <div className="language-menu__panel" role="menu">
+              {normalizedLanguageOptions.map((language) => (
+                <a
+                  href={language.href || "/"}
+                  key={language.href || language.label}
+                  role="menuitem"
+                  onClick={(event) => switchToLanguage(event, language.href || "/")}
+                >
+                  <span className="language-menu-flag" aria-hidden="true">
+                    <img src={language.flagUrl || "/img_Tracodi/Icon .png"} alt="" />
+                  </span>
+                  <span>{language.label}</span>
+                </a>
+              ))}
             </div>
           </div>
 
@@ -184,8 +247,8 @@ export default function SiteHeader() {
             </span>
             <span>
               <small>Hotline hỗ trợ</small>
-              <a href="tel:+842838330316">028 3833 0316</a>
-              <a href="tel:+84963222837">0963 222 837</a>
+              <a href={`tel:${primaryPhone.replace(/[^\d+]/g, "")}`}>{primaryPhone}</a>
+              <a href={`tel:${secondaryPhone.replace(/[^\d+]/g, "")}`}>{secondaryPhone}</a>
             </span>
           </div>
         </nav>

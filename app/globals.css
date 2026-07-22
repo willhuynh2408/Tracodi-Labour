@@ -2940,7 +2940,8 @@ textarea:focus-visible {
 }
 
 .language-menu:hover .language-menu__panel,
-.language-menu:focus-within .language-menu__panel {
+.language-menu:focus-within .language-menu__panel,
+.language-menu.is-open .language-menu__panel {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: auto;

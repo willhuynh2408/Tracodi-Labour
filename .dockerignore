@@ -1,0 +1,11 @@
+.git
+.next
+node_modules
+npm-debug.log
+*.log
+dev.out.log
+dev.err.log
+.env
+.env.*
+!.env.example
+tracodilabour.zip

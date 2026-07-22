@@ -7,58 +7,83 @@ const emptyForm = {
   telephone: "",
   email: "",
   sector: "",
-  message: ""
+  message: "",
+  website: ""
 };
 
-const companyEmail = "tracodilabour@tracodi.com.vn";
-
-export default function ContactForm() {
-  const [form, setForm] = useState(emptyForm);
+export default function ContactForm({ sectors = ["Thị trường Châu Á", "Thị trường Châu Âu", "Tuyển sinh Hàng Không"] }) {
+  const [form, setForm] = useState({ ...emptyForm, sector: sectors[0] || "" });
   const [status, setStatus] = useState("");
+  const [statusType, setStatusType] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   const onChange = (event) => {
     const { name, value } = event.target;
     setForm((current) => ({ ...current, [name]: value }));
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
 
     if (!form.name || !form.email || !form.sector || !form.message) {
       setStatus("Vui lòng điền vào các trường bắt buộc trước khi gửi yêu cầu.");
+      setStatusType("error");
       return;
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(form.email)) {
       setStatus("Vui lòng nhập địa chỉ email hợp lệ.");
+      setStatusType("error");
       return;
     }
 
-    const subject = `${form.name.toUpperCase()} YÊU CẦU TƯ VẤN ${form.sector.toUpperCase()}`;
-    const body = [
-      `Tên: ${form.name}`,
-      `Số điện thoại: ${form.telephone}`,
-      `Email: ${form.email}`,
-      `Thị trường quan tâm: ${form.sector}`,
-      "",
-      "Nội dung cần hỗ trợ:",
-      form.message
-    ].join("\n");
+    setSubmitting(true);
+    setStatus("Đang gửi yêu cầu tư vấn...");
+    setStatusType("");
 
-    const gmailUrl = new URL("https://mail.google.com/mail/");
-    gmailUrl.searchParams.set("view", "cm");
-    gmailUrl.searchParams.set("fs", "1");
-    gmailUrl.searchParams.set("to", companyEmail);
-    gmailUrl.searchParams.set("su", subject);
-    gmailUrl.searchParams.set("body", body);
+    try {
+      const response = await fetch("/api/contact", {
+        body: JSON.stringify({
+          ...form,
+          sourcePage: window.location.pathname
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST"
+      });
 
-    setStatus("Đang mở Gmail để gửi yêu cầu tư vấn.");
-    window.open(gmailUrl.toString(), "_blank", "noopener,noreferrer");
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result?.message || "Không thể gửi yêu cầu lúc này.");
+      }
+
+      setForm({ ...emptyForm, sector: sectors[0] || "" });
+      setStatus("Yêu cầu tư vấn đã được ghi nhận. Tracodi Labour sẽ liên hệ lại sớm.");
+      setStatusType("success");
+    } catch (error) {
+      setStatus(error.message || "Không thể gửi yêu cầu lúc này. Vui lòng thử lại sau.");
+      setStatusType("error");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <form className="contact-form" onSubmit={onSubmit} noValidate>
+      <input
+        type="text"
+        name="website"
+        tabIndex="-1"
+        autoComplete="off"
+        value={form.website}
+        onChange={onChange}
+        style={{ display: "none" }}
+        aria-hidden="true"
+      />
+
       <div className="field-grid">
         <label>
           <span>Họ và tên</span>
@@ -78,33 +103,28 @@ export default function ContactForm() {
         <label>
           <span>Thị trường</span>
           <select name="sector" required value={form.sector} onChange={onChange}>
-            <option value="Châu Á">Châu Á</option>
-            <option value="Châu Âu">Châu Âu</option>
-            <option value="Hàng không">Hàng không</option>
+            {sectors.map((sector) => (
+              <option value={sector} key={sector}>
+                {sector}
+              </option>
+            ))}
           </select>
         </label>
       </div>
 
       <label>
         <span>Nội dung cần hỗ trợ</span>
-        <textarea
-          name="message"
-          rows="5"
-          required
-          value={form.message}
-          onChange={onChange}
-        />
+        <textarea name="message" rows="5" required value={form.message} onChange={onChange} />
       </label>
 
       <div className="contact-form__actions">
-        <button className="button button--primary" type="submit" style={{ textTransform: "uppercase" }}>
-          Đăng ký ngay
+        <button className="button button--primary" type="submit" style={{ textTransform: "uppercase" }} disabled={submitting}>
+          {submitting ? "Đang gửi..." : "Đăng ký ngay"}
         </button>
-        <p className="form-status" aria-live="polite">
+        <p className={`form-status${statusType ? ` form-status--${statusType}` : ""}`} aria-live="polite">
           {status}
         </p>
       </div>
     </form>
   );
 }
-

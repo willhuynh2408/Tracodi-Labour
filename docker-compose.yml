@@ -1,0 +1,51 @@
+services:
+  app:
+    build:
+      context: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-tracodi}:${POSTGRES_PASSWORD:-Tracodi123}@postgres:5432/${POSTGRES_DB:-tracodi}
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-tracodi}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-Tracodi123}
+      POSTGRES_USER: ${POSTGRES_USER:-tracodi}
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tracodi -d tracodi"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  caddy:
+    image: caddy:2-alpine
+    depends_on:
+      - app
+    environment:
+      SITE_DOMAIN: ${SITE_DOMAIN:-localhost}
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+    volumes:
+      - ./ops/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  caddy-config:
+  caddy-data:
+  postgres-data:

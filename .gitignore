@@ -3,3 +3,9 @@ node_modules
 out
 .npm-cache
 npm-debug.log*
+*.log
+tsconfig.tsbuildinfo
+.env
+.env.local
+.env.production
+.env.*.local

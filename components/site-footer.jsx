@@ -1,28 +1,34 @@
-export default function SiteFooter() {
+import { defaultSiteSettings } from "@/lib/cms/default-content";
+
+export default function SiteFooter({ siteSettings = defaultSiteSettings }) {
+  const phones = siteSettings.phones?.map((phone) => phone.number).filter(Boolean).join(" - ");
+  const facebookUrl = siteSettings.facebookUrl || "https://www.facebook.com/tracodi.labour";
+  const tiktokUrl = siteSettings.tiktokUrl || facebookUrl;
+
   return (
     <footer className="site-footer">
       <div className="site-footer__main">
         <div className="shell site-footer__shell">
           <section className="site-footer__info" aria-label="Thông tin công ty">
-            <h2>Công ty Cổ phần Xuất khẩu Lao động Tracodi (Tracodi Labour)</h2>
+            <h2>{siteSettings.companyName}</h2>
             <p>
-              <strong>Địa chỉ:</strong> 89 Cách Mạng Tháng 8, Phường Bến Thành, TP. Hồ Chí Minh
+              <strong>Địa chỉ:</strong> {siteSettings.address}
             </p>
             <p>
-              <strong>TEL:</strong> 028 3833 0316&nbsp; - &nbsp;0963 222 837
+              <strong>TEL:</strong> {phones}
             </p>
             <p>
-              <strong>MAIL:</strong> tracodilabour@tracodi.com.vn
+              <strong>MAIL:</strong> {siteSettings.email}
             </p>
             <p>
-              <strong>MST:</strong> 0314385382
+              <strong>MST:</strong> {siteSettings.taxCode}
             </p>
 
             <div className="site-footer__socials" aria-label="Liên kết mạng xã hội">
-              <a href="https://www.facebook.com/tracodi.labour" target="_blank" rel="noopener noreferrer" aria-label="Facebook Tracodi Labour">
+              <a href={facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Facebook Tracodi Labour">
                 f
               </a>
-              <a href="https://www.facebook.com/tracodi.labour" target="_blank" rel="noopener noreferrer" aria-label="TikTok Tracodi Labour">
+              <a href={tiktokUrl} target="_blank" rel="noopener noreferrer" aria-label="TikTok Tracodi Labour">
                 <svg className="site-footer__social-icon" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                   <path d="M16.6 3c.35 2.55 1.78 4.18 4.4 4.35v3.25a7.55 7.55 0 0 1-4.32-1.32v6.18c0 3.12-1.98 5.54-5.32 5.54-3.1 0-5.36-2.06-5.36-4.96 0-3.34 2.85-5.48 6.28-4.86v3.38c-1.48-.45-2.84.2-2.84 1.42 0 .92.72 1.5 1.7 1.5 1.1 0 1.78-.66 1.78-2.14V3h3.68Z" />
                 </svg>
@@ -34,7 +40,7 @@ export default function SiteFooter() {
             <iframe
               className="site-footer__facebook-plugin"
               title="Tracodi Labour Facebook timeline"
-              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftracodi.labour&tabs=timeline&width=338&height=298&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+              src={siteSettings.facebookEmbedUrl}
               width="338"
               height="298"
               style={{ border: "none", overflow: "hidden" }}
@@ -42,22 +48,32 @@ export default function SiteFooter() {
               frameBorder="0"
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
             />
-            <p>Follow Facebook để cập nhật workshop định hướng miễn phí hằng tháng.</p>
+            <p>{siteSettings.footerNote}</p>
           </section>
 
           <section className="site-footer__certs" aria-label="Chứng nhận và giấy phép">
-            <div>
-              <img src="/Archive%20(1)/Vmas.png" alt="VAMAS 5 sao" />
-              <strong>HIỆP HỘI XUẤT KHẨU LAO ĐỘNG VIỆT&nbsp;NAM</strong>
-            </div>
-            <div className="site-footer__certs-government">
-              <img src="/Archive%20(1)/Emblem_of_Vietnam.svg.png" alt="Cục quản lý lao động ngoài nước" />
-              <strong>CỤC QUẢN LÝ LAO ĐỘNG NGOÀI NƯỚC</strong>
-            </div>
-            <a className="site-footer__certs-license" href="/license/2026-04-06 Giay CNDKDN lan 3.pdf" target="_blank" rel="noopener noreferrer">
-              <img src="/Archive%20(1)/license.png" alt="Giấy phép đưa người lao động làm việc ở nước ngoài" />
-              <strong>GIẤY PHÉP ĐƯA NLĐ làm việc ở nước ngoài.</strong>
-            </a>
+            {siteSettings.certifications?.map((cert, index) => {
+              const content = (
+                <>
+                  <img src={cert.imageUrl} alt={cert.imageAlt || cert.title} />
+                  <strong>{cert.title}</strong>
+                </>
+              );
+
+              if (cert.url) {
+                return (
+                  <a className="site-footer__certs-license" href={cert.url} target="_blank" rel="noopener noreferrer" key={cert.title}>
+                    {content}
+                  </a>
+                );
+              }
+
+              return (
+                <div className={index === 1 ? "site-footer__certs-government" : ""} key={cert.title}>
+                  {content}
+                </div>
+              );
+            })}
           </section>
         </div>
       </div>
