@@ -8,12 +8,13 @@ export default function SiteHeader({ locale = "vi", navigation = defaultNavigati
   const [expanded, setExpanded] = useState(false);
   const [compact, setCompact] = useState(false);
   const [activeLink, setActiveLink] = useState("");
+  const [languageOpen, setLanguageOpen] = useState(false);
   const scrollLockRef = useRef(null);
+  const languageMenuRef = useRef(null);
   const pathname = usePathname();
   const router = useRouter();
   const navLinks = navigation.links?.length ? navigation.links : defaultNavigation.links;
   const languages = navigation.languages?.length ? navigation.languages : defaultNavigation.languages;
-  const languageSequence = ["vi", "en", "ja"];
   const fallbackLanguages = {
     en: { label: "English", href: "/en", flagUrl: "/img_Tracodi/Icon .png" },
     ja: { label: "日本語", href: "/ja", flagUrl: "/img_Tracodi/Icon JP.png" },
@@ -61,21 +62,19 @@ export default function SiteHeader({ locale = "vi", navigation = defaultNavigati
     return `/${nextLocale}${basePath === "/" ? "" : basePath}${hash}`;
   };
 
-  const switchToNextLanguage = () => {
-    const currentIndex = languageSequence.indexOf(locale);
-    const nextLocale = languageSequence[(currentIndex + 1) % languageSequence.length] || "vi";
-
-    setExpanded(false);
-    router.push(localizedPath(nextLocale));
-  };
-
   const switchToLanguage = (event, href) => {
     event.preventDefault();
 
     const nextLocale = href === "/en" ? "en" : href === "/ja" ? "ja" : "vi";
 
     setExpanded(false);
+    setLanguageOpen(false);
     router.push(localizedPath(nextLocale));
+  };
+
+  const closeLanguageMenuOnBlur = (event) => {
+    if (event.currentTarget.contains(event.relatedTarget)) return;
+    setLanguageOpen(false);
   };
 
   const handleNavClick = (event, href) => {
@@ -120,6 +119,7 @@ export default function SiteHeader({ locale = "vi", navigation = defaultNavigati
     const collapseMenu = () => {
       if (window.innerWidth > 992) {
         setExpanded(false);
+        setLanguageOpen(false);
       }
     };
 
@@ -129,6 +129,29 @@ export default function SiteHeader({ locale = "vi", navigation = defaultNavigati
       window.removeEventListener("resize", collapseMenu);
     };
   }, []);
+
+  useEffect(() => {
+    if (!languageOpen) return;
+
+    const closeLanguageMenu = (event) => {
+      if (languageMenuRef.current?.contains(event.target)) return;
+      setLanguageOpen(false);
+    };
+
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") {
+        setLanguageOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", closeLanguageMenu);
+    document.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", closeLanguageMenu);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [languageOpen]);
 
   useEffect(() => {
     const updateActiveByScroll = () => {
@@ -205,12 +228,21 @@ export default function SiteHeader({ locale = "vi", navigation = defaultNavigati
             ))}
           </div>
 
-          <div className="language-menu nav-language">
+          <div
+            className={`language-menu nav-language${languageOpen ? " is-open" : ""}`}
+            ref={languageMenuRef}
+            onMouseEnter={() => setLanguageOpen(true)}
+            onMouseLeave={() => setLanguageOpen(false)}
+            onFocus={() => setLanguageOpen(true)}
+            onBlur={closeLanguageMenuOnBlur}
+          >
             <button
               className="language-menu__button"
               type="button"
               aria-label="Chọn ngôn ngữ"
-              onClick={switchToNextLanguage}
+              aria-controls="language-menu-panel"
+              aria-expanded={languageOpen}
+              aria-haspopup="menu"
             >
               <span className="language-menu-flag" aria-hidden="true">
                 <img src={activeLanguage.flagUrl} alt="" />
@@ -222,7 +254,7 @@ export default function SiteHeader({ locale = "vi", navigation = defaultNavigati
                 </svg>
               </span>
             </button>
-            <div className="language-menu__panel" role="menu">
+            <div className="language-menu__panel" id="language-menu-panel" role="menu">
               {normalizedLanguageOptions.map((language) => (
                 <a
                   href={language.href || "/"}

@@ -2872,6 +2872,15 @@ textarea:focus-visible {
   align-self: center;
 }
 
+.language-menu::after {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  height: 0.75rem;
+  content: "";
+}
+
 .language-menu-flag {
   display: inline-flex;
   width: 0.9rem;

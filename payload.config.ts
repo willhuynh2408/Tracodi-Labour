@@ -147,6 +147,11 @@ const imageFields = [
 ] as any[];
 
 const s3Enabled = Boolean(process.env.S3_BUCKET && process.env.S3_REGION && process.env.S3_ACCESS_KEY_ID && process.env.S3_SECRET_ACCESS_KEY);
+const databaseUrl = process.env.DATABASE_URL;
+
+if (!databaseUrl) {
+  throw new Error("DATABASE_URL is not configured. Set an external Postgres connection string in the deployment environment.");
+}
 
 export default buildConfig({
   admin: {
@@ -587,7 +592,7 @@ export default buildConfig({
   ],
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || "postgres://postgres:postgres@localhost:5432/tracodi"
+      connectionString: databaseUrl
     }
   }),
   editor: lexicalEditor(),
