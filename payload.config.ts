@@ -954,6 +954,25 @@ export default buildConfig({
               type: "array",
               localized: true,
               fields: [{ name: "text", label: "Nội dung", type: "text", localized: true }]
+            },
+            {
+              name: "formLabels",
+              label: "Nhãn và thông báo biểu mẫu",
+              type: "group",
+              fields: [
+                { name: "name", label: "Nhãn họ và tên", type: "text", localized: true },
+                { name: "telephone", label: "Nhãn số điện thoại", type: "text", localized: true },
+                { name: "email", label: "Nhãn email", type: "text", localized: true },
+                { name: "sector", label: "Nhãn chương trình", type: "text", localized: true },
+                { name: "message", label: "Nhãn nội dung", type: "text", localized: true },
+                { name: "submit", label: "Nút gửi", type: "text", localized: true },
+                { name: "submitting", label: "Nút đang gửi", type: "text", localized: true },
+                { name: "requiredError", label: "Lỗi thiếu thông tin", type: "textarea", localized: true },
+                { name: "invalidEmailError", label: "Lỗi email không hợp lệ", type: "textarea", localized: true },
+                { name: "submitStatus", label: "Thông báo đang gửi", type: "textarea", localized: true },
+                { name: "successMessage", label: "Thông báo thành công", type: "textarea", localized: true },
+                { name: "genericError", label: "Thông báo lỗi chung", type: "textarea", localized: true }
+              ]
             }
           ]
         }

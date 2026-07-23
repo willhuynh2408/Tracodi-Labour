@@ -43,12 +43,16 @@ function normalizeJob(job) {
 }
 
 function normalizeTabs(tabs) {
-  return tabs.map((tab) => ({
-    ...tab,
-    type: tab.type || tab.kind,
-    cards: tab.cards || tab.aviationCards || [],
-    jobs: (tab.jobs || []).map(normalizeJob)
-  }));
+  const hiddenLabels = new Set(["Thị trường Châu Á", "Thị trường Châu Âu"]);
+
+  return tabs
+    .filter((tab) => !hiddenLabels.has(tab.label) && !hiddenLabels.has(tab.displayName) && !hiddenLabels.has(tab.labelAll?.vi))
+    .map((tab) => ({
+      ...tab,
+      type: tab.type || tab.kind,
+      cards: tab.cards || tab.aviationCards || [],
+      jobs: (tab.jobs || []).map(normalizeJob)
+    }));
 }
 
 function JobCard({ job, index }) {
@@ -99,7 +103,7 @@ export default function RecruitmentSection({ content, tabs = defaultRecruitmentT
     title: "Thông tin tuyển dụng mới nhất",
     ...(content || {})
   };
-  const normalizedTabs = normalizeTabs(tabs.length ? tabs : defaultRecruitmentTabs);
+  const normalizedTabs = normalizeTabs(Array.isArray(tabs) ? tabs : defaultRecruitmentTabs);
   const [activeIndex, setActiveIndex] = useState(0);
   const activeTab = normalizedTabs[activeIndex] || normalizedTabs[0];
 
@@ -111,52 +115,56 @@ export default function RecruitmentSection({ content, tabs = defaultRecruitmentT
           <h2>{sectionContent.title}</h2>
         </ScrollReveal>
 
-        <ScrollReveal animation="fade-up" stagger className="recruitment-tabs" role="tablist" aria-label="Nhóm tuyển dụng">
-          {normalizedTabs.map((tab, index) => (
-            <button
-              className={`recruitment-tab${index === activeIndex ? " recruitment-tab--active" : ""}`}
-              type="button"
-              role="tab"
-              aria-selected={index === activeIndex}
-              aria-controls="recruitment-panel"
-              id={`recruitment-tab-${index}`}
-              key={tab.label}
-              onClick={() => setActiveIndex(index)}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </ScrollReveal>
+        {normalizedTabs.length ? (
+          <>
+            <ScrollReveal animation="fade-up" stagger className="recruitment-tabs" role="tablist" aria-label="Nhóm tuyển dụng">
+              {normalizedTabs.map((tab, index) => (
+                <button
+                  className={`recruitment-tab${index === activeIndex ? " recruitment-tab--active" : ""}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={index === activeIndex}
+                  aria-controls="recruitment-panel"
+                  id={`recruitment-tab-${index}`}
+                  key={tab.label}
+                  onClick={() => setActiveIndex(index)}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </ScrollReveal>
 
-        {activeTab.type === "jobs" ? (
-          <ScrollReveal
-            animation="fade-up"
-            stagger
-            className="recruitment-grid"
-            role="tabpanel"
-            id="recruitment-panel"
-            aria-labelledby={`recruitment-tab-${activeIndex}`}
-            key={activeTab.label}
-          >
-            {activeTab.jobs.slice(0, 8).map((job, index) => (
-              <JobCard job={job} index={index} key={`${activeTab.label}-${job.title}-${job.field}-${index}`} />
-            ))}
-          </ScrollReveal>
-        ) : (
-          <ScrollReveal
-            animation="fade-up"
-            stagger
-            className="aviation-grid"
-            role="tabpanel"
-            id="recruitment-panel"
-            aria-labelledby={`recruitment-tab-${activeIndex}`}
-            key={activeTab.label}
-          >
-            {activeTab.cards.map((card) => (
-              <AviationCard card={card} key={card.title} />
-            ))}
-          </ScrollReveal>
-        )}
+            {activeTab.type === "jobs" ? (
+              <ScrollReveal
+                animation="fade-up"
+                stagger
+                className="recruitment-grid"
+                role="tabpanel"
+                id="recruitment-panel"
+                aria-labelledby={`recruitment-tab-${activeIndex}`}
+                key={activeTab.label}
+              >
+                {activeTab.jobs.slice(0, 8).map((job, index) => (
+                  <JobCard job={job} index={index} key={`${activeTab.label}-${job.title}-${job.field}-${index}`} />
+                ))}
+              </ScrollReveal>
+            ) : (
+              <ScrollReveal
+                animation="fade-up"
+                stagger
+                className="aviation-grid"
+                role="tabpanel"
+                id="recruitment-panel"
+                aria-labelledby={`recruitment-tab-${activeIndex}`}
+                key={activeTab.label}
+              >
+                {activeTab.cards.map((card) => (
+                  <AviationCard card={card} key={card.title} />
+                ))}
+              </ScrollReveal>
+            )}
+          </>
+        ) : null}
 
         <ScrollReveal animation="fade-up" delay={120} className="recruitment-cta">
           <a className="button button--primary recruitment-cta__button" href={sectionContent.ctaHref || "#contact"}>

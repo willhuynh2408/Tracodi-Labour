@@ -250,7 +250,7 @@ export async function renderHomePage(locale = "vi") {
             </div>
 
             <ScrollReveal animation="fade-up" delay={150} className="contact-layout">
-              <ContactForm sectors={formSectors} />
+              <ContactForm sectors={formSectors} labels={homePage.contactCta.formLabels} />
             </ScrollReveal>
           </ScrollReveal>
         </section>
