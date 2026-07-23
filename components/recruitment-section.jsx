@@ -27,22 +27,29 @@ function JobInfoIcon({ type }) {
   );
 }
 
-function normalizeJob(job) {
+const defaultJobDetailLabels = {
+  quantity: "Số lượng:",
+  salary: "Lương:",
+  location: "Địa chỉ:",
+  interview: "Phỏng vấn:"
+};
+
+function normalizeJob(job, detailLabels = defaultJobDetailLabels) {
   return {
     ...job,
     image: job.image || job.imageUrl,
     details:
       job.details ||
       [
-        { label: "Số lượng:", value: job.quantity, icon: "quantity" },
-        { label: "Lương:", value: job.salary, icon: "salary" },
-        { label: "Địa chỉ:", value: job.location, icon: "location" },
-        { label: "Phỏng vấn:", value: job.interviewDateLabel, icon: "interview" }
+        { label: detailLabels.quantity, value: job.quantity, icon: "quantity" },
+        { label: detailLabels.salary, value: job.salary, icon: "salary" },
+        { label: detailLabels.location, value: job.location, icon: "location" },
+        { label: detailLabels.interview, value: job.interviewDateLabel, icon: "interview" }
       ].filter((detail) => detail.value)
   };
 }
 
-function normalizeTabs(tabs) {
+function normalizeTabs(tabs, detailLabels = defaultJobDetailLabels) {
   const hiddenLabels = new Set(["Thị trường Châu Á", "Thị trường Châu Âu"]);
 
   return tabs
@@ -51,7 +58,7 @@ function normalizeTabs(tabs) {
       ...tab,
       type: tab.type || tab.kind,
       cards: tab.cards || tab.aviationCards || [],
-      jobs: (tab.jobs || []).map(normalizeJob)
+      jobs: (tab.jobs || []).map((job) => normalizeJob(job, detailLabels))
     }));
 }
 
@@ -103,7 +110,10 @@ export default function RecruitmentSection({ content, tabs = defaultRecruitmentT
     title: "Thông tin tuyển dụng mới nhất",
     ...(content || {})
   };
-  const normalizedTabs = normalizeTabs(Array.isArray(tabs) ? tabs : defaultRecruitmentTabs);
+  const normalizedTabs = normalizeTabs(Array.isArray(tabs) ? tabs : defaultRecruitmentTabs, {
+    ...defaultJobDetailLabels,
+    ...(sectionContent.jobDetailLabels || {})
+  });
   const [activeIndex, setActiveIndex] = useState(0);
   const activeTab = normalizedTabs[activeIndex] || normalizedTabs[0];
 

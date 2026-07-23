@@ -644,6 +644,23 @@ export default buildConfig({
           ]
         },
         {
+          name: "labels",
+          label: "Nhãn giao diện header/footer",
+          type: "group",
+          fields: [
+            { name: "hotlineSupport", label: "Nhãn hotline hỗ trợ", type: "text", localized: true },
+            { name: "mobileConsultationCta", label: "Nút tư vấn menu mobile", type: "text", localized: true },
+            { name: "companyInfo", label: "Nhãn thông tin công ty", type: "text", localized: true },
+            { name: "address", label: "Nhãn địa chỉ", type: "text", localized: true },
+            { name: "phone", label: "Nhãn điện thoại", type: "text", localized: true },
+            { name: "email", label: "Nhãn email", type: "text", localized: true },
+            { name: "taxCode", label: "Nhãn mã số thuế", type: "text", localized: true },
+            { name: "socialLinks", label: "Nhãn liên kết mạng xã hội", type: "text", localized: true },
+            { name: "certifications", label: "Nhãn chứng nhận và giấy phép", type: "text", localized: true },
+            { name: "copyright", label: "Dòng bản quyền", type: "text", localized: true }
+          ]
+        },
+        {
           name: "email",
           label: "Email công ty",
           type: "email"
@@ -905,7 +922,18 @@ export default buildConfig({
               })
             },
             hiddenLegacyField({ name: "ctaLabel", label: "Tên nút ứng tuyển", type: "text", localized: true }),
-            { name: "ctaHref", label: "Đường dẫn nút ứng tuyển", type: "text" }
+            { name: "ctaHref", label: "Đường dẫn nút ứng tuyển", type: "text" },
+            {
+              name: "jobDetailLabels",
+              label: "Nhãn thông tin đơn hàng",
+              type: "group",
+              fields: [
+                { name: "quantity", label: "Nhãn số lượng", type: "text", localized: true },
+                { name: "salary", label: "Nhãn lương", type: "text", localized: true },
+                { name: "location", label: "Nhãn địa chỉ", type: "text", localized: true },
+                { name: "interview", label: "Nhãn phỏng vấn", type: "text", localized: true }
+              ]
+            }
           ]
         },
         {

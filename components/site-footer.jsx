@@ -4,27 +4,28 @@ export default function SiteFooter({ siteSettings = defaultSiteSettings }) {
   const phones = siteSettings.phones?.map((phone) => phone.number).filter(Boolean).join(" - ");
   const facebookUrl = siteSettings.facebookUrl || "https://www.facebook.com/tracodi.labour";
   const tiktokUrl = siteSettings.tiktokUrl || facebookUrl;
+  const labels = { ...(defaultSiteSettings.labels || {}), ...(siteSettings.labels || {}) };
 
   return (
     <footer className="site-footer">
       <div className="site-footer__main">
         <div className="shell site-footer__shell">
-          <section className="site-footer__info" aria-label="Thông tin công ty">
+          <section className="site-footer__info" aria-label={labels.companyInfo}>
             <h2>{siteSettings.companyName}</h2>
             <p>
-              <strong>Địa chỉ:</strong> {siteSettings.address}
+              <strong>{labels.address}</strong> {siteSettings.address}
             </p>
             <p>
-              <strong>TEL:</strong> {phones}
+              <strong>{labels.phone}</strong> {phones}
             </p>
             <p>
-              <strong>MAIL:</strong> {siteSettings.email}
+              <strong>{labels.email}</strong> {siteSettings.email}
             </p>
             <p>
-              <strong>MST:</strong> {siteSettings.taxCode}
+              <strong>{labels.taxCode}</strong> {siteSettings.taxCode}
             </p>
 
-            <div className="site-footer__socials" aria-label="Liên kết mạng xã hội">
+            <div className="site-footer__socials" aria-label={labels.socialLinks}>
               <a href={facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Facebook Tracodi Labour">
                 f
               </a>
@@ -51,7 +52,7 @@ export default function SiteFooter({ siteSettings = defaultSiteSettings }) {
             <p>{siteSettings.footerNote}</p>
           </section>
 
-          <section className="site-footer__certs" aria-label="Chứng nhận và giấy phép">
+          <section className="site-footer__certs" aria-label={labels.certifications}>
             {siteSettings.certifications?.map((cert, index) => {
               const content = (
                 <>
@@ -79,7 +80,7 @@ export default function SiteFooter({ siteSettings = defaultSiteSettings }) {
       </div>
 
       <div className="site-footer__bottom">
-        <p>Copyright 2026 © Tracodi Labour</p>
+        <p>{labels.copyright}</p>
       </div>
     </footer>
   );
