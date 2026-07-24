@@ -72,17 +72,45 @@ const hiddenLegacyField = (field: Record<string, unknown>): any => ({
   }
 });
 
-const applyTranslationSource = (data: any, legacyField: string, allLanguagesField: string) => {
-  const source = data?.[allLanguagesField]?.vi;
-  if (typeof source === "string" && source.trim()) {
-    data[legacyField] = source;
+const firstFilledText = (...values: any[]) => {
+  for (const value of values) {
+    if (typeof value === "string" && value.trim()) return value;
+  }
+
+  return undefined;
+};
+
+const normalizeLanguageGroup = (data: any, originalDoc: any, legacyField: string, allLanguagesField: string) => {
+  const existing = originalDoc?.[allLanguagesField] && typeof originalDoc[allLanguagesField] === "object"
+    ? originalDoc[allLanguagesField]
+    : {};
+  const incoming = data?.[allLanguagesField] && typeof data[allLanguagesField] === "object"
+    ? data[allLanguagesField]
+    : {};
+  const merged = {
+    ...existing,
+    ...incoming
+  };
+  const fallback = firstFilledText(merged.vi, merged.en, merged.ja, data?.[legacyField], originalDoc?.[legacyField]);
+
+  if (fallback) {
+    for (const locale of contentLocales) {
+      merged[locale.name] = firstFilledText(merged[locale.name], fallback);
+    }
+
+    data[allLanguagesField] = merged;
+    data[legacyField] = merged.vi;
   }
 };
 
-const syncRecruitmentTabLanguages = ({ data }: any) => {
+const applyTranslationSource = (data: any, legacyField: string, allLanguagesField: string, originalDoc?: any) => {
+  normalizeLanguageGroup(data, originalDoc, legacyField, allLanguagesField);
+};
+
+const syncRecruitmentTabLanguages = ({ data, originalDoc }: any) => {
   if (!data) return data;
 
-  applyTranslationSource(data, "label", "labelAll");
+  applyTranslationSource(data, "label", "labelAll", originalDoc);
   data.displayName = data.labelAll?.vi || data.label || data.displayName;
 
   if (Array.isArray(data.aviationCards)) {
@@ -100,11 +128,11 @@ const syncRecruitmentTabLanguages = ({ data }: any) => {
   return data;
 };
 
-const syncJobOrderLanguages = ({ data }: any) => {
+const syncJobOrderLanguages = ({ data, originalDoc }: any) => {
   if (!data) return data;
 
   for (const field of ["title", "field", "imageAlt", "market", "salary", "location", "interviewDateLabel"]) {
-    applyTranslationSource(data, field, `${field}All`);
+    applyTranslationSource(data, field, `${field}All`, originalDoc);
   }
 
   return data;
