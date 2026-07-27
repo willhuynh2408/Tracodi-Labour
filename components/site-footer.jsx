@@ -5,6 +5,8 @@ export default function SiteFooter({ siteSettings = defaultSiteSettings }) {
   const facebookUrl = siteSettings.facebookUrl || "https://www.facebook.com/tracodi.labour";
   const tiktokUrl = siteSettings.tiktokUrl || facebookUrl;
   const labels = { ...(defaultSiteSettings.labels || {}), ...(siteSettings.labels || {}) };
+  const footerInfoItems = siteSettings.footerInfoItems?.filter((item) => item?.value) || [];
+  const isExternalUrl = (url) => /^https?:\/\//i.test(url || "");
 
   return (
     <footer className="site-footer">
@@ -24,6 +26,29 @@ export default function SiteFooter({ siteSettings = defaultSiteSettings }) {
             <p>
               <strong>{labels.taxCode}</strong> {siteSettings.taxCode}
             </p>
+            {footerInfoItems.map((item) => {
+              const content = (
+                <>
+                  {item.label ? <strong>{item.label}</strong> : null} {item.value}
+                </>
+              );
+
+              return (
+                <p key={item.id || `${item.label || ""}-${item.value}`}>
+                  {item.url ? (
+                    <a
+                      href={item.url}
+                      target={isExternalUrl(item.url) ? "_blank" : undefined}
+                      rel={isExternalUrl(item.url) ? "noopener noreferrer" : undefined}
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    content
+                  )}
+                </p>
+              );
+            })}
 
             <div className="site-footer__socials" aria-label={labels.socialLinks}>
               <a href={facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Facebook Tracodi Labour">

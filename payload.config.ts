@@ -726,6 +726,34 @@ export default buildConfig({
           localized: true
         },
         {
+          name: "footerInfoItems",
+          label: "Thông tin bổ sung trong khối footer",
+          type: "array",
+          admin: {
+            description: "Thêm các dòng thông tin mới vào khối thông tin công ty trong footer."
+          },
+          fields: [
+            {
+              name: "label",
+              label: "Nhãn",
+              type: "text",
+              localized: true
+            },
+            {
+              name: "value",
+              label: "Nội dung",
+              type: "text",
+              localized: true,
+              required: true
+            },
+            {
+              name: "url",
+              label: "Đường dẫn khi bấm vào",
+              type: "text"
+            }
+          ]
+        },
+        {
           name: "certifications",
           label: "Chứng nhận & giấy phép",
           type: "array",
