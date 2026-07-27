@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { isSamePhone, phoneHref, zaloHrefForPhone } from "@/lib/contact-links";
 import { defaultNavigation, defaultSiteSettings } from "@/lib/cms/default-content";
 
 export default function SiteHeader({ locale = "vi", navigation = defaultNavigation, siteSettings = defaultSiteSettings }) {
@@ -41,6 +42,10 @@ export default function SiteHeader({ locale = "vi", navigation = defaultNavigati
   const labels = { ...(defaultSiteSettings.labels || {}), ...(siteSettings.labels || {}) };
   const primaryPhone = phones[0]?.number || "028 3833 0316";
   const secondaryPhone = phones[1]?.number || "0963 222 837";
+  const zaloPhone = siteSettings.floatingContact?.phone || defaultSiteSettings.floatingContact.phone;
+  const zaloHref = zaloHrefForPhone(zaloPhone);
+  const hrefForPhone = (phone) => (isSamePhone(phone, zaloPhone) ? zaloHref : phoneHref(phone));
+  const isZaloPhone = (phone) => isSamePhone(phone, zaloPhone);
 
   const getHeaderOffset = () => {
     const header = document.querySelector("[data-header]");
@@ -280,8 +285,20 @@ export default function SiteHeader({ locale = "vi", navigation = defaultNavigati
             </span>
             <span>
               <small>{labels.hotlineSupport}</small>
-              <a href={`tel:${primaryPhone.replace(/[^\d+]/g, "")}`}>{primaryPhone}</a>
-              <a href={`tel:${secondaryPhone.replace(/[^\d+]/g, "")}`}>{secondaryPhone}</a>
+              <a
+                href={hrefForPhone(primaryPhone)}
+                target={isZaloPhone(primaryPhone) ? "_blank" : undefined}
+                rel={isZaloPhone(primaryPhone) ? "noopener noreferrer" : undefined}
+              >
+                {primaryPhone}
+              </a>
+              <a
+                href={hrefForPhone(secondaryPhone)}
+                target={isZaloPhone(secondaryPhone) ? "_blank" : undefined}
+                rel={isZaloPhone(secondaryPhone) ? "noopener noreferrer" : undefined}
+              >
+                {secondaryPhone}
+              </a>
             </span>
           </div>
         </nav>

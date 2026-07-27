@@ -3,6 +3,7 @@ import RecruitmentSection from "@/components/recruitment-section";
 import ScrollReveal from "@/components/scroll-reveal";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
+import { zaloHrefForPhone } from "@/lib/contact-links";
 import { getFormSectors, getSiteData } from "@/lib/cms/server";
 
 export const supportedLocales = ["vi", "en", "ja"];
@@ -34,6 +35,8 @@ export async function generateSiteMetadata(locale = "vi") {
 export async function renderHomePage(locale = "vi") {
   const { homePage, navigation, recruitmentTabs, siteSettings } = await getSiteData(locale);
   const formSectors = getFormSectors(recruitmentTabs);
+  const floatingContactPhone = siteSettings.floatingContact?.phone || "0963222837";
+  const floatingContactHref = zaloHrefForPhone(floatingContactPhone);
 
   return (
     <>
@@ -264,14 +267,14 @@ export async function renderHomePage(locale = "vi") {
         </a>
         <a
           className="floating-contact__bubble"
-          href={siteSettings.floatingContact?.url || "https://zalo.me/0963222837"}
+          href={floatingContactHref}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Liên hệ Zalo hotline ${siteSettings.floatingContact?.phone || "0963222837"}`}
+          aria-label={`Liên hệ Zalo hotline ${floatingContactPhone}`}
         >
           <span>{siteSettings.floatingContact?.label}</span>
           <strong>{siteSettings.floatingContact?.cta}</strong>
-          <small>{siteSettings.floatingContact?.phone}</small>
+          <small>{floatingContactPhone}</small>
         </a>
       </aside>
     </>
